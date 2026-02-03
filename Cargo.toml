@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/ferrous-cli",
+]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2024"
+license = "MIT"
+
+[workspace.dependencies]
