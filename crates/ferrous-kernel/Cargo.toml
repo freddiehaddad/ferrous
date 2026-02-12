@@ -1,0 +1,17 @@
+[package]
+name = "ferrous-kernel"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Operating System Kernel for Ferrous"
+
+[dependencies]
+ferrous-vm = { path = "../ferrous-vm" }
+thiserror = { workspace = true }
+log = { workspace = true }
+
+[dev-dependencies]
+env_logger = { workspace = true }
+proptest = { workspace = true }

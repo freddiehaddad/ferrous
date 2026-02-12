@@ -1,12 +1,38 @@
 [workspace]
 resolver = "2"
 members = [
+    "crates/ferrous-vm",
+    "crates/ferrous-kernel",
+    "crates/ferrous-user",
+    "crates/ferrous-runtime",
     "crates/ferrous-cli",
+    "crates/ferrous-test",
 ]
 
 [workspace.package]
-version = "0.0.1"
-edition = "2024"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ferrous OS Team"]
 license = "MIT"
+repository = "https://github.com/ferrous-os/ferrous"
+description = "Educational OS in Rust"
 
 [workspace.dependencies]
+# Intra-workspace dependencies
+ferrous-vm = { path = "crates/ferrous-vm", version = "0.1.0" }
+ferrous-kernel = { path = "crates/ferrous-kernel", version = "0.1.0" }
+ferrous-user = { path = "crates/ferrous-user", version = "0.1.0" }
+ferrous-runtime = { path = "crates/ferrous-runtime", version = "0.1.0" }
+ferrous-test = { path = "crates/ferrous-test", version = "0.1.0" }
+
+# Common dependencies
+log = "0.4"
+thiserror = "2.0"
+anyhow = "1.0"
+bitflags = "2.4"
+bytemuck = "1.14"
+rand = "0.8"
+goblin = "0.8"
+env_logger = "0.11"
+clap = { version = "4.4", features = ["derive"] }
+proptest = "1.4"

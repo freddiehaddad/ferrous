@@ -2,6 +2,13 @@
 name = "ferrous-cli"
 version.workspace = true
 edition.workspace = true
+authors.workspace = true
 license.workspace = true
+repository.workspace = true
+description = "Command-line interface for Ferrous OS"
 
 [dependencies]
+clap = { version = "4.4", features = ["derive"] }
+env_logger = { workspace = true }
+ferrous-runtime = { path = "../ferrous-runtime" }
+log = { workspace = true }
