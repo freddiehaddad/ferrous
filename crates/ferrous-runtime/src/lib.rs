@@ -30,6 +30,12 @@ impl Runtime {
     pub fn load_program(&mut self, path: &Path) -> Result<(), Box<dyn Error>> {
         let entry_point = loader::ProgramLoader::load_elf(&mut self.vm, path)?;
         self.vm.cpu.pc = entry_point.val();
+
+        // Initialize Stack Pointer to top of memory
+        // Assuming base address 0x8000_0000 (should probably be in config)
+        let stack_top = 0x8000_0000 + self.vm.config.memory_size as u32;
+        self.vm.cpu.write_reg(ferrous_vm::Register::SP, stack_top);
+
         Ok(())
     }
 

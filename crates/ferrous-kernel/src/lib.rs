@@ -1,17 +1,22 @@
 pub mod error;
 pub mod syscall;
+pub mod thread;
+pub mod types;
 
 use crate::error::KernelError;
 use ferrous_vm::{Cpu, Memory, TrapCause, TrapError, TrapHandler, VirtAddr};
 use log::{debug, info};
+use thread::ThreadManager;
 
 pub struct Kernel {
-    // For now, minimal state
+    thread_manager: ThreadManager,
 }
 
 impl Kernel {
     pub fn new() -> Result<Self, KernelError> {
-        Ok(Self {})
+        Ok(Self {
+            thread_manager: ThreadManager::new(),
+        })
     }
 
     pub fn handle_syscall(
@@ -48,77 +53,108 @@ impl Kernel {
             }
             syscall::Syscall::Exit { code } => {
                 info!("Thread/Process Exit: {}", code);
-                // We don't have threads yet, so just halt VM?
-                // But wait, Kernel shouldn't halt VM directly.
-                // It just returns to VM.
-                // But if we return, VM continues.
-                // We need to signal VM to stop.
-                // The VM checks StepResult.
-                // But here we are in handle_trap, returning VirtAddr.
+                self.thread_manager.exit_current_thread(code);
+                self.thread_manager.yield_thread(cpu);
 
-                // If the syscall is Exit, we probably want to create a Trap that VM understands as Exit.
-                // Or we loop forever in Kernel? No.
+                // If yield_thread returns, it means we switched to another thread or back to this one (unlikely if exited)
+                // Actually exit_current_thread sets state to Terminated.
+                // yield_thread picks next Ready thread.
+                // If no threads ready, we might be stuck.
+                // But let's assume there is at least one.
 
-                // The VM loop:
-                // match self.step() { Ok(Trap) => handle_trap() ... }
-                // If handle_trap returns, it updates PC and continues.
+                // If no threads left, yield_thread might not update cpu?
+                // yield_thread impl:
+                // if let Some(next) = scheduler.schedule() ...
+                // else ...
 
-                // We need a mechanism to tell VM to stop.
-                // Currently `handle_trap` returns `Result<VirtAddr, TrapError>`.
-                // Maybe we can return a special address or error?
-                // Or we change `TrapHandler` to return `TrapResult` enum.
+                // If we exit and no threads, we should probably stop VM.
+                if self.thread_manager.current_thread.is_none() {
+                    return Err(TrapError::Halt);
+                }
 
-                // ARCHITECTURE.md says `handle_trap` returns `Result<VirtAddr, TrapError>`.
-                // So we can't signal exit easily.
+                // If we switched context, cpu regs are updated to new thread.
+                // We return Ok(pc) where pc is new thread's PC.
+                // Wait, handle_trap returns VirtAddr.
+                // Does it overwrite cpu.pc?
+                // lib.rs in ferrous-vm: `self.cpu.pc = resume_addr.val();`
+                // So we should return the new PC from cpu.pc?
+                // Or just return `cpu.pc`?
+                // Yes, yield_thread updates cpu.pc.
+                // So we return `VirtAddr::new(cpu.pc)`.
+                Ok(syscall::SyscallReturn::Success) // Value doesn't matter as we don't return to this thread
+            }
+            syscall::Syscall::ThreadCreate {
+                entry_point,
+                stack_top,
+            } => {
+                match self.thread_manager.create_thread(entry_point, stack_top) {
+                    Ok(handle) => Ok(syscall::SyscallReturn::Handle(handle.val())),
+                    Err(e) => Err(TrapError::HandlerPanic(e)), // Should be SyscallError
+                }
+            }
+            syscall::Syscall::ThreadYield => {
+                // We need to return Success to the YIELDING thread (current).
+                // But we are switching away.
+                // So we need to save the "return value" (0) into the saved context of the yielding thread.
+                // encode_result writes to cpu regs.
 
-                // Hack: loop forever at current PC?
-                // Better: Add `Ebreak` or similar that VM handles as Breakpoint/Exit.
-                // But `handle_syscall` is called *because* of Ecall.
+                // Strategy:
+                // 1. Write return value to current cpu regs (a0 = 0).
+                // 2. Advance PC for current thread (so when it resumes, it's past ecall).
+                // 3. Call yield_thread (saves current cpu including a0 and new PC, restores next).
 
-                // If we want to exit, we can't just return.
-                // The VM `run()` loop runs until `StepResult::Exit`.
-                // `StepResult::Exit` comes from `step()` logic.
-                // `step()` executes `Ecall` -> returns `StepResult::Trap`.
-                // Then `run()` calls `handle_trap`.
+                syscall::Syscall::encode_result(Ok(syscall::SyscallReturn::Success), cpu);
+                cpu.pc += 4; // Advance PC before saving context
 
-                // If `handle_trap` returns OK, execution continues.
+                self.thread_manager.yield_thread(cpu);
 
-                // We need to modify `TrapHandler` or `run()` loop to support exit from trap.
-                // But `ARCHITECTURE.md` spec is fixed for now? I can modify it if I want as I'm the architect.
+                // Now cpu has new thread's context.
+                // We return new PC.
+                // Note: If we switch back to this thread later, `cpu.pc` will be restored to `old_pc + 4`.
+                // And `a0` will be 0.
 
-                // Let's modify `TrapHandler` trait in `ferrous-vm/src/trap.rs` to allow signaling exit.
-                // But that requires changing `ferrous-vm`.
-                // Or we can return a special Error that is not really an error but an Exit signal.
-                // But `TrapError` variants are `Unhandled` or `HandlerPanic`.
+                // Wait, if we return `Ok(VirtAddr::new(cpu.pc))`, the VM loop sets `cpu.pc = result`.
+                // So we don't need to return `cpu.pc + 4` here if we already updated it in `yield_thread` (via restore).
+                // Yes.
 
-                // Let's add `TrapHandled::Exit` variant if I change the return type.
+                // But wait, `handle_syscall` end returns `Ok(VirtAddr::new(cpu.pc + 4))` normally.
+                // We must bypass that for Yield and Exit.
 
-                // For now, let's just loop locally in `handle_syscall`? No, that blocks the thread.
+                // So I should refactor `handle_syscall` return logic.
 
-                // I'll stick to printing "Exit" and returning to next instruction, effectively ignoring exit for now,
-                // or just panic to stop.
-                // Since this is Iteration 1, panic is acceptable to stop execution if "Exit" syscall is called.
-                // Or better: `Err(TrapError::HandlerPanic("Program Exited".into()))`
-                Err(TrapError::HandlerPanic(format!(
-                    "Program Exited with code {}",
-                    code
-                )))
+                // Special handling for Yield/Exit: they modify control flow.
+                Ok(syscall::SyscallReturn::Success)
             }
         };
 
-        // Encode result
-        match result {
-            Ok(val) => syscall::Syscall::encode_result(Ok(val), cpu),
-            Err(e) => {
-                // If it's a panic/fatal error, we should probably return it as a TrapError to stop the VM
-                // But encode_result expects SyscallError.
-                // Let's just log and return the error to stop VM.
-                return Err(e);
+        // If not Yield/Exit, we encode result and advance PC.
+        // If Yield, we already encoded result and advanced PC (inside the match arm logic I wrote above).
+        // If Exit, we don't return.
+
+        // Let's refine the match to handle control flow.
+
+        match syscall {
+            syscall::Syscall::ThreadYield => {
+                // Already handled in match arm:
+                // 1. encode_result(Success)
+                // 2. cpu.pc += 4
+                // 3. yield_thread(cpu)
+                // Return new PC
+                Ok(VirtAddr::new(cpu.pc))
+            }
+            syscall::Syscall::Exit { .. } => {
+                // yield_thread called. cpu updated.
+                Ok(VirtAddr::new(cpu.pc))
+            }
+            _ => {
+                // Normal syscall
+                match result {
+                    Ok(val) => syscall::Syscall::encode_result(Ok(val), cpu),
+                    Err(e) => return Err(e),
+                }
+                Ok(VirtAddr::new(cpu.pc + 4))
             }
         }
-
-        // Resume at next instruction (epc + 4)
-        Ok(VirtAddr::new(cpu.pc + 4))
     }
 }
 
@@ -129,6 +165,9 @@ impl TrapHandler for Kernel {
         cpu: &mut Cpu,
         memory: &mut dyn Memory,
     ) -> Result<VirtAddr, TrapError> {
+        // Ensure current thread is tracked (lazy init of main thread)
+        self.thread_manager.ensure_current_thread(cpu);
+
         match cause {
             TrapCause::EnvironmentCallFromU | TrapCause::EnvironmentCallFromS => {
                 self.handle_syscall(cpu, memory)

@@ -43,6 +43,9 @@ pub enum TrapError {
 
     #[error("trap handler panicked: {0}")]
     HandlerPanic(String),
+
+    #[error("system halt")]
+    Halt,
 }
 
 #[derive(Debug, Error, PartialEq)]

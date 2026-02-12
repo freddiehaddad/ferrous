@@ -26,21 +26,47 @@ pub mod syscall {
     }
 
     pub fn exit(code: i32) -> ! {
-        #[cfg(target_arch = "riscv32")]
         unsafe {
+            #[cfg(target_arch = "riscv32")]
             asm!(
                 "ecall",
                 in("a0") code,
                 in("a7") 93,
+                options(noreturn)
             );
-        }
-        #[cfg(not(target_arch = "riscv32"))]
-        {
-            let _ = code;
+            #[cfg(not(target_arch = "riscv32"))]
             loop {}
         }
-        #[allow(unreachable_code)]
-        loop {}
+    }
+
+    pub fn thread_yield() {
+        unsafe {
+            #[cfg(target_arch = "riscv32")]
+            asm!(
+                "ecall",
+                in("a7") 101,
+            );
+        }
+    }
+
+    pub fn thread_create(entry: usize, stack_top: usize) -> u32 {
+        let ret: u32;
+        unsafe {
+            #[cfg(target_arch = "riscv32")]
+            asm!(
+                "ecall",
+                in("a0") entry,
+                in("a1") stack_top,
+                in("a7") 102,
+                lateout("a0") ret,
+            );
+            #[cfg(not(target_arch = "riscv32"))]
+            {
+                let _ = (entry, stack_top);
+                ret = 0;
+            }
+        }
+        ret
     }
 }
 
@@ -71,4 +97,12 @@ macro_rules! println {
 
 pub fn exit(code: i32) -> ! {
     syscall::exit(code)
+}
+
+pub fn yield_now() {
+    syscall::thread_yield();
+}
+
+pub fn spawn(entry: extern "C" fn(), stack_top: *mut u8) -> u32 {
+    syscall::thread_create(entry as usize, stack_top as usize)
 }

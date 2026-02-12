@@ -1,4 +1,5 @@
 use crate::error::SyscallError;
+use crate::types::ThreadHandle;
 use ferrous_vm::{Cpu, Register, VirtAddr};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -12,6 +13,13 @@ pub enum Syscall {
     Exit {
         code: i32,
     },
+
+    // Threading
+    ThreadCreate {
+        entry_point: VirtAddr,
+        stack_top: u32,
+    },
+    ThreadYield,
 }
 
 #[derive(Debug)]
@@ -36,6 +44,11 @@ impl Syscall {
                 len: a2 as usize,
             }),
             93 => Ok(Syscall::Exit { code: a0 as i32 }),
+            101 => Ok(Syscall::ThreadYield),
+            102 => Ok(Syscall::ThreadCreate {
+                entry_point: VirtAddr::new(a0),
+                stack_top: a1,
+            }),
             _ => Err(SyscallError::InvalidSyscallNumber(a7)),
         }
     }
@@ -48,8 +61,6 @@ impl Syscall {
             Ok(SyscallReturn::Handle(h)) => cpu.write_reg(a0, h),
             Ok(SyscallReturn::Pointer(p)) => cpu.write_reg(a0, p.val()),
             Err(_) => {
-                // Negative error code? Or just specialized error handling?
-                // For now, let's just write -1
                 cpu.write_reg(a0, u32::MAX);
             }
         }
