@@ -20,4 +20,6 @@ SECTIONS
   .bss : {
     *(.bss .bss.*)
   } > RAM
+
+  PROVIDE(_end = .);
 }

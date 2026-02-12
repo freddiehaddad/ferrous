@@ -103,6 +103,31 @@ pub fn yield_now() {
     syscall::thread_yield();
 }
 
-pub fn spawn(entry: extern "C" fn(), stack_top: *mut u8) -> u32 {
-    syscall::thread_create(entry as usize, stack_top as usize)
+extern "C" {
+    static _end: u8;
+}
+
+static mut HEAP_PTR: usize = 0;
+const STACK_SIZE: usize = 4096;
+
+fn alloc_stack() -> usize {
+    unsafe {
+        if HEAP_PTR == 0 {
+            HEAP_PTR = &_end as *const u8 as usize;
+            // Align to 16 bytes
+            HEAP_PTR = (HEAP_PTR + 15) & !15;
+        }
+
+        let stack_bottom = HEAP_PTR;
+        HEAP_PTR += STACK_SIZE;
+        // TODO: Check for OOM against top of RAM
+
+        // Stack grows down, so return top
+        stack_bottom + STACK_SIZE
+    }
+}
+
+pub fn spawn(entry: extern "C" fn()) -> u32 {
+    let stack_top = alloc_stack();
+    syscall::thread_create(entry as usize, stack_top)
 }

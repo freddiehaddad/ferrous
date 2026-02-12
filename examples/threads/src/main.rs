@@ -8,12 +8,7 @@ use ferrous_user::{exit, print, println, spawn, yield_now};
 pub extern "C" fn _start() -> ! {
     println!("Main thread started");
 
-    static mut STACK: [u8; 4096] = [0; 4096];
-
-    unsafe {
-        let stack_top = STACK.as_mut_ptr().add(STACK.len());
-        spawn(thread_func, stack_top);
-    }
+    spawn(thread_func);
 
     println!("Thread 1: Loop start");
     for i in 0..3 {
