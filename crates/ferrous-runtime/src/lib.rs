@@ -20,7 +20,10 @@ impl Runtime {
             )))
         })?;
 
-        let config = VmConfig { memory_size };
+        let config = VmConfig {
+            memory_size,
+            timer_interval: Some(100), // Trigger interrupt every 100 instructions
+        };
 
         let vm = VirtualMachine::new(config, memory, Box::new(kernel))?;
 

@@ -14,6 +14,7 @@ pub use trap::*;
 
 pub struct VmConfig {
     pub memory_size: usize,
+    pub timer_interval: Option<u64>,
 }
 
 pub struct VirtualMachine {
@@ -21,6 +22,8 @@ pub struct VirtualMachine {
     pub memory: Box<dyn Memory>,
     pub trap_handler: Box<dyn TrapHandler>,
     pub config: VmConfig,
+    pub instruction_count: u64,
+    pub next_timer_interrupt: u64,
 }
 
 #[derive(Debug, PartialEq)]
@@ -47,6 +50,8 @@ impl VirtualMachine {
             cpu: Cpu::new(0x8000_0000), // Standard entry point
             memory,
             trap_handler,
+            instruction_count: 0,
+            next_timer_interrupt: config.timer_interval.unwrap_or(u64::MAX),
             config,
         })
     }
@@ -62,8 +67,30 @@ impl VirtualMachine {
 
     pub fn run(&mut self) -> Result<ExitReason, VmError> {
         loop {
-            match self.step() {
-                Ok(StepResult::Continue) => continue,
+            // Check for timer interrupt
+            if let Some(interval) = self.config.timer_interval {
+                if self.instruction_count >= self.next_timer_interrupt {
+                    self.next_timer_interrupt += interval;
+                    let result = self.trap_handler.handle_trap(
+                        TrapCause::TimerInterrupt,
+                        &mut self.cpu,
+                        self.memory.as_mut(),
+                    );
+                    match result {
+                        Ok(resume_addr) => self.cpu.pc = resume_addr.val(),
+                        Err(TrapError::Halt) => return Ok(ExitReason::Halt),
+                        Err(e) => return Err(VmError::Trap(e)),
+                    }
+                }
+            }
+
+            let step_result = self.step();
+            self.instruction_count += 1;
+
+            match step_result {
+                Ok(StepResult::Continue) => {
+                    continue;
+                }
                 Ok(StepResult::Exit(reason)) => return Ok(reason),
                 Ok(StepResult::Trap(cause)) => {
                     let result =

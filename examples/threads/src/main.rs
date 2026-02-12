@@ -2,7 +2,7 @@
 #![no_main]
 
 use core::panic::PanicInfo;
-use ferrous_user::{exit, print, println, spawn, yield_now};
+use ferrous_user::{exit, println, spawn};
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
@@ -11,9 +11,8 @@ pub extern "C" fn _start() -> ! {
     spawn(thread_func);
 
     println!("Thread 1: Loop start");
-    for i in 0..3 {
+    for i in 0..50 {
         println!("Thread 1: Iteration {}", i);
-        yield_now();
     }
     println!("Thread 1: Loop end");
 
@@ -22,9 +21,8 @@ pub extern "C" fn _start() -> ! {
 
 extern "C" fn thread_func() {
     println!("Thread 2: Loop start");
-    for i in 0..3 {
+    for i in 0..50 {
         println!("Thread 2: Iteration {}", i);
-        yield_now();
     }
     println!("Thread 2: Loop end");
 

@@ -172,6 +172,11 @@ impl TrapHandler for Kernel {
             TrapCause::EnvironmentCallFromU | TrapCause::EnvironmentCallFromS => {
                 self.handle_syscall(cpu, memory)
             }
+            TrapCause::TimerInterrupt => {
+                // Preemption: Yield current thread
+                self.thread_manager.yield_thread(cpu);
+                Ok(VirtAddr::new(cpu.pc))
+            }
             _ => Err(TrapError::Unhandled(cause)),
         }
     }
