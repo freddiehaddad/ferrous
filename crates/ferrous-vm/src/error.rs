@@ -93,6 +93,7 @@ impl core::error::Error for DecodeError {}
 pub enum VmError {
     Memory(MemoryError),
     Trap(TrapError),
+    Device(DeviceError),
     InvalidInstruction(u32),
     RegisterIndex(u32),
     Decode(DecodeError),
@@ -103,6 +104,7 @@ impl fmt::Display for VmError {
         match self {
             VmError::Memory(e) => write!(f, "memory error: {}", e),
             VmError::Trap(e) => write!(f, "trap error: {}", e),
+            VmError::Device(e) => write!(f, "device error: {}", e),
             VmError::InvalidInstruction(inst) => write!(f, "invalid instruction: {:#x}", inst),
             VmError::RegisterIndex(idx) => write!(f, "invalid register index: {}", idx),
             VmError::Decode(e) => write!(f, "decode error: {}", e),
@@ -118,9 +120,9 @@ impl From<MemoryError> for VmError {
     }
 }
 
-impl From<TrapError> for VmError {
-    fn from(e: TrapError) -> Self {
-        VmError::Trap(e)
+impl From<DeviceError> for VmError {
+    fn from(e: DeviceError) -> Self {
+        VmError::Device(e)
     }
 }
 

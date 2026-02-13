@@ -17,37 +17,37 @@
 
 ```
 ┌──────────────────────────────────┐
-│     Student Programs (Rust)      │
+│     User Programs (Guest)        │
 │  Compiled to RISC-V ELF binaries │
+│  (e.g., examples/hello-world)    │
 └──────────────────────────────────┘
-              ↓ syscalls
-┌──────────────────────────────────┐
-│      Ferrous Kernel (OS)         │
-│  ┌────────┬──────┬────────────┐  │
-│  │Threads │ Sync │   Memory   │  │
-│  │  File  │ Net  │ Scheduler  │  │
-│  └────────┴──────┴────────────┘  │
-└──────────────────────────────────┘
-              ↓ traps
+              ↓ syscalls (ecall)
 ┌──────────────────────────────────┐
 │  RISC-V Simulator (ferrous-vm)   │
-│  • RV32IMA interpreter           │
+│  • RV32IMA instruction execution │
 │  • Virtual memory (Sv32)         │
-│  • Simulated devices             │
+│  • Traps to Host Kernel          │
+└──────────────────────────────────┘
+              ↓ traps (Host Calls)
+┌──────────────────────────────────┐
+│      Ferrous Kernel (Host)       │
+│  • Written in Rust (no_std)      │
+│  • Runs natively on Host CPU     │
+│  • Manages Guest VM State        │
+│  • Implements Syscalls/Traps     │
 └──────────────────────────────────┘
 ```
 
 ## ✨ Features
 
 - **RISC-V RV32IMA Simulator**: Complete interpreter with M (multiply) and A (atomic) extensions
+- **Host-Based Kernel**: Kernel runs as native code for easier debugging and iteration
 - **Threading**: Cooperative and preemptive multithreading
 - **Synchronization**: Semaphores, mutexes, condition variables
 - **Virtual Memory**: Sv32 paging with demand paging and copy-on-write
 - **File System**: Unix-like inode-based file system
 - **Networking**: Simplified layered network stack with sockets
 - **Type Safety**: Extensive use of newtypes to prevent programming errors
-- **Deterministic**: Reproducible execution for debugging
-- **Well-Documented**: Comprehensive architecture specification and API docs
 
 ## 📚 Documentation
 
@@ -58,8 +58,9 @@
 
 ### Prerequisites
 
-- Rust 1.93.0 or later
-- Cargo (comes with Rust)
+- Rust 1.80.0 or later
+- Cargo
+- RISC-V Target: `rustup target add riscv32i-unknown-none-elf`
 
 ### Installation
 
@@ -68,15 +69,25 @@
 git clone https://github.com/yourusername/ferrous.git
 cd ferrous
 
-# Build the project
-cargo build --workspace
+# Build the host tools (VM, CLI, Kernel library)
+cargo build --workspace --exclude hello-world --exclude shell
 
-# Run tests
-cargo test --workspace
-
-# Run an example (once Iteration 1 is complete)
-cargo run --example hello-world
+# Build a user program (Target: riscv32i-unknown-none-elf)
+cd examples/hello-world
+cargo build
+cd ../..
 ```
+
+### Running a Program
+
+Use the CLI to run the compiled user program:
+
+```bash
+# Run the hello-world example
+cargo run -p ferrous-cli -- run examples/hello-world/target/riscv32i-unknown-none-elf/debug/hello-world
+```
+
+### Your First Program
 
 ### Your First Program
 
@@ -118,7 +129,7 @@ Each assignment includes:
 
 ## 🛠️ Development Status
 
-**Current Status**: Iteration 5 Complete (Virtual Memory & Dynamic Allocation)
+**Current Status**: Reference Kernel Implementation (Polishing Phase)
 
 ### Implementation Roadmap
 
@@ -127,9 +138,9 @@ Each assignment includes:
 - [x] **Iteration 3**: Preemptive Scheduling (Completed)
 - [x] **Iteration 4**: Synchronization & Drivers (Completed)
 - [x] **Iteration 5**: Virtual Memory (Completed)
-- [ ] **Iteration 6**: File System (Planned)
+- [x] **Iteration 6**: File System & Pipes (Reference Implemented)
 - [ ] **Iteration 7**: Networking (Planned)
-- [ ] **Iteration 8-11**: Polish, Testing, Documentation (Planned)
+- [ ] **Iteration 8-11**: Polish, Testing, Documentation (In Progress)
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed iteration plans.
 

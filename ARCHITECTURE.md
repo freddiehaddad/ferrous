@@ -53,31 +53,24 @@
 ┌──────────────────────────────────────────────────────────┐
 │                    Student Programs                      │
 │               (Rust no_std → RISC-V ELF)                 │
+│                 Executes on Simulated CPU                │
 └──────────────────────────────────────────────────────────┘
-                          ↓ syscalls
-┌──────────────────────────────────────────────────────────┐
-│                    Ferrous Kernel                        │
-│                  (Student Implements)                    │
-│  ┌──────────┬──────────┬─────────┬──────────┬─────────┐  │
-│  │ Threads  │  Sync    │ Virtual │   File   │ Network │  │
-│  │Scheduler │Primitives│ Memory  │  System  │  Stack  │  │
-│  └──────────┴──────────┴─────────┴──────────┴─────────┘  │
-└──────────────────────────────────────────────────────────┘
-                          ↓ traps
+                          ↓ syscalls (ecall)
 ┌──────────────────────────────────────────────────────────┐
 │              RISC-V Simulator (ferrous-vm)               │
 │     • CPU: RV32IMA interpreter                           │
 │     • Memory: Physical memory + MMU                      │
 │     • Devices: Console, Disk, Timer, Network             │
-│     • Modes: User/Supervisor privilege levels            │
 └──────────────────────────────────────────────────────────┘
-                          ↓
+                          ↓ traps (Host Calls)
 ┌──────────────────────────────────────────────────────────┐
-│              Ferrous Runtime & Tools                     │
-│     • ELF loader                                         │
-│     • Test framework                                     │
-│     • Debugger                                           │
-│     • CLI                                                │
+│                    Ferrous Kernel                        │
+│             (Student Implements in Host Rust)            │
+│  ┌──────────┬──────────┬─────────┬──────────┬─────────┐  │
+│  │ Threads  │  Sync    │ Virtual │   File   │ Network │  │
+│  │Scheduler │Primitives│ Memory  │  System  │  Stack  │  │
+│  └──────────┴──────────┴─────────┴──────────┴─────────┘  │
+│          Executes natively on Host CPU                   │
 └──────────────────────────────────────────────────────────┘
 ```
 

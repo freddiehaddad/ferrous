@@ -263,7 +263,6 @@ dependencies = [
  "goblin",
  "log",
  "proptest",
- "thiserror",
 ]
 
 [[package]]
@@ -307,7 +306,6 @@ dependencies = [
  "bytemuck",
  "log",
  "proptest",
- "thiserror",
 ]
 
 [[package]]
