@@ -4,6 +4,9 @@ use thiserror::Error;
 pub enum KernelError {
     #[error("initialization error: {0}")]
     Init(String),
+
+    #[error("memory initialization error: {0}")]
+    InitializationError(String),
 }
 
 #[derive(Debug, Error)]

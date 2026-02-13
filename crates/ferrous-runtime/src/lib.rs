@@ -20,11 +20,22 @@ impl Runtime {
         // Add UART
         bus.add_device(UART_BASE, UART_SIZE, Box::new(UartDevice::new()));
 
-        let memory = Box::new(bus);
+        // Create Memory (Boxed)
+        let mut memory = Box::new(bus);
+
         // Kernel::new() returns KernelError, map it?
         let kernel = Kernel::new().map_err(|e| {
             VmError::Device(ferrous_vm::DeviceError::Io(format!(
                 "Kernel init failed: {}",
+                e
+            )))
+        })?;
+
+        // Initialize Kernel Page Tables
+        // We pass `&mut *memory` to `kernel.init_memory`
+        let satp = kernel.init_memory(memory.as_mut()).map_err(|e| {
+            VmError::Device(ferrous_vm::DeviceError::Io(format!(
+                "Kernel memory init failed: {}",
                 e
             )))
         })?;
@@ -34,7 +45,8 @@ impl Runtime {
             timer_interval: Some(100), // Trigger interrupt every 100 instructions
         };
 
-        let vm = VirtualMachine::new(config, memory, Box::new(kernel))?;
+        let mut vm = VirtualMachine::new(config, memory, Box::new(kernel))?;
+        vm.cpu.satp = satp;
 
         Ok(Self { vm })
     }

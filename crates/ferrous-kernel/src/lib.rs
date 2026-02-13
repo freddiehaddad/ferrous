@@ -1,4 +1,5 @@
 pub mod error;
+pub mod memory;
 pub mod sync;
 pub mod syscall;
 pub mod thread;
@@ -27,6 +28,10 @@ impl Kernel {
             mutexes: HashMap::new(),
             next_mutex_id: 1,
         })
+    }
+
+    pub fn init_memory(&self, memory: &mut dyn Memory) -> Result<u32, KernelError> {
+        memory::setup_kernel_address_space(memory).map_err(|e| KernelError::InitializationError(e))
     }
 
     pub fn handle_syscall(
