@@ -1,7 +1,7 @@
 use crate::error::KernelError;
 use ferrous_fs::{DirEntry, Inode, SuperBlock, BLOCK_SIZE, INODE_DIRECT_POINTERS, MAGIC};
 use ferrous_vm::Memory;
-use log::{debug, error, info};
+use log::{error, info};
 
 pub mod block;
 
@@ -18,10 +18,6 @@ impl FileSystem {
             .map_err(|e| KernelError::InitializationError(format!("FS Mount Error: {}", e)))?;
 
         // Deserialize Superblock
-        // We use unsafe cast or manual parsing because we don't have bincode in no_std kernel efficiently yet
-        // (unless we add bincode dependency to kernel too, which might be heavy or require alloc)
-        // Let's use unsafe cast for now as both are repr(C)
-
         let superblock = unsafe {
             let ptr = buffer.as_ptr() as *const SuperBlock;
             ptr.read_unaligned()
@@ -75,6 +71,11 @@ impl FileSystem {
     }
 
     pub fn find_inode(&self, memory: &mut dyn Memory, name: &str) -> Result<u32, KernelError> {
+        // Special case for root directory
+        if name == "/" {
+            return Ok(0);
+        }
+
         // Read root inode (ID 0)
         let root_inode = self.read_inode(memory, 0)?;
 
@@ -113,5 +114,64 @@ impl FileSystem {
         }
 
         Err(KernelError::InitializationError("File not found".into()))
+    }
+
+    pub fn read_data(
+        &self,
+        memory: &mut dyn Memory,
+        inode: &Inode,
+        offset: u32,
+        buffer: &mut [u8],
+    ) -> Result<usize, KernelError> {
+        if offset >= inode.size {
+            return Ok(0); // EOF
+        }
+
+        let mut bytes_read = 0;
+        let mut current_offset = offset;
+        let end_offset = (offset + buffer.len() as u32).min(inode.size);
+
+        // While we have bytes to read
+        while current_offset < end_offset {
+            let block_index = current_offset / BLOCK_SIZE as u32;
+            let offset_in_block = (current_offset % BLOCK_SIZE as u32) as usize;
+            let bytes_to_read =
+                (BLOCK_SIZE - offset_in_block).min((end_offset - current_offset) as usize);
+
+            // Resolve block ID
+            let block_id = if (block_index as usize) < INODE_DIRECT_POINTERS {
+                inode.direct_ptrs[block_index as usize]
+            } else {
+                // Indirect pointers not implemented yet
+                return Err(KernelError::InitializationError(
+                    "Indirect pointers not supported yet".into(),
+                ));
+            };
+
+            if block_id == 0 {
+                // Sparse block (zeros)
+                // Just zero the buffer part
+                buffer[bytes_read..(bytes_read + bytes_to_read)].fill(0);
+            } else {
+                // Read actual block
+                let mut block_buf = [0u8; BLOCK_SIZE];
+                if let Err(e) = block::read_sector(memory, block_id, &mut block_buf) {
+                    return Err(KernelError::InitializationError(format!(
+                        "Data Read Error: {}",
+                        e
+                    )));
+                }
+
+                // Copy to user buffer
+                buffer[bytes_read..(bytes_read + bytes_to_read)].copy_from_slice(
+                    &block_buf[offset_in_block..(offset_in_block + bytes_to_read)],
+                );
+            }
+
+            bytes_read += bytes_to_read;
+            current_offset += bytes_to_read as u32;
+        }
+
+        Ok(bytes_read)
     }
 }

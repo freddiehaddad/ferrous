@@ -66,13 +66,42 @@ impl Runtime {
     }
 
     pub fn load_program(&mut self, path: &Path) -> Result<(), Box<dyn Error>> {
-        let entry_point = loader::ProgramLoader::load_elf(&mut self.vm, path)?;
-        self.vm.cpu.pc = entry_point.val();
+        let elf_data = std::fs::read(path)?;
 
-        // Initialize Stack Pointer to top of memory
-        // Assuming base address 0x8000_0000 (should probably be in config)
-        let stack_top = 0x8000_0000 + self.vm.config.memory_size as u32;
-        self.vm.cpu.write_reg(ferrous_vm::Register::SP, stack_top);
+        // Workaround borrow checker to access Kernel and Memory simultaneously
+        let vm_ptr = &mut self.vm as *mut VirtualMachine;
+        let kernel = unsafe {
+            (*vm_ptr)
+                .trap_handler
+                .as_any()
+                .downcast_mut::<Kernel>()
+                .ok_or("Failed to downcast Kernel")?
+        };
+        let memory = unsafe { (*vm_ptr).memory.as_mut() };
+
+        // Bootstrap the initial process (e.g. Shell)
+        // We pass the filename as the first arg (argv[0])
+        let filename = path.file_name().unwrap().to_str().unwrap().to_string();
+        let args = vec![filename];
+
+        let (entry, satp, sp, a0, a1) = kernel.bootstrap_process(memory, &elf_data, &args)?;
+
+        self.vm.cpu.pc = entry.val();
+        self.vm.cpu.satp = satp;
+        self.vm.cpu.mode = ferrous_vm::PrivilegeMode::User;
+
+        // Initialize Stack Pointer (SP - x2)
+        self.vm
+            .cpu
+            .write_reg(ferrous_vm::Register::new(2).unwrap(), sp);
+        // Initialize Argument Count (A0 - x10)
+        self.vm
+            .cpu
+            .write_reg(ferrous_vm::Register::new(10).unwrap(), a0);
+        // Initialize Argument Vector (A1 - x11)
+        self.vm
+            .cpu
+            .write_reg(ferrous_vm::Register::new(11).unwrap(), a1);
 
         Ok(())
     }

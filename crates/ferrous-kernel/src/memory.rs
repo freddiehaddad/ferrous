@@ -120,13 +120,12 @@ pub fn setup_kernel_address_space(memory: &mut dyn Memory) -> Result<u32, String
     let block_addr = 0x2000_0000;
     map_page(memory, root_ppn, block_addr, block_addr, PTE_R | PTE_W)?;
 
-    // 4. Identity Map the Allocator Region (so we can continue accessing page tables if needed?)
-    // Actually, we should map the whole "Physical Memory" capability for the kernel.
-    // Let's map 0x8040_0000 to 0x8800_0000 (128MBish)
-    // For now, let's just map a large chunk for heap/page tables
-    // Increase to 8192 pages (32MB) to cover default 16MB RAM + headroom
-    for i in 0..8192 {
-        let addr = 0x8040_0000 + (i * PAGE_SIZE);
+    // 4. Stack Mapping for Initial Process
+    // Map top 64KB of RAM (0x80FF_0000 - 0x8100_0000)
+    // This assumes 16MB RAM
+    let stack_start = 0x80FF_0000;
+    for i in 0..16 {
+        let addr = stack_start + (i * PAGE_SIZE);
         map_page(memory, root_ppn, addr, addr, PTE_R | PTE_W)?;
     }
 
@@ -136,5 +135,37 @@ pub fn setup_kernel_address_space(memory: &mut dyn Memory) -> Result<u32, String
     );
 
     // Return SATP value (Mode=SV32, PPN=root_ppn)
+    Ok(SATP_MODE_SV32 | root_ppn)
+}
+
+pub fn create_user_address_space(memory: &mut dyn Memory) -> Result<u32, String> {
+    // Allocate Root Page Table
+    let root_pa = alloc_frame();
+    // Zero root table
+    for i in 0..1024 {
+        memory
+            .write_word(PhysAddr::new(root_pa + i * 4), 0)
+            .map_err(|e| format!("Failed to zero root PTE: {:?}", e))?;
+    }
+    let root_ppn = root_pa >> 12;
+
+    // Map Kernel/IO regions (Must match setup_kernel_address_space)
+
+    // 1. REMOVED: Kernel Code/Data (0x8000_0000)
+    // We don't want to map this for user processes as they might load their own code at 0x8000_0000.
+    // Since the kernel is external (host-based), we don't need to protect kernel code in VM memory.
+
+    // 2. UART
+    let uart_addr = 0x1000_0000;
+    map_page(memory, root_ppn, uart_addr, uart_addr, PTE_R | PTE_W)?;
+
+    // 3. Block Device
+    let block_addr = 0x2000_0000;
+    map_page(memory, root_ppn, block_addr, block_addr, PTE_R | PTE_W)?;
+
+    // 4. REMOVED: Physical RAM identity mapping
+    // User heap (sbrk) will allocate and map frames dynamically.
+    // Pre-mapping conflicts with sbrk's assumption of fresh frames.
+
     Ok(SATP_MODE_SV32 | root_ppn)
 }

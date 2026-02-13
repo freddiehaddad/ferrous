@@ -2,7 +2,7 @@ use ferrous_vm::{Memory, PhysAddr};
 
 pub const BLOCK_DEVICE_BASE: u32 = 0x2000_0000;
 // Register Offsets
-const REG_STATUS: u32 = 0x00;
+const _REG_STATUS: u32 = 0x00;
 const REG_COMMAND: u32 = 0x04;
 const REG_SECTOR: u32 = 0x08;
 const REG_BUFFER_START: u32 = 0x100;

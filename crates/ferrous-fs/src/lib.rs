@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 pub const BLOCK_SIZE: usize = 512;
 pub const MAGIC: u32 = 0xF3AA_C0DE;
-pub const INODE_DIRECT_POINTERS: usize = 12;
+pub const INODE_DIRECT_POINTERS: usize = 32;
 
 #[derive(Serialize, Deserialize, Debug, Clone, Copy)]
 #[repr(C)]

@@ -36,6 +36,7 @@ impl SimpleBlockDevice {
             .read(true)
             .write(true)
             .create(true)
+            .truncate(false)
             .open(path)?;
 
         Ok(Self {
@@ -95,7 +96,7 @@ impl Device for SimpleBlockDevice {
                     1 => {
                         // Read from Disk to Buffer
                         let pos = (self.sector as u64) * (SECTOR_SIZE as u64);
-                        if let Err(_) = self.file.seek(SeekFrom::Start(pos)) {
+                        if self.file.seek(SeekFrom::Start(pos)).is_err() {
                             // Only error if seek fails hard, else assume 0s or similar?
                             // For simplicity, do nothing or log
                         }
@@ -105,8 +106,8 @@ impl Device for SimpleBlockDevice {
                     2 => {
                         // Write from Buffer to Disk
                         let pos = (self.sector as u64) * (SECTOR_SIZE as u64);
-                        if let Err(_) = self.file.seek(SeekFrom::Start(pos)) {}
-                        let _ = self.file.write_all(&mut self.buffer);
+                        let _ = self.file.seek(SeekFrom::Start(pos));
+                        let _ = self.file.write_all(&self.buffer);
                         Ok(())
                     }
                     _ => Ok(()),

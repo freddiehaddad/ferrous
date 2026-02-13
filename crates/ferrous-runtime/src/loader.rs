@@ -1,4 +1,4 @@
-use ferrous_vm::{Memory, PhysAddr, VirtAddr, VirtualMachine, VmError};
+use ferrous_vm::{PhysAddr, VirtAddr, VirtualMachine};
 use goblin::elf;
 use std::error::Error;
 use std::fs;

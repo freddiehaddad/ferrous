@@ -19,6 +19,12 @@ pub struct RoundRobinScheduler {
     ready_queue: VecDeque<ThreadHandle>,
 }
 
+impl Default for RoundRobinScheduler {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl RoundRobinScheduler {
     pub fn new() -> Self {
         Self {

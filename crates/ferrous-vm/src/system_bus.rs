@@ -39,7 +39,7 @@ impl Memory for SystemBus {
         if addr.0 >= 0x8000_0000 {
             self.ram.write_byte(addr, val)
         } else {
-            if addr.0 % 4 != 0 {
+            if !addr.0.is_multiple_of(4) {
                 return Err(MemoryError::Misaligned {
                     addr: addr.0,
                     alignment: 4,

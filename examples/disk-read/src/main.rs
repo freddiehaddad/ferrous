@@ -1,9 +1,11 @@
 #![no_std]
 #![no_main]
 
+#[cfg(not(test))]
 use core::panic::PanicInfo;
 use ferrous_user::{exit, print, println, syscall};
 
+#[cfg(not(test))]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("PANIC: {}", info);
@@ -19,9 +21,7 @@ pub extern "C" fn _start() -> ! {
     let mut buffer = [0u8; 512];
 
     // Fill buffer with junk to verify overwrite
-    for i in 0..512 {
-        buffer[i] = 0xFF;
-    }
+    buffer.fill(0);
 
     println!("Reading Sector 0...");
     if let Err(e) = syscall::block_read(0, &mut buffer) {
@@ -30,10 +30,10 @@ pub extern "C" fn _start() -> ! {
     }
 
     println!("Read success. First 32 bytes:");
-    for i in 0..32 {
-        print!("{:02x} ", buffer[i]);
+    for (i, byte) in buffer.iter().enumerate().take(32) {
+        print!("{:02x} ", byte);
         if (i + 1) % 16 == 0 {
-            println!();
+            println!("");
         }
     }
     println!();

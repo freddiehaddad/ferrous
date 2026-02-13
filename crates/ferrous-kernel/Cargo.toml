@@ -12,6 +12,8 @@ ferrous-vm = { path = "../ferrous-vm" }
 ferrous-fs = { path = "../ferrous-fs" }
 thiserror = { workspace = true }
 log = { workspace = true }
+goblin.workspace = true 
+
 
 [dev-dependencies]
 env_logger = { workspace = true }

@@ -32,6 +32,12 @@ struct DeviceEntry {
     device: Box<dyn Device>,
 }
 
+impl Default for DeviceManager {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl DeviceManager {
     pub fn new() -> Self {
         Self {
@@ -47,7 +53,7 @@ impl DeviceManager {
         });
     }
 
-    pub fn read_word(&self, addr: u32) -> Result<u32, DeviceError> {
+    pub fn read_word(&self, _addr: u32) -> Result<u32, DeviceError> {
         // Need interior mutability if Device::read is &mut self.
         // But SystemBus::read_word is &self.
         // Option 1: Wrap Device in RefCell/Mutex.

@@ -1,11 +1,15 @@
 use crate::error::SyscallError;
-use crate::types::ThreadHandle;
 use ferrous_vm::{Cpu, Register, VirtAddr};
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Syscall {
     // I/O
     ConsoleWrite {
+        fd: u32,
+        buf_ptr: VirtAddr,
+        len: usize,
+    },
+    ConsoleRead {
         fd: u32,
         buf_ptr: VirtAddr,
         len: usize,
@@ -40,6 +44,29 @@ pub enum Syscall {
         sector: u32,
         buf_ptr: VirtAddr,
     },
+
+    // File System
+    FileOpen {
+        path_ptr: VirtAddr,
+        path_len: usize,
+    },
+    FileRead {
+        fd: u32,
+        buf_ptr: VirtAddr,
+        len: usize,
+    },
+    FileClose {
+        fd: u32,
+    },
+    Exec {
+        path_ptr: VirtAddr,
+        path_len: usize,
+        args_ptr: VirtAddr,
+        args_len: usize,
+    },
+    WaitPid {
+        pid: u32,
+    },
 }
 
 #[derive(Debug)]
@@ -55,10 +82,33 @@ impl Syscall {
         let a0 = cpu.read_reg(Register::new(10).unwrap());
         let a1 = cpu.read_reg(Register::new(11).unwrap());
         let a2 = cpu.read_reg(Register::new(12).unwrap());
+        let a3 = cpu.read_reg(Register::new(13).unwrap());
         let a7 = cpu.read_reg(Register::new(17).unwrap()); // syscall number
 
         match a7 {
             64 => Ok(Syscall::ConsoleWrite {
+                fd: a0,
+                buf_ptr: VirtAddr::new(a1),
+                len: a2 as usize,
+            }),
+            65 => Ok(Syscall::ConsoleRead {
+                fd: a0,
+                buf_ptr: VirtAddr::new(a1),
+                len: a2 as usize,
+            }),
+            56 => Ok(Syscall::FileOpen {
+                path_ptr: VirtAddr::new(a0),
+                path_len: a1 as usize,
+            }),
+            57 => Ok(Syscall::FileClose { fd: a0 }),
+            59 => Ok(Syscall::Exec {
+                path_ptr: VirtAddr::new(a0),
+                path_len: a1 as usize,
+                args_ptr: VirtAddr::new(a2),
+                args_len: a3 as usize,
+            }),
+            260 => Ok(Syscall::WaitPid { pid: a0 }),
+            63 => Ok(Syscall::FileRead {
                 fd: a0,
                 buf_ptr: VirtAddr::new(a1),
                 len: a2 as usize,

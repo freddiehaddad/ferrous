@@ -1,6 +1,7 @@
 #![no_std]
 #![no_main]
 
+#[cfg(not(test))]
 use core::panic::PanicInfo;
 use ferrous_user::{exit, println, syscall};
 
@@ -46,6 +47,7 @@ pub extern "C" fn _start() -> ! {
     exit(0);
 }
 
+#[cfg(not(test))]
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
     println!("{}", info);
