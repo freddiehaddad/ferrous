@@ -64,8 +64,9 @@ fn test_pipe() {
             // So we can write in one thread and read in another.
 
             // To properly test, we need concurrency.
-            let stack_top = alloc_stack();
+            alloc_stack();
             // We need to pass arguments to the thread.
+
             // Ferrous `thread_create` only takes entry and stack.
             // We'll use a global or static for coordination in this simple test,
             // OR just write then read in the same thread to verify basic buffering.

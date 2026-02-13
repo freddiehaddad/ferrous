@@ -13,7 +13,6 @@ pub mod types;
 use crate::error::KernelError;
 use crate::sync::Mutex;
 use crate::thread::tcb::FileDescriptor;
-use alloc::boxed::Box;
 use alloc::collections::BTreeMap;
 use alloc::collections::VecDeque;
 use alloc::format;
@@ -265,17 +264,6 @@ impl Kernel {
 
         debug!("Syscall: {:?}", syscall);
 
-        // Get current thread context for SATP (needed for copy_from_user)
-        let satp = if let Some(current) = self.thread_manager.current_thread {
-            if let Some(tcb) = self.thread_manager.threads.get(&current) {
-                tcb.context.satp
-            } else {
-                0
-            }
-        } else {
-            0
-        };
-
         match syscall {
             syscall::Syscall::Pipe { pipe_array_ptr } => {
                 let current_handle = self
@@ -334,7 +322,7 @@ impl Kernel {
                 let tcb = self.thread_manager.threads.get(&current_handle).unwrap();
                 let satp = tcb.context.satp;
                 let descriptor = if (fd as usize) < tcb.file_descriptors.len() {
-                    tcb.file_descriptors[fd as usize].clone()
+                    tcb.file_descriptors[fd as usize]
                 } else {
                     None
                 };
@@ -766,7 +754,7 @@ impl Kernel {
                 let (descriptor, satp) = {
                     let tcb = self.thread_manager.threads.get(&current_handle).unwrap();
                     let desc = if (fd as usize) < tcb.file_descriptors.len() {
-                        tcb.file_descriptors[fd as usize].clone()
+                        tcb.file_descriptors[fd as usize]
                     } else {
                         None
                     };
@@ -821,13 +809,13 @@ impl Kernel {
                         self.thread_manager.block_current_thread();
                         self.thread_manager.yield_thread(cpu);
                         // Do not advance PC, retry syscall when woken
-                        return Ok(VirtAddr::new(cpu.pc));
+                        Ok(VirtAddr::new(cpu.pc))
                     } else {
                         syscall::Syscall::encode_result(
                             Ok(syscall::SyscallReturn::Value(result_val)),
                             cpu,
                         );
-                        return Ok(VirtAddr::new(cpu.pc + 4));
+                        Ok(VirtAddr::new(cpu.pc + 4))
                     }
                 } else if let Some(FileDescriptor::File {
                     inode_id,
