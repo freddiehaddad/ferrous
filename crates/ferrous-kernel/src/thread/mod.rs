@@ -33,7 +33,7 @@ impl ThreadManager {
             let tcb = ThreadControlBlock {
                 handle,
                 state: ThreadState::Running,
-                context: tcb::SavedContext::new(VirtAddr::new(cpu.pc), cpu.regs[2]),
+                context: tcb::SavedContext::new(VirtAddr::new(cpu.pc), cpu.regs[2], cpu.satp),
                 stack_pointer: cpu.regs[2],
                 kernel_stack: 0,
             };
@@ -51,10 +51,24 @@ impl ThreadManager {
         let handle = ThreadHandle::new(self.next_handle).unwrap();
         self.next_handle += 1;
 
+        // Inherit SATP from current thread or kernel default?
+        // Since we are creating a thread in the SAME process (conceptually for now),
+        // we share the address space (SATP).
+        // If current_thread is set, use its SATP.
+        let satp = if let Some(current) = self.current_thread {
+            if let Some(parent) = self.threads.get(&current) {
+                parent.context.satp
+            } else {
+                0 // Should not happen
+            }
+        } else {
+            0 // Kernel/Boot SATP (should be set by now if ensure_current_thread called)
+        };
+
         let tcb = ThreadControlBlock {
             handle,
             state: ThreadState::Ready,
-            context: tcb::SavedContext::new(entry_point, stack_top),
+            context: tcb::SavedContext::new(entry_point, stack_top, satp),
             stack_pointer: stack_top,
             kernel_stack: 0, // Assume no kernel stack switch for now (running in user mode usually)
         };

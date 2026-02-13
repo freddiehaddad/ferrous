@@ -21,25 +21,29 @@ pub struct ThreadControlBlock {
 pub struct SavedContext {
     pub pc: u32,
     pub regs: [u32; 32],
+    pub satp: u32,
 }
 
 impl SavedContext {
-    pub fn new(entry_point: VirtAddr, stack_top: u32) -> Self {
+    pub fn new(entry_point: VirtAddr, stack_top: u32, satp: u32) -> Self {
         let mut regs = [0; 32];
         regs[2] = stack_top; // SP
         Self {
             pc: entry_point.val(),
             regs,
+            satp,
         }
     }
 
     pub fn save_from(&mut self, cpu: &Cpu) {
         self.pc = cpu.pc;
         self.regs = cpu.regs;
+        self.satp = cpu.satp;
     }
 
     pub fn restore_to(&self, cpu: &mut Cpu) {
         cpu.pc = self.pc;
         cpu.regs = self.regs;
+        cpu.satp = self.satp;
     }
 }

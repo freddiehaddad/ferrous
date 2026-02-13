@@ -18,7 +18,7 @@ enum Commands {
         file: PathBuf,
 
         /// Memory size in bytes
-        #[arg(long, default_value_t = 1024 * 1024)]
+        #[arg(long, default_value_t = 16 * 1024 * 1024)]
         memory: usize,
     },
 }
