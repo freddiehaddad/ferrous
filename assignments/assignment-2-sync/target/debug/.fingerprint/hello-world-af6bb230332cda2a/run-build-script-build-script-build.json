@@ -1,0 +1,1 @@
+{"rustc":6817557220965521185,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[13530477798497021630,"build_script_build",false,9252367488318345019]],"local":[{"RerunIfChanged":{"output":"debug\\build\\hello-world-af6bb230332cda2a\\output","paths":["memory.x"]}}],"rustflags":[],"config":0,"compile_kind":0}

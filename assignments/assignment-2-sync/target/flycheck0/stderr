@@ -1,0 +1,4080 @@
+    Updating crates.io index
+     Locking 102 packages to latest compatible versions
+      Adding bincode v2.0.1 (available: v3.0.0)
+      Adding goblin v0.8.2 (available: v0.10.5)
+   1.704719700s  INFO prepare_target{force=false package_id=disk-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\disk-read) target="disk-read"}: cargo::core::compiler::fingerprint: fingerprint error for disk-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\disk-read)/Check { test: true }/TargetInner { name: "disk-read", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\disk-read\\src\\main.rs", Edition2021) }
+   1.704757000s  INFO prepare_target{force=false package_id=disk-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\disk-read) target="disk-read"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\disk-read-e0aab60e977e6594\test-bin-disk-read`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.712596200s  INFO prepare_target{force=false package_id=ferrous-user v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-user) target="ferrous_user"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-user v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-user)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_user", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-user\\src\\lib.rs", Edition2021) }
+   1.712624200s  INFO prepare_target{force=false package_id=ferrous-user v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-user) target="ferrous_user"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-user-1502e5d8d49e2051\lib-ferrous_user`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.712912200s  INFO prepare_target{force=false package_id=disk-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\disk-read) target="disk-read"}: cargo::core::compiler::fingerprint: fingerprint error for disk-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\disk-read)/Check { test: false }/TargetInner { name: "disk-read", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\disk-read\\src\\main.rs", Edition2021) }
+   1.712923200s  INFO prepare_target{force=false package_id=disk-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\disk-read) target="disk-read"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\disk-read-5ad4c1ed855bae8a\bin-disk-read`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.713147400s  INFO prepare_target{force=false package_id=ferrous-user v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-user) target="ferrous_user"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-user v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-user)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_user", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-user\\src\\lib.rs", Edition2021) }
+   1.713158700s  INFO prepare_target{force=false package_id=ferrous-user v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-user) target="ferrous_user"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-user-350f3bc7f134e230\lib-ferrous_user`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.713736200s  INFO prepare_target{force=false package_id=echo v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\echo) target="echo"}: cargo::core::compiler::fingerprint: fingerprint error for echo v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\echo)/Check { test: true }/TargetInner { name: "echo", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\echo\\src\\main.rs", Edition2021) }
+   1.713751600s  INFO prepare_target{force=false package_id=echo v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\echo) target="echo"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\echo-f95ab1c126e8649e\test-bin-echo`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.718827000s  INFO prepare_target{force=false package_id=echo v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\echo) target="echo"}: cargo::core::compiler::fingerprint: fingerprint error for echo v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\echo)/Check { test: false }/TargetInner { name: "echo", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\echo\\src\\main.rs", Edition2021) }
+   1.718845100s  INFO prepare_target{force=false package_id=echo v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\echo) target="echo"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\echo-e676126554bdb53c\bin-echo`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.722389900s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-cli)/Check { test: true }/TargetInner { name: "ferrous-cli", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-cli\\src\\main.rs", Edition2021) }
+   1.722410700s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-cli-08dfef5c4152c9c7\test-bin-ferrous-cli`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.826505300s  INFO prepare_target{force=false package_id=clap v4.5.58 target="clap"}: cargo::core::compiler::fingerprint: fingerprint error for clap v4.5.58/Check { test: false }/TargetInner { benched: false, ..: lib_target("clap", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\clap-4.5.58\\src\\lib.rs", Edition2021) }
+   1.826535600s  INFO prepare_target{force=false package_id=clap v4.5.58 target="clap"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\clap-bdb432e09a9ce405\lib-clap`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.827063700s  INFO prepare_target{force=false package_id=clap_builder v4.5.58 target="clap_builder"}: cargo::core::compiler::fingerprint: fingerprint error for clap_builder v4.5.58/Check { test: false }/TargetInner { benched: false, ..: lib_target("clap_builder", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\clap_builder-4.5.58\\src\\lib.rs", Edition2021) }
+   1.827081600s  INFO prepare_target{force=false package_id=clap_builder v4.5.58 target="clap_builder"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\clap_builder-22a80ddec0e88432\lib-clap_builder`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.827394900s  INFO prepare_target{force=false package_id=anstream v0.6.21 target="anstream"}: cargo::core::compiler::fingerprint: fingerprint error for anstream v0.6.21/Check { test: false }/TargetInner { ..: lib_target("anstream", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstream-0.6.21\\src\\lib.rs", Edition2021) }
+   1.827407200s  INFO prepare_target{force=false package_id=anstream v0.6.21 target="anstream"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anstream-310e71091ca95062\lib-anstream`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.827702800s  INFO prepare_target{force=false package_id=anstyle v1.0.13 target="anstyle"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle v1.0.13/Check { test: false }/TargetInner { ..: lib_target("anstyle", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-1.0.13\\src\\lib.rs", Edition2021) }
+   1.827715400s  INFO prepare_target{force=false package_id=anstyle v1.0.13 target="anstyle"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anstyle-db901d8be072e8de\lib-anstyle`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.827976400s  INFO prepare_target{force=false package_id=anstyle-parse v0.2.7 target="anstyle_parse"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle-parse v0.2.7/Check { test: false }/TargetInner { ..: lib_target("anstyle_parse", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-parse-0.2.7\\src\\lib.rs", Edition2021) }
+   1.827987900s  INFO prepare_target{force=false package_id=anstyle-parse v0.2.7 target="anstyle_parse"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anstyle-parse-713631fa3b4c72b0\lib-anstyle_parse`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.828240800s  INFO prepare_target{force=false package_id=utf8parse v0.2.2 target="utf8parse"}: cargo::core::compiler::fingerprint: fingerprint error for utf8parse v0.2.2/Check { test: false }/TargetInner { ..: lib_target("utf8parse", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\utf8parse-0.2.2\\src\\lib.rs", Edition2018) }
+   1.828250300s  INFO prepare_target{force=false package_id=utf8parse v0.2.2 target="utf8parse"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\utf8parse-3059cfde13c04425\lib-utf8parse`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.828514600s  INFO prepare_target{force=false package_id=anstyle-query v1.1.5 target="anstyle_query"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle-query v1.1.5/Check { test: false }/TargetInner { ..: lib_target("anstyle_query", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-query-1.1.5\\src\\lib.rs", Edition2021) }
+   1.828525500s  INFO prepare_target{force=false package_id=anstyle-query v1.1.5 target="anstyle_query"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anstyle-query-dd25347355623638\lib-anstyle_query`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.828772900s  INFO prepare_target{force=false package_id=windows-sys v0.61.2 target="windows_sys"}: cargo::core::compiler::fingerprint: fingerprint error for windows-sys v0.61.2/Check { test: false }/TargetInner { tested: false, doctest: false, ..: lib_target("windows_sys", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows-sys-0.61.2\\src\\lib.rs", Edition2021) }
+   1.828783600s  INFO prepare_target{force=false package_id=windows-sys v0.61.2 target="windows_sys"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\windows-sys-010f07e4d94ffc20\lib-windows_sys`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.829116600s  INFO prepare_target{force=false package_id=windows-link v0.2.1 target="windows_link"}: cargo::core::compiler::fingerprint: fingerprint error for windows-link v0.2.1/Check { test: false }/TargetInner { ..: lib_target("windows_link", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows-link-0.2.1\\src\\lib.rs", Edition2021) }
+   1.829126700s  INFO prepare_target{force=false package_id=windows-link v0.2.1 target="windows_link"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\windows-link-882f771385b9250c\lib-windows_link`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_libgit2_prerelease
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: <unknown>
+  22: git_midx_writer_dump
+  23: git_filter_source_repo
+  24: git_midx_writer_dump
+  25: BaseThreadInitThunk
+  26: RtlUserThreadStart
+   1.829339500s  INFO prepare_target{force=false package_id=anstyle-wincon v3.0.11 target="anstyle_wincon"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle-wincon v3.0.11/Check { test: false }/TargetInner { ..: lib_target("anstyle_wincon", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-wincon-3.0.11\\src\\lib.rs", Edition2021) }
+   1.829348300s  INFO prepare_target{force=false package_id=anstyle-wincon v3.0.11 target="anstyle_wincon"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anstyle-wincon-464341771363f2db\lib-anstyle_wincon`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.829636300s  INFO prepare_target{force=false package_id=once_cell_polyfill v1.70.2 target="once_cell_polyfill"}: cargo::core::compiler::fingerprint: fingerprint error for once_cell_polyfill v1.70.2/Check { test: false }/TargetInner { ..: lib_target("once_cell_polyfill", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\once_cell_polyfill-1.70.2\\src\\lib.rs", Edition2021) }
+   1.829646900s  INFO prepare_target{force=false package_id=once_cell_polyfill v1.70.2 target="once_cell_polyfill"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\once_cell_polyfill-22e7a135724673a8\lib-once_cell_polyfill`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.829891600s  INFO prepare_target{force=false package_id=colorchoice v1.0.4 target="colorchoice"}: cargo::core::compiler::fingerprint: fingerprint error for colorchoice v1.0.4/Check { test: false }/TargetInner { ..: lib_target("colorchoice", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\colorchoice-1.0.4\\src\\lib.rs", Edition2021) }
+   1.829901300s  INFO prepare_target{force=false package_id=colorchoice v1.0.4 target="colorchoice"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\colorchoice-cd73a8a78a9d21df\lib-colorchoice`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.830155700s  INFO prepare_target{force=false package_id=is_terminal_polyfill v1.70.2 target="is_terminal_polyfill"}: cargo::core::compiler::fingerprint: fingerprint error for is_terminal_polyfill v1.70.2/Check { test: false }/TargetInner { ..: lib_target("is_terminal_polyfill", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\is_terminal_polyfill-1.70.2\\src\\lib.rs", Edition2021) }
+   1.830165500s  INFO prepare_target{force=false package_id=is_terminal_polyfill v1.70.2 target="is_terminal_polyfill"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\is_terminal_polyfill-2d8b1b9b3d28ef56\lib-is_terminal_polyfill`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.830381800s  INFO prepare_target{force=false package_id=clap_lex v1.0.0 target="clap_lex"}: cargo::core::compiler::fingerprint: fingerprint error for clap_lex v1.0.0/Check { test: false }/TargetInner { benched: false, ..: lib_target("clap_lex", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\clap_lex-1.0.0\\src\\lib.rs", Edition2021) }
+   1.830391000s  INFO prepare_target{force=false package_id=clap_lex v1.0.0 target="clap_lex"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\clap_lex-d0767bb6dd9cccac\lib-clap_lex`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.830631000s  INFO prepare_target{force=false package_id=strsim v0.11.1 target="strsim"}: cargo::core::compiler::fingerprint: fingerprint error for strsim v0.11.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("strsim", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\strsim-0.11.1\\src\\lib.rs", Edition2015) }
+   1.830640700s  INFO prepare_target{force=false package_id=strsim v0.11.1 target="strsim"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\strsim-692b75045f8e83e5\lib-strsim`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.833543200s  INFO prepare_target{force=false package_id=env_logger v0.11.9 target="env_logger"}: cargo::core::compiler::fingerprint: fingerprint error for env_logger v0.11.9/Check { test: false }/TargetInner { ..: lib_target("env_logger", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\env_logger-0.11.9\\src\\lib.rs", Edition2021) }
+   1.833568300s  INFO prepare_target{force=false package_id=env_logger v0.11.9 target="env_logger"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\env_logger-2c347e10422230f9\lib-env_logger`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.833949800s  INFO prepare_target{force=false package_id=env_filter v1.0.0 target="env_filter"}: cargo::core::compiler::fingerprint: fingerprint error for env_filter v1.0.0/Check { test: false }/TargetInner { ..: lib_target("env_filter", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\env_filter-1.0.0\\src\\lib.rs", Edition2021) }
+   1.833963500s  INFO prepare_target{force=false package_id=env_filter v1.0.0 target="env_filter"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\env_filter-eab4d6703577b4b6\lib-env_filter`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.834230300s  INFO prepare_target{force=false package_id=log v0.4.29 target="log"}: cargo::core::compiler::fingerprint: fingerprint error for log v0.4.29/Check { test: false }/TargetInner { ..: lib_target("log", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\log-0.4.29\\src\\lib.rs", Edition2021) }
+   1.834241500s  INFO prepare_target{force=false package_id=log v0.4.29 target="log"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\log-b05195beb4217b4b\lib-log`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.834560300s  INFO prepare_target{force=false package_id=regex v1.12.3 target="regex"}: cargo::core::compiler::fingerprint: fingerprint error for regex v1.12.3/Check { test: false }/TargetInner { ..: lib_target("regex", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\regex-1.12.3\\src\\lib.rs", Edition2021) }
+   1.834571100s  INFO prepare_target{force=false package_id=regex v1.12.3 target="regex"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\regex-1407835152794daf\lib-regex`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.834815500s  INFO prepare_target{force=false package_id=aho-corasick v1.1.4 target="aho_corasick"}: cargo::core::compiler::fingerprint: fingerprint error for aho-corasick v1.1.4/Check { test: false }/TargetInner { ..: lib_target("aho_corasick", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\aho-corasick-1.1.4\\src\\lib.rs", Edition2021) }
+   1.834824800s  INFO prepare_target{force=false package_id=aho-corasick v1.1.4 target="aho_corasick"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\aho-corasick-cc3dd3fc50021c00\lib-aho_corasick`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.835041600s  INFO prepare_target{force=false package_id=memchr v2.8.0 target="memchr"}: cargo::core::compiler::fingerprint: fingerprint error for memchr v2.8.0/Check { test: false }/TargetInner { benched: false, ..: lib_target("memchr", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\memchr-2.8.0\\src\\lib.rs", Edition2021) }
+   1.835058900s  INFO prepare_target{force=false package_id=memchr v2.8.0 target="memchr"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\memchr-a4db2fac3e6fdd00\lib-memchr`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.835265500s  INFO prepare_target{force=false package_id=regex-automata v0.4.14 target="regex_automata"}: cargo::core::compiler::fingerprint: fingerprint error for regex-automata v0.4.14/Check { test: false }/TargetInner { benched: false, ..: lib_target("regex_automata", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\regex-automata-0.4.14\\src\\lib.rs", Edition2021) }
+   1.835275900s  INFO prepare_target{force=false package_id=regex-automata v0.4.14 target="regex_automata"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\regex-automata-c53c8fcadc4b6064\lib-regex_automata`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.848988000s  INFO prepare_target{force=false package_id=regex-syntax v0.8.9 target="regex_syntax"}: cargo::core::compiler::fingerprint: fingerprint error for regex-syntax v0.8.9/Check { test: false }/TargetInner { ..: lib_target("regex_syntax", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\regex-syntax-0.8.9\\src\\lib.rs", Edition2021) }
+   1.849015100s  INFO prepare_target{force=false package_id=regex-syntax v0.8.9 target="regex_syntax"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\regex-syntax-1e6f72bf7129c1dd\lib-regex_syntax`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.849414700s  INFO prepare_target{force=false package_id=jiff v0.2.20 target="jiff"}: cargo::core::compiler::fingerprint: fingerprint error for jiff v0.2.20/Check { test: false }/TargetInner { ..: lib_target("jiff", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\jiff-0.2.20\\src\\lib.rs", Edition2021) }
+   1.849426700s  INFO prepare_target{force=false package_id=jiff v0.2.20 target="jiff"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\jiff-13a14dbea874d80f\lib-jiff`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.849757200s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-runtime)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_runtime", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-runtime\\src\\lib.rs", Edition2021) }
+   1.849772500s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-runtime-9f744d439096bbc7\lib-ferrous_runtime`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.850088800s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-kernel)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_kernel", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-kernel\\src\\lib.rs", Edition2021) }
+   1.850105400s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-kernel-f0f8c1144a079bd3\lib-ferrous_kernel`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.850367400s  INFO prepare_target{force=false package_id=ferrous-fs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-fs) target="ferrous_fs"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-fs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-fs)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_fs", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-fs\\src\\lib.rs", Edition2021) }
+   1.850379000s  INFO prepare_target{force=false package_id=ferrous-fs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-fs) target="ferrous_fs"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-fs-d50d0fe6fc18b0d4\lib-ferrous_fs`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.856654600s  INFO prepare_target{force=false package_id=bincode v2.0.1 target="bincode"}: cargo::core::compiler::fingerprint: fingerprint error for bincode v2.0.1/Check { test: false }/TargetInner { ..: lib_target("bincode", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\bincode-2.0.1\\src\\lib.rs", Edition2021) }
+   1.856683900s  INFO prepare_target{force=false package_id=bincode v2.0.1 target="bincode"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\bincode-bf54dbd1d99b158b\lib-bincode`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.857090000s  INFO prepare_target{force=false package_id=serde v1.0.228 target="serde"}: cargo::core::compiler::fingerprint: fingerprint error for serde v1.0.228/Check { test: false }/TargetInner { ..: lib_target("serde", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\serde-1.0.228\\src\\lib.rs", Edition2021) }
+   1.857103800s  INFO prepare_target{force=false package_id=serde v1.0.228 target="serde"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\serde-00e30bc90602ade8\lib-serde`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.858538800s  INFO prepare_target{force=false package_id=serde_core v1.0.228 target="serde_core"}: cargo::core::compiler::fingerprint: fingerprint error for serde_core v1.0.228/Check { test: false }/TargetInner { ..: lib_target("serde_core", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\serde_core-1.0.228\\src\\lib.rs", Edition2021) }
+   1.858556300s  INFO prepare_target{force=false package_id=serde_core v1.0.228 target="serde_core"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\serde_core-70c81480a36319a2\lib-serde_core`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_libgit2_prerelease
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: <unknown>
+  22: git_midx_writer_dump
+  23: git_filter_source_repo
+  24: git_midx_writer_dump
+  25: BaseThreadInitThunk
+  26: RtlUserThreadStart
+   1.860008800s  INFO prepare_target{force=false package_id=unty v0.0.4 target="unty"}: cargo::core::compiler::fingerprint: fingerprint error for unty v0.0.4/Check { test: false }/TargetInner { ..: lib_target("unty", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\unty-0.0.4\\src\\lib.rs", Edition2021) }
+   1.860026400s  INFO prepare_target{force=false package_id=unty v0.0.4 target="unty"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\unty-cb398ec61e07ace6\lib-unty`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.860280400s  INFO prepare_target{force=false package_id=ferrous-vm v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-vm) target="ferrous_vm"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-vm v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-vm)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_vm", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-vm\\src\\lib.rs", Edition2021) }
+   1.860293200s  INFO prepare_target{force=false package_id=ferrous-vm v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-vm) target="ferrous_vm"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-vm-cdd7eb191dbdfc2d\lib-ferrous_vm`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.860534700s  INFO prepare_target{force=false package_id=bytemuck v1.25.0 target="bytemuck"}: cargo::core::compiler::fingerprint: fingerprint error for bytemuck v1.25.0/Check { test: false }/TargetInner { ..: lib_target("bytemuck", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\bytemuck-1.25.0\\src\\lib.rs", Edition2018) }
+   1.860544800s  INFO prepare_target{force=false package_id=bytemuck v1.25.0 target="bytemuck"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\bytemuck-da810cbf8fcac59f\lib-bytemuck`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.860978000s  INFO prepare_target{force=false package_id=goblin v0.8.2 target="goblin"}: cargo::core::compiler::fingerprint: fingerprint error for goblin v0.8.2/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("goblin", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\goblin-0.8.2\\src\\lib.rs", Edition2021) }
+   1.860990800s  INFO prepare_target{force=false package_id=goblin v0.8.2 target="goblin"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\goblin-24f235adec43af98\lib-goblin`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.861245700s  INFO prepare_target{force=false package_id=plain v0.2.3 target="plain"}: cargo::core::compiler::fingerprint: fingerprint error for plain v0.2.3/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("plain", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\plain-0.2.3\\src\\lib.rs", Edition2015) }
+   1.861256100s  INFO prepare_target{force=false package_id=plain v0.2.3 target="plain"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\plain-2ee5c6ace6de7ea2\lib-plain`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.861478900s  INFO prepare_target{force=false package_id=scroll v0.12.0 target="scroll"}: cargo::core::compiler::fingerprint: fingerprint error for scroll v0.12.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("scroll", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\scroll-0.12.0\\src\\lib.rs", Edition2021) }
+   1.861490200s  INFO prepare_target{force=false package_id=scroll v0.12.0 target="scroll"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\scroll-6db1d926665e3fcd\lib-scroll`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.862035500s  INFO prepare_target{force=false package_id=thiserror v2.0.18 target="thiserror"}: cargo::core::compiler::fingerprint: fingerprint error for thiserror v2.0.18/Check { test: false }/TargetInner { ..: lib_target("thiserror", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\thiserror-2.0.18\\src\\lib.rs", Edition2021) }
+   1.862050100s  INFO prepare_target{force=false package_id=thiserror v2.0.18 target="thiserror"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\thiserror-d71f5c71849e93e5\lib-thiserror`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.869899800s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-cli)/Check { test: false }/TargetInner { name: "ferrous-cli", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-cli\\src\\main.rs", Edition2021) }
+   1.869923100s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-cli-546b51985b269837\bin-ferrous-cli`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.870316400s  INFO prepare_target{force=false package_id=clap v4.5.58 target="clap"}: cargo::core::compiler::fingerprint: fingerprint error for clap v4.5.58/Check { test: false }/TargetInner { benched: false, ..: lib_target("clap", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\clap-4.5.58\\src\\lib.rs", Edition2021) }
+   1.870330400s  INFO prepare_target{force=false package_id=clap v4.5.58 target="clap"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\clap-f97153ffbbc9b14d\lib-clap`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.870701600s  INFO prepare_target{force=false package_id=clap_builder v4.5.58 target="clap_builder"}: cargo::core::compiler::fingerprint: fingerprint error for clap_builder v4.5.58/Check { test: false }/TargetInner { benched: false, ..: lib_target("clap_builder", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\clap_builder-4.5.58\\src\\lib.rs", Edition2021) }
+   1.870714600s  INFO prepare_target{force=false package_id=clap_builder v4.5.58 target="clap_builder"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\clap_builder-30637e91b1f305a1\lib-clap_builder`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.871001400s  INFO prepare_target{force=false package_id=anstream v0.6.21 target="anstream"}: cargo::core::compiler::fingerprint: fingerprint error for anstream v0.6.21/Check { test: false }/TargetInner { ..: lib_target("anstream", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstream-0.6.21\\src\\lib.rs", Edition2021) }
+   1.871012200s  INFO prepare_target{force=false package_id=anstream v0.6.21 target="anstream"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anstream-3040de702cacc764\lib-anstream`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.871332600s  INFO prepare_target{force=false package_id=anstyle v1.0.13 target="anstyle"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle v1.0.13/Check { test: false }/TargetInner { ..: lib_target("anstyle", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-1.0.13\\src\\lib.rs", Edition2021) }
+   1.871345000s  INFO prepare_target{force=false package_id=anstyle v1.0.13 target="anstyle"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anstyle-4843b6e0bb158925\lib-anstyle`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.871581000s  INFO prepare_target{force=false package_id=anstyle-parse v0.2.7 target="anstyle_parse"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle-parse v0.2.7/Check { test: false }/TargetInner { ..: lib_target("anstyle_parse", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-parse-0.2.7\\src\\lib.rs", Edition2021) }
+   1.871591200s  INFO prepare_target{force=false package_id=anstyle-parse v0.2.7 target="anstyle_parse"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anstyle-parse-d4c7b0dcc8001faa\lib-anstyle_parse`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.871830300s  INFO prepare_target{force=false package_id=utf8parse v0.2.2 target="utf8parse"}: cargo::core::compiler::fingerprint: fingerprint error for utf8parse v0.2.2/Check { test: false }/TargetInner { ..: lib_target("utf8parse", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\utf8parse-0.2.2\\src\\lib.rs", Edition2018) }
+   1.871841300s  INFO prepare_target{force=false package_id=utf8parse v0.2.2 target="utf8parse"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\utf8parse-57605a60b64efe68\lib-utf8parse`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.872058000s  INFO prepare_target{force=false package_id=anstyle-query v1.1.5 target="anstyle_query"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle-query v1.1.5/Check { test: false }/TargetInner { ..: lib_target("anstyle_query", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-query-1.1.5\\src\\lib.rs", Edition2021) }
+   1.872068100s  INFO prepare_target{force=false package_id=anstyle-query v1.1.5 target="anstyle_query"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anstyle-query-61e8edf822be85b3\lib-anstyle_query`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.872335800s  INFO prepare_target{force=false package_id=windows-sys v0.61.2 target="windows_sys"}: cargo::core::compiler::fingerprint: fingerprint error for windows-sys v0.61.2/Check { test: false }/TargetInner { tested: false, doctest: false, ..: lib_target("windows_sys", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows-sys-0.61.2\\src\\lib.rs", Edition2021) }
+   1.872347500s  INFO prepare_target{force=false package_id=windows-sys v0.61.2 target="windows_sys"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\windows-sys-2f1d81c52b8cd2c6\lib-windows_sys`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.872656800s  INFO prepare_target{force=false package_id=windows-link v0.2.1 target="windows_link"}: cargo::core::compiler::fingerprint: fingerprint error for windows-link v0.2.1/Check { test: false }/TargetInner { ..: lib_target("windows_link", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows-link-0.2.1\\src\\lib.rs", Edition2021) }
+   1.872669300s  INFO prepare_target{force=false package_id=windows-link v0.2.1 target="windows_link"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\windows-link-f26f9feaf9f81642\lib-windows_link`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_libgit2_prerelease
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: <unknown>
+  22: git_midx_writer_dump
+  23: git_filter_source_repo
+  24: git_midx_writer_dump
+  25: BaseThreadInitThunk
+  26: RtlUserThreadStart
+   1.872910900s  INFO prepare_target{force=false package_id=anstyle-wincon v3.0.11 target="anstyle_wincon"}: cargo::core::compiler::fingerprint: fingerprint error for anstyle-wincon v3.0.11/Check { test: false }/TargetInner { ..: lib_target("anstyle_wincon", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anstyle-wincon-3.0.11\\src\\lib.rs", Edition2021) }
+   1.872921300s  INFO prepare_target{force=false package_id=anstyle-wincon v3.0.11 target="anstyle_wincon"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anstyle-wincon-cfe5a0a2ade43c9c\lib-anstyle_wincon`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.873265900s  INFO prepare_target{force=false package_id=once_cell_polyfill v1.70.2 target="once_cell_polyfill"}: cargo::core::compiler::fingerprint: fingerprint error for once_cell_polyfill v1.70.2/Check { test: false }/TargetInner { ..: lib_target("once_cell_polyfill", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\once_cell_polyfill-1.70.2\\src\\lib.rs", Edition2021) }
+   1.873276500s  INFO prepare_target{force=false package_id=once_cell_polyfill v1.70.2 target="once_cell_polyfill"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\once_cell_polyfill-5ca9c200f70e2fab\lib-once_cell_polyfill`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.873502300s  INFO prepare_target{force=false package_id=colorchoice v1.0.4 target="colorchoice"}: cargo::core::compiler::fingerprint: fingerprint error for colorchoice v1.0.4/Check { test: false }/TargetInner { ..: lib_target("colorchoice", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\colorchoice-1.0.4\\src\\lib.rs", Edition2021) }
+   1.873511700s  INFO prepare_target{force=false package_id=colorchoice v1.0.4 target="colorchoice"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\colorchoice-8789ebb45a824fd1\lib-colorchoice`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.873775000s  INFO prepare_target{force=false package_id=is_terminal_polyfill v1.70.2 target="is_terminal_polyfill"}: cargo::core::compiler::fingerprint: fingerprint error for is_terminal_polyfill v1.70.2/Check { test: false }/TargetInner { ..: lib_target("is_terminal_polyfill", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\is_terminal_polyfill-1.70.2\\src\\lib.rs", Edition2021) }
+   1.873786400s  INFO prepare_target{force=false package_id=is_terminal_polyfill v1.70.2 target="is_terminal_polyfill"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\is_terminal_polyfill-5082614a6cd30000\lib-is_terminal_polyfill`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.874411300s  INFO prepare_target{force=false package_id=clap_lex v1.0.0 target="clap_lex"}: cargo::core::compiler::fingerprint: fingerprint error for clap_lex v1.0.0/Check { test: false }/TargetInner { benched: false, ..: lib_target("clap_lex", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\clap_lex-1.0.0\\src\\lib.rs", Edition2021) }
+   1.874424200s  INFO prepare_target{force=false package_id=clap_lex v1.0.0 target="clap_lex"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\clap_lex-bb84b43077d309d1\lib-clap_lex`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.874774100s  INFO prepare_target{force=false package_id=strsim v0.11.1 target="strsim"}: cargo::core::compiler::fingerprint: fingerprint error for strsim v0.11.1/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("strsim", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\strsim-0.11.1\\src\\lib.rs", Edition2015) }
+   1.874786700s  INFO prepare_target{force=false package_id=strsim v0.11.1 target="strsim"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\strsim-487896f472ecbdda\lib-strsim`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.875018700s  INFO prepare_target{force=false package_id=env_logger v0.11.9 target="env_logger"}: cargo::core::compiler::fingerprint: fingerprint error for env_logger v0.11.9/Check { test: false }/TargetInner { ..: lib_target("env_logger", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\env_logger-0.11.9\\src\\lib.rs", Edition2021) }
+   1.875028500s  INFO prepare_target{force=false package_id=env_logger v0.11.9 target="env_logger"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\env_logger-8d8f5eff3d14e2e7\lib-env_logger`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.875315200s  INFO prepare_target{force=false package_id=env_filter v1.0.0 target="env_filter"}: cargo::core::compiler::fingerprint: fingerprint error for env_filter v1.0.0/Check { test: false }/TargetInner { ..: lib_target("env_filter", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\env_filter-1.0.0\\src\\lib.rs", Edition2021) }
+   1.875325500s  INFO prepare_target{force=false package_id=env_filter v1.0.0 target="env_filter"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\env_filter-28e32ac7f3c1217b\lib-env_filter`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.875562000s  INFO prepare_target{force=false package_id=log v0.4.29 target="log"}: cargo::core::compiler::fingerprint: fingerprint error for log v0.4.29/Check { test: false }/TargetInner { ..: lib_target("log", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\log-0.4.29\\src\\lib.rs", Edition2021) }
+   1.875571400s  INFO prepare_target{force=false package_id=log v0.4.29 target="log"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\log-4306b0599ccc628c\lib-log`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.875876700s  INFO prepare_target{force=false package_id=regex v1.12.3 target="regex"}: cargo::core::compiler::fingerprint: fingerprint error for regex v1.12.3/Check { test: false }/TargetInner { ..: lib_target("regex", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\regex-1.12.3\\src\\lib.rs", Edition2021) }
+   1.875886400s  INFO prepare_target{force=false package_id=regex v1.12.3 target="regex"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\regex-b1194be469bd898a\lib-regex`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.876174600s  INFO prepare_target{force=false package_id=aho-corasick v1.1.4 target="aho_corasick"}: cargo::core::compiler::fingerprint: fingerprint error for aho-corasick v1.1.4/Check { test: false }/TargetInner { ..: lib_target("aho_corasick", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\aho-corasick-1.1.4\\src\\lib.rs", Edition2021) }
+   1.876185000s  INFO prepare_target{force=false package_id=aho-corasick v1.1.4 target="aho_corasick"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\aho-corasick-a4c82e753e974ff2\lib-aho_corasick`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.876403400s  INFO prepare_target{force=false package_id=memchr v2.8.0 target="memchr"}: cargo::core::compiler::fingerprint: fingerprint error for memchr v2.8.0/Check { test: false }/TargetInner { benched: false, ..: lib_target("memchr", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\memchr-2.8.0\\src\\lib.rs", Edition2021) }
+   1.876412300s  INFO prepare_target{force=false package_id=memchr v2.8.0 target="memchr"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\memchr-a8cad74be44c0354\lib-memchr`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.876614900s  INFO prepare_target{force=false package_id=regex-automata v0.4.14 target="regex_automata"}: cargo::core::compiler::fingerprint: fingerprint error for regex-automata v0.4.14/Check { test: false }/TargetInner { benched: false, ..: lib_target("regex_automata", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\regex-automata-0.4.14\\src\\lib.rs", Edition2021) }
+   1.876623900s  INFO prepare_target{force=false package_id=regex-automata v0.4.14 target="regex_automata"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\regex-automata-dc4cd99c8d9607b4\lib-regex_automata`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.876950700s  INFO prepare_target{force=false package_id=regex-syntax v0.8.9 target="regex_syntax"}: cargo::core::compiler::fingerprint: fingerprint error for regex-syntax v0.8.9/Check { test: false }/TargetInner { ..: lib_target("regex_syntax", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\regex-syntax-0.8.9\\src\\lib.rs", Edition2021) }
+   1.876962700s  INFO prepare_target{force=false package_id=regex-syntax v0.8.9 target="regex_syntax"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\regex-syntax-9edb0bbe685f6cc5\lib-regex_syntax`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.877201000s  INFO prepare_target{force=false package_id=jiff v0.2.20 target="jiff"}: cargo::core::compiler::fingerprint: fingerprint error for jiff v0.2.20/Check { test: false }/TargetInner { ..: lib_target("jiff", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\jiff-0.2.20\\src\\lib.rs", Edition2021) }
+   1.877211800s  INFO prepare_target{force=false package_id=jiff v0.2.20 target="jiff"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\jiff-82eb99f0f3f8ee30\lib-jiff`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.877511100s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-runtime)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_runtime", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-runtime\\src\\lib.rs", Edition2021) }
+   1.877522100s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-runtime-66724c0ed8918882\lib-ferrous_runtime`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.877780000s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-kernel)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_kernel", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-kernel\\src\\lib.rs", Edition2021) }
+   1.877793000s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-kernel-7ad8d6e400480518\lib-ferrous_kernel`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.878062600s  INFO prepare_target{force=false package_id=ferrous-fs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-fs) target="ferrous_fs"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-fs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-fs)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_fs", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-fs\\src\\lib.rs", Edition2021) }
+   1.878074800s  INFO prepare_target{force=false package_id=ferrous-fs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-fs) target="ferrous_fs"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-fs-598ba06f58ec478c\lib-ferrous_fs`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.878307700s  INFO prepare_target{force=false package_id=bincode v2.0.1 target="bincode"}: cargo::core::compiler::fingerprint: fingerprint error for bincode v2.0.1/Check { test: false }/TargetInner { ..: lib_target("bincode", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\bincode-2.0.1\\src\\lib.rs", Edition2021) }
+   1.878318600s  INFO prepare_target{force=false package_id=bincode v2.0.1 target="bincode"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\bincode-03674720c7310dbc\lib-bincode`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.878675800s  INFO prepare_target{force=false package_id=serde v1.0.228 target="serde"}: cargo::core::compiler::fingerprint: fingerprint error for serde v1.0.228/Check { test: false }/TargetInner { ..: lib_target("serde", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\serde-1.0.228\\src\\lib.rs", Edition2021) }
+   1.878686500s  INFO prepare_target{force=false package_id=serde v1.0.228 target="serde"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\serde-8a120f6c7106f6fb\lib-serde`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.879069900s  INFO prepare_target{force=false package_id=serde_core v1.0.228 target="serde_core"}: cargo::core::compiler::fingerprint: fingerprint error for serde_core v1.0.228/Check { test: false }/TargetInner { ..: lib_target("serde_core", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\serde_core-1.0.228\\src\\lib.rs", Edition2021) }
+   1.879081400s  INFO prepare_target{force=false package_id=serde_core v1.0.228 target="serde_core"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\serde_core-19fbfd7e04ecc8cc\lib-serde_core`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_filter_source_repo
+  17: git_libgit2_prerelease
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: <unknown>
+  22: git_midx_writer_dump
+  23: git_filter_source_repo
+  24: git_midx_writer_dump
+  25: BaseThreadInitThunk
+  26: RtlUserThreadStart
+   1.879319900s  INFO prepare_target{force=false package_id=unty v0.0.4 target="unty"}: cargo::core::compiler::fingerprint: fingerprint error for unty v0.0.4/Check { test: false }/TargetInner { ..: lib_target("unty", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\unty-0.0.4\\src\\lib.rs", Edition2021) }
+   1.879329800s  INFO prepare_target{force=false package_id=unty v0.0.4 target="unty"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\unty-8b3fea17b9e82182\lib-unty`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.879590600s  INFO prepare_target{force=false package_id=ferrous-vm v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-vm) target="ferrous_vm"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-vm v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-vm)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_vm", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-vm\\src\\lib.rs", Edition2021) }
+   1.879601900s  INFO prepare_target{force=false package_id=ferrous-vm v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-vm) target="ferrous_vm"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-vm-79fed0d3abd3debc\lib-ferrous_vm`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.879869400s  INFO prepare_target{force=false package_id=bytemuck v1.25.0 target="bytemuck"}: cargo::core::compiler::fingerprint: fingerprint error for bytemuck v1.25.0/Check { test: false }/TargetInner { ..: lib_target("bytemuck", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\bytemuck-1.25.0\\src\\lib.rs", Edition2018) }
+   1.879879800s  INFO prepare_target{force=false package_id=bytemuck v1.25.0 target="bytemuck"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\bytemuck-5fd0690d3f30822c\lib-bytemuck`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.880233700s  INFO prepare_target{force=false package_id=goblin v0.8.2 target="goblin"}: cargo::core::compiler::fingerprint: fingerprint error for goblin v0.8.2/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("goblin", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\goblin-0.8.2\\src\\lib.rs", Edition2021) }
+   1.880244200s  INFO prepare_target{force=false package_id=goblin v0.8.2 target="goblin"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\goblin-0067931c1ce81dbc\lib-goblin`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.880689300s  INFO prepare_target{force=false package_id=plain v0.2.3 target="plain"}: cargo::core::compiler::fingerprint: fingerprint error for plain v0.2.3/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("plain", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\plain-0.2.3\\src\\lib.rs", Edition2015) }
+   1.880700200s  INFO prepare_target{force=false package_id=plain v0.2.3 target="plain"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\plain-8d36d6428de61d92\lib-plain`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.880911400s  INFO prepare_target{force=false package_id=scroll v0.12.0 target="scroll"}: cargo::core::compiler::fingerprint: fingerprint error for scroll v0.12.0/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("scroll", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\scroll-0.12.0\\src\\lib.rs", Edition2021) }
+   1.880921300s  INFO prepare_target{force=false package_id=scroll v0.12.0 target="scroll"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\scroll-0313ed80a498ca77\lib-scroll`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.881198100s  INFO prepare_target{force=false package_id=thiserror v2.0.18 target="thiserror"}: cargo::core::compiler::fingerprint: fingerprint error for thiserror v2.0.18/Check { test: false }/TargetInner { ..: lib_target("thiserror", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\thiserror-2.0.18\\src\\lib.rs", Edition2021) }
+   1.881209500s  INFO prepare_target{force=false package_id=thiserror v2.0.18 target="thiserror"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\thiserror-ce40b9aec1a8edc0\lib-thiserror`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.881511800s  INFO prepare_target{force=false package_id=ferrous-fs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-fs) target="ferrous_fs"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-fs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-fs)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("ferrous_fs", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-fs\\src\\lib.rs", Edition2021) }
+   1.881522800s  INFO prepare_target{force=false package_id=ferrous-fs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-fs) target="ferrous_fs"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-fs-5e026d61125ba796\test-lib-ferrous_fs`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.883459200s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-kernel)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("ferrous_kernel", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-kernel\\src\\lib.rs", Edition2021) }
+   1.883478000s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-kernel-50b52f89c4b15bb0\test-lib-ferrous_kernel`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.883878200s  INFO prepare_target{force=false package_id=proptest v1.10.0 target="proptest"}: cargo::core::compiler::fingerprint: fingerprint error for proptest v1.10.0/Check { test: false }/TargetInner { ..: lib_target("proptest", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\proptest-1.10.0\\src\\lib.rs", Edition2021) }
+   1.883891500s  INFO prepare_target{force=false package_id=proptest v1.10.0 target="proptest"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\proptest-aea72b96364b96b7\lib-proptest`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.884360400s  INFO prepare_target{force=false package_id=bit-set v0.8.0 target="bit_set"}: cargo::core::compiler::fingerprint: fingerprint error for bit-set v0.8.0/Check { test: false }/TargetInner { ..: lib_target("bit_set", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\bit-set-0.8.0\\src\\lib.rs", Edition2015) }
+   1.884375300s  INFO prepare_target{force=false package_id=bit-set v0.8.0 target="bit_set"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\bit-set-d328866c55fdd554\lib-bit_set`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.884628600s  INFO prepare_target{force=false package_id=bit-vec v0.8.0 target="bit_vec"}: cargo::core::compiler::fingerprint: fingerprint error for bit-vec v0.8.0/Check { test: false }/TargetInner { ..: lib_target("bit_vec", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\bit-vec-0.8.0\\src\\lib.rs", Edition2015) }
+   1.884639600s  INFO prepare_target{force=false package_id=bit-vec v0.8.0 target="bit_vec"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\bit-vec-e69efc6731b80a8a\lib-bit_vec`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.884892300s  INFO prepare_target{force=false package_id=bitflags v2.10.0 target="bitflags"}: cargo::core::compiler::fingerprint: fingerprint error for bitflags v2.10.0/Check { test: false }/TargetInner { ..: lib_target("bitflags", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\bitflags-2.10.0\\src\\lib.rs", Edition2021) }
+   1.884903900s  INFO prepare_target{force=false package_id=bitflags v2.10.0 target="bitflags"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\bitflags-12f34c4182fb7030\lib-bitflags`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.885144700s  INFO prepare_target{force=false package_id=num-traits v0.2.19 target="num_traits"}: cargo::core::compiler::fingerprint: fingerprint error for num-traits v0.2.19/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("num_traits", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\num-traits-0.2.19\\src\\lib.rs", Edition2021) }
+   1.885154600s  INFO prepare_target{force=false package_id=num-traits v0.2.19 target="num_traits"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\num-traits-c8db4fdb91f5e26a\lib-num_traits`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.886831200s  INFO prepare_target{force=false package_id=rand v0.9.2 target="rand"}: cargo::core::compiler::fingerprint: fingerprint error for rand v0.9.2/Check { test: false }/TargetInner { ..: lib_target("rand", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\rand-0.9.2\\src\\lib.rs", Edition2021) }
+   1.886848000s  INFO prepare_target{force=false package_id=rand v0.9.2 target="rand"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\rand-54510d8030651374\lib-rand`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.887130600s  INFO prepare_target{force=false package_id=rand_core v0.9.5 target="rand_core"}: cargo::core::compiler::fingerprint: fingerprint error for rand_core v0.9.5/Check { test: false }/TargetInner { ..: lib_target("rand_core", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\rand_core-0.9.5\\src\\lib.rs", Edition2021) }
+   1.887142000s  INFO prepare_target{force=false package_id=rand_core v0.9.5 target="rand_core"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\rand_core-d53f0a5a54bb82ed\lib-rand_core`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.887368300s  INFO prepare_target{force=false package_id=getrandom v0.3.4 target="getrandom"}: cargo::core::compiler::fingerprint: fingerprint error for getrandom v0.3.4/Check { test: false }/TargetInner { ..: lib_target("getrandom", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\getrandom-0.3.4\\src\\lib.rs", Edition2021) }
+   1.887377400s  INFO prepare_target{force=false package_id=getrandom v0.3.4 target="getrandom"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\getrandom-9ee23c2f615032ab\lib-getrandom`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.887612800s  INFO prepare_target{force=false package_id=cfg-if v1.0.4 target="cfg_if"}: cargo::core::compiler::fingerprint: fingerprint error for cfg-if v1.0.4/Check { test: false }/TargetInner { ..: lib_target("cfg_if", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\cfg-if-1.0.4\\src\\lib.rs", Edition2018) }
+   1.887627100s  INFO prepare_target{force=false package_id=cfg-if v1.0.4 target="cfg_if"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\cfg-if-f35af99d81ed8f2e\lib-cfg_if`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_filter_source_repo
+  16: git_libgit2_prerelease
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: <unknown>
+  21: git_midx_writer_dump
+  22: git_filter_source_repo
+  23: git_midx_writer_dump
+  24: BaseThreadInitThunk
+  25: RtlUserThreadStart
+   1.889112600s  INFO prepare_target{force=false package_id=rand_chacha v0.9.0 target="rand_chacha"}: cargo::core::compiler::fingerprint: fingerprint error for rand_chacha v0.9.0/Check { test: false }/TargetInner { ..: lib_target("rand_chacha", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\rand_chacha-0.9.0\\src\\lib.rs", Edition2021) }
+   1.889131300s  INFO prepare_target{force=false package_id=rand_chacha v0.9.0 target="rand_chacha"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\rand_chacha-4a3e01c58d78a038\lib-rand_chacha`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.889420700s  INFO prepare_target{force=false package_id=ppv-lite86 v0.2.21 target="ppv_lite86"}: cargo::core::compiler::fingerprint: fingerprint error for ppv-lite86 v0.2.21/Check { test: false }/TargetInner { ..: lib_target("ppv_lite86", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\ppv-lite86-0.2.21\\src\\lib.rs", Edition2021) }
+   1.889433800s  INFO prepare_target{force=false package_id=ppv-lite86 v0.2.21 target="ppv_lite86"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ppv-lite86-bdd045748f36bc20\lib-ppv_lite86`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.889666200s  INFO prepare_target{force=false package_id=zerocopy v0.8.39 target="zerocopy"}: cargo::core::compiler::fingerprint: fingerprint error for zerocopy v0.8.39/Check { test: false }/TargetInner { ..: lib_target("zerocopy", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\zerocopy-0.8.39\\src\\lib.rs", Edition2021) }
+   1.889677100s  INFO prepare_target{force=false package_id=zerocopy v0.8.39 target="zerocopy"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\zerocopy-ca6099e67b33a961\lib-zerocopy`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.890753200s  INFO prepare_target{force=false package_id=rand_xorshift v0.4.0 target="rand_xorshift"}: cargo::core::compiler::fingerprint: fingerprint error for rand_xorshift v0.4.0/Check { test: false }/TargetInner { ..: lib_target("rand_xorshift", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\rand_xorshift-0.4.0\\src\\lib.rs", Edition2021) }
+   1.890768500s  INFO prepare_target{force=false package_id=rand_xorshift v0.4.0 target="rand_xorshift"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\rand_xorshift-33a30b0edb0d21f4\lib-rand_xorshift`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.891010500s  INFO prepare_target{force=false package_id=rusty-fork v0.3.1 target="rusty_fork"}: cargo::core::compiler::fingerprint: fingerprint error for rusty-fork v0.3.1/Check { test: false }/TargetInner { ..: lib_target("rusty_fork", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\rusty-fork-0.3.1\\src\\lib.rs", Edition2018) }
+   1.891021900s  INFO prepare_target{force=false package_id=rusty-fork v0.3.1 target="rusty_fork"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\rusty-fork-3fe69c5b6f54ded0\lib-rusty_fork`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.891265400s  INFO prepare_target{force=false package_id=fnv v1.0.7 target="fnv"}: cargo::core::compiler::fingerprint: fingerprint error for fnv v1.0.7/Check { test: false }/TargetInner { ..: lib_target("fnv", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\fnv-1.0.7\\lib.rs", Edition2015) }
+   1.891275600s  INFO prepare_target{force=false package_id=fnv v1.0.7 target="fnv"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\fnv-4e98c7db348d8fc7\lib-fnv`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.891519600s  INFO prepare_target{force=false package_id=quick-error v1.2.3 target="quick_error"}: cargo::core::compiler::fingerprint: fingerprint error for quick-error v1.2.3/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("quick_error", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\quick-error-1.2.3\\src\\lib.rs", Edition2015) }
+   1.891529800s  INFO prepare_target{force=false package_id=quick-error v1.2.3 target="quick_error"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\quick-error-b059a08f66c58b40\lib-quick_error`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.891722300s  INFO prepare_target{force=false package_id=tempfile v3.25.0 target="tempfile"}: cargo::core::compiler::fingerprint: fingerprint error for tempfile v3.25.0/Check { test: false }/TargetInner { ..: lib_target("tempfile", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\tempfile-3.25.0\\src\\lib.rs", Edition2021) }
+   1.891731400s  INFO prepare_target{force=false package_id=tempfile v3.25.0 target="tempfile"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\tempfile-958a9a22d7ccea0c\lib-tempfile`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.892021100s  INFO prepare_target{force=false package_id=fastrand v2.3.0 target="fastrand"}: cargo::core::compiler::fingerprint: fingerprint error for fastrand v2.3.0/Check { test: false }/TargetInner { ..: lib_target("fastrand", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\fastrand-2.3.0\\src\\lib.rs", Edition2018) }
+   1.892032200s  INFO prepare_target{force=false package_id=fastrand v2.3.0 target="fastrand"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\fastrand-efd2b72aa549a07c\lib-fastrand`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.892705500s  INFO prepare_target{force=false package_id=getrandom v0.4.1 target="getrandom"}: cargo::core::compiler::fingerprint: fingerprint error for getrandom v0.4.1/Check { test: false }/TargetInner { ..: lib_target("getrandom", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\getrandom-0.4.1\\src\\lib.rs", Edition2024) }
+   1.892717400s  INFO prepare_target{force=false package_id=getrandom v0.4.1 target="getrandom"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\getrandom-930c7f307ef66408\lib-getrandom`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.893916000s  INFO prepare_target{force=false package_id=once_cell v1.21.3 target="once_cell"}: cargo::core::compiler::fingerprint: fingerprint error for once_cell v1.21.3/Check { test: false }/TargetInner { ..: lib_target("once_cell", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\once_cell-1.21.3\\src\\lib.rs", Edition2021) }
+   1.893931900s  INFO prepare_target{force=false package_id=once_cell v1.21.3 target="once_cell"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\once_cell-dcde4d42ac7e7b83\lib-once_cell`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_filter_source_repo
+  15: git_libgit2_prerelease
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: <unknown>
+  20: git_midx_writer_dump
+  21: git_filter_source_repo
+  22: git_midx_writer_dump
+  23: BaseThreadInitThunk
+  24: RtlUserThreadStart
+   1.894183300s  INFO prepare_target{force=false package_id=wait-timeout v0.2.1 target="wait_timeout"}: cargo::core::compiler::fingerprint: fingerprint error for wait-timeout v0.2.1/Check { test: false }/TargetInner { ..: lib_target("wait_timeout", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\wait-timeout-0.2.1\\src\\lib.rs", Edition2015) }
+   1.894194100s  INFO prepare_target{force=false package_id=wait-timeout v0.2.1 target="wait_timeout"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\wait-timeout-35a8d916e8caf2d5\lib-wait_timeout`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_filter_source_repo
+  14: git_libgit2_prerelease
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: <unknown>
+  19: git_midx_writer_dump
+  20: git_filter_source_repo
+  21: git_midx_writer_dump
+  22: BaseThreadInitThunk
+  23: RtlUserThreadStart
+   1.894445200s  INFO prepare_target{force=false package_id=unarray v0.1.4 target="unarray"}: cargo::core::compiler::fingerprint: fingerprint error for unarray v0.1.4/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("unarray", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\unarray-0.1.4\\src\\lib.rs", Edition2018) }
+   1.894456200s  INFO prepare_target{force=false package_id=unarray v0.1.4 target="unarray"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\unarray-cace63ee773c43fb\lib-unarray`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_filter_source_repo
+  13: git_libgit2_prerelease
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: <unknown>
+  18: git_midx_writer_dump
+  19: git_filter_source_repo
+  20: git_midx_writer_dump
+  21: BaseThreadInitThunk
+  22: RtlUserThreadStart
+   1.894701600s  INFO prepare_target{force=false package_id=ferrous-mkfs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-mkfs) target="mkfs"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-mkfs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-mkfs)/Check { test: true }/TargetInner { name: "mkfs", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-mkfs\\src\\main.rs", Edition2021) }
+   1.894712100s  INFO prepare_target{force=false package_id=ferrous-mkfs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-mkfs) target="mkfs"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-mkfs-389423e425e19b85\test-bin-mkfs`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.895024100s  INFO prepare_target{force=false package_id=ferrous-mkfs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-mkfs) target="mkfs"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-mkfs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-mkfs)/Check { test: false }/TargetInner { name: "mkfs", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-mkfs\\src\\main.rs", Edition2021) }
+   1.895035600s  INFO prepare_target{force=false package_id=ferrous-mkfs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-mkfs) target="mkfs"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-mkfs-423ae456a61fb90b\bin-mkfs`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.895370500s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-runtime)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("ferrous_runtime", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-runtime\\src\\lib.rs", Edition2021) }
+   1.895382300s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-runtime-dc164f817b8f4a82\test-lib-ferrous_runtime`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.895721100s  INFO prepare_target{force=false package_id=ferrous-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-test) target="ferrous_test"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-test)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("ferrous_test", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-test\\src\\lib.rs", Edition2021) }
+   1.895735000s  INFO prepare_target{force=false package_id=ferrous-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-test) target="ferrous_test"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-test-7a738ba199678660\test-lib-ferrous_test`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.895993600s  INFO prepare_target{force=false package_id=ferrous-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-test) target="ferrous_test"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-test)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_test", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-test\\src\\lib.rs", Edition2021) }
+   1.896005300s  INFO prepare_target{force=false package_id=ferrous-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-test) target="ferrous_test"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-test-806886f9e92c6bb4\lib-ferrous_test`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.896231800s  INFO prepare_target{force=false package_id=ferrous-user v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-user) target="ferrous_user"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-user v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-user)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("ferrous_user", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-user\\src\\lib.rs", Edition2021) }
+   1.896242500s  INFO prepare_target{force=false package_id=ferrous-user v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-user) target="ferrous_user"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-user-bbbd09060a60af2c\test-lib-ferrous_user`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.896476400s  INFO prepare_target{force=false package_id=ferrous-vm v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-vm) target="ferrous_vm"}: cargo::core::compiler::fingerprint: fingerprint error for ferrous-vm v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-vm)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("ferrous_vm", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\ferrous-vm\\src\\lib.rs", Edition2021) }
+   1.896486100s  INFO prepare_target{force=false package_id=ferrous-vm v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-vm) target="ferrous_vm"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\ferrous-vm-aef0e73fa3f3755e\test-lib-ferrous_vm`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.897087300s  INFO prepare_target{force=false package_id=file-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\file-read) target="file-read"}: cargo::core::compiler::fingerprint: fingerprint error for file-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\file-read)/Check { test: true }/TargetInner { name: "file-read", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\file-read\\src\\main.rs", Edition2021) }
+   1.897101200s  INFO prepare_target{force=false package_id=file-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\file-read) target="file-read"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\file-read-89658f9339349164\test-bin-file-read`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.903704600s  INFO prepare_target{force=false package_id=file-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\file-read) target="file-read"}: cargo::core::compiler::fingerprint: fingerprint error for file-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\file-read)/Check { test: false }/TargetInner { name: "file-read", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\file-read\\src\\main.rs", Edition2021) }
+   1.903729400s  INFO prepare_target{force=false package_id=file-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\file-read) target="file-read"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\file-read-e00c988b79c49d25\bin-file-read`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.904052600s  INFO prepare_target{force=false package_id=hello v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello) target="hello"}: cargo::core::compiler::fingerprint: fingerprint error for hello v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello)/Check { test: true }/TargetInner { name: "hello", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\hello\\src\\main.rs", Edition2021) }
+   1.904065500s  INFO prepare_target{force=false package_id=hello v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello) target="hello"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\hello-29e964f61157fc7c\test-bin-hello`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.904298200s  INFO prepare_target{force=false package_id=hello v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello) target="hello"}: cargo::core::compiler::fingerprint: fingerprint error for hello v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello)/Check { test: false }/TargetInner { name: "hello", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\hello\\src\\main.rs", Edition2021) }
+   1.904309200s  INFO prepare_target{force=false package_id=hello v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello) target="hello"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\hello-2525738c32f6b070\bin-hello`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.904848500s  INFO prepare_target{force=false package_id=hello-world v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello-world) target="hello-world"}: cargo::core::compiler::fingerprint: fingerprint error for hello-world v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello-world)/Check { test: true }/TargetInner { name: "hello-world", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\hello-world\\src\\main.rs", Edition2021) }
+   1.904865300s  INFO prepare_target{force=false package_id=hello-world v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello-world) target="hello-world"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\hello-world-4630347f6e5e706d\test-bin-hello-world`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.906127700s  INFO prepare_target{force=false package_id=hello-world v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello-world) target="hello-world"}: cargo::core::compiler::fingerprint: fingerprint error for hello-world v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello-world)/Check { test: false }/TargetInner { name: "hello-world", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\hello-world\\src\\main.rs", Edition2021) }
+   1.906145600s  INFO prepare_target{force=false package_id=hello-world v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello-world) target="hello-world"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\hello-world-be32665713f86733\bin-hello-world`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.906744800s  INFO prepare_target{force=false package_id=sbrk v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\sbrk) target="sbrk"}: cargo::core::compiler::fingerprint: fingerprint error for sbrk v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\sbrk)/Check { test: true }/TargetInner { name: "sbrk", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\sbrk\\src\\main.rs", Edition2021) }
+   1.906760300s  INFO prepare_target{force=false package_id=sbrk v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\sbrk) target="sbrk"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\sbrk-0b2bf06341e1b064\test-bin-sbrk`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.908380000s  INFO prepare_target{force=false package_id=sbrk v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\sbrk) target="sbrk"}: cargo::core::compiler::fingerprint: fingerprint error for sbrk v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\sbrk)/Check { test: false }/TargetInner { name: "sbrk", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\sbrk\\src\\main.rs", Edition2021) }
+   1.908398000s  INFO prepare_target{force=false package_id=sbrk v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\sbrk) target="sbrk"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\sbrk-0b02f96ac20158f1\bin-sbrk`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.909109000s  INFO prepare_target{force=false package_id=shell v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\shell) target="shell"}: cargo::core::compiler::fingerprint: fingerprint error for shell v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\shell)/Check { test: true }/TargetInner { name: "shell", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\shell\\src\\main.rs", Edition2021) }
+   1.909126900s  INFO prepare_target{force=false package_id=shell v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\shell) target="shell"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\shell-07d49121f8ecdedb\test-bin-shell`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.914975500s  INFO prepare_target{force=false package_id=shell v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\shell) target="shell"}: cargo::core::compiler::fingerprint: fingerprint error for shell v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\shell)/Check { test: false }/TargetInner { name: "shell", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\shell\\src\\main.rs", Edition2021) }
+   1.914999900s  INFO prepare_target{force=false package_id=shell v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\shell) target="shell"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\shell-06312e5d2493654c\bin-shell`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.915672000s  INFO prepare_target{force=false package_id=threads v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\threads) target="threads"}: cargo::core::compiler::fingerprint: fingerprint error for threads v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\threads)/Check { test: true }/TargetInner { name: "threads", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\threads\\src\\main.rs", Edition2021) }
+   1.915689600s  INFO prepare_target{force=false package_id=threads v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\threads) target="threads"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\threads-f76185b95cdca078\test-bin-threads`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.921015400s  INFO prepare_target{force=false package_id=threads v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\threads) target="threads"}: cargo::core::compiler::fingerprint: fingerprint error for threads v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\threads)/Check { test: false }/TargetInner { name: "threads", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\examples\\threads\\src\\main.rs", Edition2021) }
+   1.921039900s  INFO prepare_target{force=false package_id=threads v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\threads) target="threads"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\threads-e134cd7896debfb9\bin-threads`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.921941400s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint: fingerprint error for xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\xtask)/Check { test: true }/TargetInner { name: "xtask", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\xtask\\src\\main.rs", Edition2021) }
+   1.921957700s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\xtask-de0a9fd62697a072\test-bin-xtask`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.922347500s  INFO prepare_target{force=false package_id=anyhow v1.0.101 target="anyhow"}: cargo::core::compiler::fingerprint: fingerprint error for anyhow v1.0.101/Check { test: false }/TargetInner { ..: lib_target("anyhow", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anyhow-1.0.101\\src\\lib.rs", Edition2021) }
+   1.922362800s  INFO prepare_target{force=false package_id=anyhow v1.0.101 target="anyhow"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anyhow-b16fd2d311d33fd3\lib-anyhow`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.923548500s  INFO prepare_target{force=false package_id=xshell v0.2.7 target="xshell"}: cargo::core::compiler::fingerprint: fingerprint error for xshell v0.2.7/Check { test: false }/TargetInner { ..: lib_target("xshell", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\xshell-0.2.7\\src\\lib.rs", Edition2021) }
+   1.923563200s  INFO prepare_target{force=false package_id=xshell v0.2.7 target="xshell"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\xshell-b6d76f2b709676ca\lib-xshell`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.924075900s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint: fingerprint error for xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\xtask)/Check { test: false }/TargetInner { name: "xtask", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-2-sync\\crates\\xtask\\src\\main.rs", Edition2021) }
+   1.924090100s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\xtask-fd73e5120895c805\bin-xtask`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   1.924382700s  INFO prepare_target{force=false package_id=anyhow v1.0.101 target="anyhow"}: cargo::core::compiler::fingerprint: fingerprint error for anyhow v1.0.101/Check { test: false }/TargetInner { ..: lib_target("anyhow", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\anyhow-1.0.101\\src\\lib.rs", Edition2021) }
+   1.924393900s  INFO prepare_target{force=false package_id=anyhow v1.0.101 target="anyhow"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\anyhow-fe5ddc42c8b9a103\lib-anyhow`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+   1.924639600s  INFO prepare_target{force=false package_id=xshell v0.2.7 target="xshell"}: cargo::core::compiler::fingerprint: fingerprint error for xshell v0.2.7/Check { test: false }/TargetInner { ..: lib_target("xshell", ["lib"], "C:\\Users\\fhaddad\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\xshell-0.2.7\\src\\lib.rs", Edition2021) }
+   1.924650300s  INFO prepare_target{force=false package_id=xshell v0.2.7 target="xshell"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-2-sync\target\debug\.fingerprint\xshell-ff2fc4d5fe1727c1\lib-xshell`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_filter_source_repo
+  12: git_libgit2_prerelease
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: <unknown>
+  17: git_midx_writer_dump
+  18: git_filter_source_repo
+  19: git_midx_writer_dump
+  20: BaseThreadInitThunk
+  21: RtlUserThreadStart
+    Checking windows-link v0.2.1
+    Checking cfg-if v1.0.4
+    Checking log v0.4.29
+    Checking anstyle v1.0.13
+    Checking once_cell_polyfill v1.70.2
+    Checking utf8parse v0.2.2
+    Checking colorchoice v1.0.4
+    Checking regex-syntax v0.8.9
+    Checking is_terminal_polyfill v1.70.2
+    Checking unty v0.0.4
+    Checking memchr v2.8.0
+    Checking ferrous-user v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-user)
+    Checking plain v0.2.3
+    Checking serde_core v1.0.228
+    Checking zerocopy v0.8.39
+    Checking strsim v0.11.1
+    Checking jiff v0.2.20
+    Checking fastrand v2.3.0
+    Checking clap_lex v1.0.0
+    Checking bytemuck v1.25.0
+    Checking windows-sys v0.61.2
+    Checking getrandom v0.3.4
+    Checking anstyle-parse v0.2.7
+    Checking scroll v0.12.0
+    Checking getrandom v0.4.1
+    Checking once_cell v1.21.3
+    Checking thiserror v2.0.18
+    Checking quick-error v1.2.3
+    Checking fnv v1.0.7
+    Checking bit-vec v0.8.0
+    Checking wait-timeout v0.2.1
+    Checking num-traits v0.2.19
+    Checking rand_core v0.9.5
+    Checking unarray v0.1.4
+    Checking bitflags v2.10.0
+    Checking xshell v0.2.7
+    Checking anyhow v1.0.101
+    Checking echo v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\echo)
+    Checking disk-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\disk-read)
+    Checking hello-world v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello-world)
+    Checking file-read v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\file-read)
+    Checking ferrous-vm v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-vm)
+    Checking ferrous-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-test)
+    Checking threads v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\threads)
+    Checking sbrk v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\sbrk)
+    Checking bit-set v0.8.0
+    Checking rand v0.9.2
+    Checking goblin v0.8.2
+    Checking rand_xorshift v0.4.0
+    Checking hello v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\hello)
+    Checking aho-corasick v1.1.4
+    Checking anstyle-query v1.1.5
+    Checking anstyle-wincon v3.0.11
+    Checking tempfile v3.25.0
+    Checking anstream v0.6.21
+    Checking rusty-fork v0.3.1
+    Checking clap_builder v4.5.58
+    Checking regex-automata v0.4.14
+    Checking serde v1.0.228
+    Checking bincode v2.0.1
+    Checking clap v4.5.58
+    Checking ferrous-fs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-fs)
+    Checking xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\xtask)
+    Checking ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-kernel)
+    Checking shell v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\examples\shell)
+    Checking ferrous-mkfs v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-mkfs)
+    Checking regex v1.12.3
+    Checking ppv-lite86 v0.2.21
+    Checking env_filter v1.0.0
+    Checking ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-runtime)
+    Checking rand_chacha v0.9.0
+    Checking env_logger v0.11.9
+    Checking proptest v1.10.0
+    Checking ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-2-sync\crates\ferrous-cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 6.60s
