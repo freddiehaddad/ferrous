@@ -48,6 +48,62 @@ fn panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 
+fn test_pipe() {
+    println!("Testing pipes...");
+    let mut fds = [0u32; 2];
+    match syscall::pipe(&mut fds) {
+        Ok(_) => {
+            let read_fd = fds[0];
+            let write_fd = fds[1];
+            println!("Pipe created. Read FD: {}, Write FD: {}", read_fd, write_fd);
+
+            // Create a child thread (acting as a "process" sharing address space for now)
+            // Note: Since we don't have fork(), threads share memory.
+            // But FDs are per-process usually?
+            // Ferrous Reference Implementation: Threads share the same file descriptor table (process-wide).
+            // So we can write in one thread and read in another.
+
+            // To properly test, we need concurrency.
+            let stack_top = alloc_stack();
+            // We need to pass arguments to the thread.
+            // Ferrous `thread_create` only takes entry and stack.
+            // We'll use a global or static for coordination in this simple test,
+            // OR just write then read in the same thread to verify basic buffering.
+
+            // 1. Basic Write/Read Test (Same Thread)
+            let msg = "Hello from pipe!";
+            println!("Writing to pipe: '{}'", msg);
+            match syscall::file_write(write_fd, msg.as_bytes()) {
+                Ok(n) => println!("Wrote {} bytes", n),
+                Err(e) => println!("Write failed: {}", e),
+            }
+
+            let mut buf = [0u8; 32];
+            match syscall::file_read(read_fd, &mut buf) {
+                Ok(n) => {
+                    if let Ok(s) = core::str::from_utf8(&buf[0..n]) {
+                        println!("Read from pipe: '{}'", s);
+                    } else {
+                        println!("Read invalid UTF-8");
+                    }
+                }
+                Err(e) => println!("Read failed: {}", e),
+            }
+
+            syscall::file_close(write_fd);
+            syscall::file_close(read_fd);
+        }
+        Err(e) => println!("Pipe creation failed: {}", e),
+    }
+}
+
+// Helper for allocating stack for threads (copied from lib)
+fn alloc_stack() -> usize {
+    let stack_size = 4096;
+    let stack_bottom = syscall::sbrk(stack_size as i32) as usize;
+    stack_bottom + stack_size
+}
+
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
     ferrous_user::init();
@@ -196,8 +252,11 @@ pub extern "C" fn _start() -> ! {
                         println!("Available commands:");
                         println!("  ls          - List files");
                         println!("  cat <file>  - Display file contents");
+                        println!("  pipe_test   - Run pipe test");
                         println!("  exit        - Quit shell");
                         println!("  help        - Show this message");
+                    } else if program == "pipe_test" {
+                        test_pipe();
                     } else if program == "exit" {
                         println!("Goodbye!");
                         break;

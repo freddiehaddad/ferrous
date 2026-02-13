@@ -226,6 +226,32 @@ pub mod syscall {
         }
     }
 
+    pub fn file_write(_fd: u32, buf: &[u8]) -> Result<usize, u32> {
+        let _ptr = buf.as_ptr();
+        let _len = buf.len();
+        let ret: usize;
+        #[cfg(target_arch = "riscv32")]
+        unsafe {
+            asm!(
+                "ecall",
+                in("a0") _fd,
+                in("a1") _ptr,
+                in("a2") _len,
+                in("a7") 64, // Using write syscall (same as console_write, but kernel dispatches based on FD)
+                lateout("a0") ret,
+            );
+        }
+        #[cfg(not(target_arch = "riscv32"))]
+        {
+            ret = 0;
+        }
+        if ret != u32::MAX as usize {
+            Ok(ret)
+        } else {
+            Err(0)
+        }
+    }
+
     pub fn file_close(_fd: u32) {
         #[cfg(target_arch = "riscv32")]
         unsafe {
@@ -262,6 +288,29 @@ pub mod syscall {
         }
         if ret != u32::MAX {
             Ok(ret)
+        } else {
+            Err(ret)
+        }
+    }
+
+    pub fn pipe(fds: &mut [u32; 2]) -> Result<(), u32> {
+        let ret: u32;
+        #[cfg(target_arch = "riscv32")]
+        unsafe {
+            asm!(
+                "ecall",
+                in("a0") fds.as_mut_ptr(),
+                in("a7") 22,
+                lateout("a0") ret,
+            );
+        }
+        #[cfg(not(target_arch = "riscv32"))]
+        {
+            let _ = fds;
+            ret = 0xFFFFFFFF;
+        }
+        if ret == 0 {
+            Ok(())
         } else {
             Err(ret)
         }
