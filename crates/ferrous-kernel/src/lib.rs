@@ -97,7 +97,7 @@ impl Kernel {
                             let flags =
                                 memory::PTE_R | memory::PTE_W | memory::PTE_U | memory::PTE_X;
                             memory::map_page(memory, root_ppn, page_base, frame, flags)
-                                .map_err(|e| TrapError::HandlerPanic(e))?;
+                                .map_err(TrapError::HandlerPanic)?;
                             // Zero fill
                             for i in 0..memory::PAGE_SIZE {
                                 memory.write_byte(PhysAddr::new(frame + i), 0).unwrap();
