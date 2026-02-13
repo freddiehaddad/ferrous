@@ -5,6 +5,7 @@ use crate::types::ThreadHandle;
 use alloc::boxed::Box;
 use alloc::collections::BTreeMap;
 use alloc::string::String;
+use alloc::vec;
 use alloc::vec::Vec;
 use ferrous_vm::{Cpu, PrivilegeMode, VirtAddr};
 use scheduler::{RoundRobinScheduler, Scheduler};
@@ -51,7 +52,7 @@ impl ThreadManager {
                 stack_pointer: cpu.regs[2],
                 kernel_stack: 0,
                 program_break: 0x8040_0000, // Default heap start (4MB mark)
-                file_descriptors: Vec::new(),
+                file_descriptors: vec![None, None, None], // Reserve stdin, stdout, stderr
             };
             self.threads.insert(handle, tcb);
             self.current_thread = Some(handle);
@@ -92,7 +93,7 @@ impl ThreadManager {
             stack_pointer: stack_top,
             kernel_stack: 0, // Assume no kernel stack switch for now (running in user mode usually)
             program_break,
-            file_descriptors: Vec::new(),
+            file_descriptors: vec![None, None, None], // Reserve stdin, stdout, stderr
         };
 
         self.threads.insert(handle, tcb);
