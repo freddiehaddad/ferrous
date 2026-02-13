@@ -9,6 +9,7 @@ description = "Operating System Kernel for Ferrous"
 
 [dependencies]
 ferrous-vm = { path = "../ferrous-vm" }
+ferrous-fs = { path = "../ferrous-fs" }
 thiserror = { workspace = true }
 log = { workspace = true }
 

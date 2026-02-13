@@ -17,6 +17,7 @@ pub struct Kernel {
     thread_manager: ThreadManager,
     mutexes: HashMap<u32, Mutex>,
     next_mutex_id: u32,
+    file_system: Option<fs::FileSystem>,
 }
 
 const UART_BASE: u32 = 0x1000_0000;
@@ -28,11 +29,26 @@ impl Kernel {
             thread_manager: ThreadManager::new(),
             mutexes: HashMap::new(),
             next_mutex_id: 1,
+            file_system: None,
         })
     }
 
-    pub fn init_memory(&self, memory: &mut dyn Memory) -> Result<u32, KernelError> {
-        memory::setup_kernel_address_space(memory).map_err(|e| KernelError::InitializationError(e))
+    pub fn init_memory(&mut self, memory: &mut dyn Memory) -> Result<u32, KernelError> {
+        let satp = memory::setup_kernel_address_space(memory)
+            .map_err(|e| KernelError::InitializationError(e))?;
+
+        // Try to mount FS
+        match fs::FileSystem::mount(memory) {
+            Ok(fs) => {
+                self.file_system = Some(fs);
+            }
+            Err(e) => {
+                // Warning only, maybe no disk attached
+                log::warn!("Failed to mount filesystem: {:?}", e);
+            }
+        }
+
+        Ok(satp)
     }
 
     pub fn handle_syscall(

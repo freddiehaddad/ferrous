@@ -38,7 +38,7 @@ impl Runtime {
         let mut memory = Box::new(bus);
 
         // Kernel::new() returns KernelError, map it?
-        let kernel = Kernel::new().map_err(|e| {
+        let mut kernel = Kernel::new().map_err(|e| {
             VmError::Device(ferrous_vm::DeviceError::Io(format!(
                 "Kernel init failed: {}",
                 e
