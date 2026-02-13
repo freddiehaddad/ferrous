@@ -83,8 +83,14 @@ cd ../..
 Use the CLI to run the compiled user program:
 
 ```bash
-# Run the hello-world example
-cargo run -p ferrous-cli -- run target/riscv32i-unknown-none-elf/debug/hello-world
+# Build the shell and examples (in release mode for size efficiency)
+cargo build --release --target riscv32i-unknown-none-elf -p shell -p echo -p threads -p sbrk -p hello -p file-read
+
+# Create the disk image with the compiled programs
+cargo run -p ferrous-mkfs -- --disk disk.img --force --inodes 128 target/riscv32i-unknown-none-elf/release/shell target/riscv32i-unknown-none-elf/release/echo target/riscv32i-unknown-none-elf/release/threads target/riscv32i-unknown-none-elf/release/sbrk target/riscv32i-unknown-none-elf/release/hello target/riscv32i-unknown-none-elf/release/file-read
+
+# Run the shell with the disk attached
+cargo run -p ferrous-cli -- run target/riscv32i-unknown-none-elf/release/shell --disk disk.img
 ```
 
 ### Your First Program

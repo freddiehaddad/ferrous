@@ -256,6 +256,13 @@ pub extern "C" fn _start() -> ! {
                         println!("  pipe_test   - Run pipe test");
                         println!("  exit        - Quit shell");
                         println!("  help        - Show this message");
+                        println!("");
+                        println!("External programs:");
+                        println!("  echo <args> - Print arguments");
+                        println!("  threads     - Multithreading demo");
+                        println!("  sbrk        - Heap allocation demo");
+                        println!("  hello       - Hello World");
+                        println!("  file-read   - File reading demo");
                     } else if program == "pipe_test" {
                         test_pipe();
                     } else if program == "exit" {
