@@ -9,6 +9,7 @@ members = [
     "crates/ferrous-test",
     "examples/hello-world",
     "examples/threads",
+    "examples/sbrk",
 ]
 
 [workspace.package]
