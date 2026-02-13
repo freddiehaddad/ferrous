@@ -69,8 +69,8 @@
 git clone https://github.com/yourusername/ferrous.git
 cd ferrous
 
-# Build the host tools (VM, CLI, Kernel library)
-cargo build --workspace --exclude hello-world --exclude shell
+# Build the host tools (VM, CLI, Kernel)
+cargo build -p ferrous-cli
 
 # Build a user program (Target: riscv32i-unknown-none-elf)
 cd examples/hello-world
@@ -84,7 +84,7 @@ Use the CLI to run the compiled user program:
 
 ```bash
 # Run the hello-world example
-cargo run -p ferrous-cli -- run examples/hello-world/target/riscv32i-unknown-none-elf/debug/hello-world
+cargo run -p ferrous-cli -- run target/riscv32i-unknown-none-elf/debug/hello-world
 ```
 
 ### Your First Program
