@@ -25,6 +25,7 @@ pub struct Cpu {
     pub pc: u32,
     pub regs: [u32; 32],
     pub mode: PrivilegeMode,
+    pub satp: u32,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -40,6 +41,7 @@ impl Cpu {
             pc: entry_point,
             regs: [0; 32],
             mode: PrivilegeMode::Machine,
+            satp: 0,
         }
     }
 
