@@ -1,242 +1,143 @@
-# Ferrous
+# Ferrous Operating System Course
+> *CS 530: Advanced Operating Systems Implementation*
 
-> A modern educational operating system framework in Rust
+Welcome to **Ferrous**, a modern, educational operating system framework designed to teach the internal mechanics of operating systems. Unlike traditional OS courses that use C, Ferrous is built entirely in **Rust**, leveraging its strong type system to prevent common classes of bugs (like use-after-free and data races) while retaining the low-level control required for kernel development.
 
-**Ferrous** is a pedagogical operating system designed to teach core OS concepts through hands-on implementation. Built entirely in Rust, it provides a RISC-V virtual machine and a partially-implemented kernel that students complete through structured assignments.
+This repository contains the **Reference Implementation** of the Ferrous Kernel. As a student, you will be implementing core subsystems of this kernel across a series of structured assignments.
 
-> **NOTE**: This project is currently in development!
+## 🎯 Learning Objectives
 
-## 🎯 Project Goals
+By the end of this course, you will have implemented a fully functional Unix-like operating system kernel, capable of:
+*   **Multithreading:** Implementing cooperative and preemptive thread scheduling.
+*   **Synchronization:** Building semaphores, mutexes, and condition variables from scratch.
+*   **Virtual Memory:** Managing page tables, address translation, and demand paging.
+*   **File Systems:** Designing an inode-based file system with directory structures.
+*   **Process Management:** Implementing `fork`, `exec`, and `wait` semantics.
 
-- **Educational Excellence**: Teach threading, scheduling, synchronization, virtual memory, file systems, and networking
-- **Modern Language**: Leverage Rust's type system to prevent entire classes of bugs
-- **Professional Quality**: Idiomatic, maintainable code that serves as a reference implementation
-- **Realistic Architecture**: RISC-V ISA with proper privilege levels and MMU simulation
+## 🏗️ System Architecture
 
-## 🏗️ Architecture
+Ferrous runs on a custom **RISC-V Virtual Machine** (`ferrous-vm`) included in this repository. This simplifies development by allowing you to run your kernel as a standard user-space process on your host machine (Linux, macOS, or Windows), while still simulating a realistic hardware environment.
 
-```
+```text
 ┌──────────────────────────────────┐
-│     User Programs (Guest)        │
-│  Compiled to RISC-V ELF binaries │
-│  (e.g., examples/hello-world)    │
-└──────────────────────────────────┘
-              ↓ syscalls (ecall)
-┌──────────────────────────────────┐
-│  RISC-V Simulator (ferrous-vm)   │
-│  • RV32IMA instruction execution │
-│  • Virtual memory (Sv32)         │
-│  • Traps to Host Kernel          │
-└──────────────────────────────────┘
-              ↓ traps (Host Calls)
-┌──────────────────────────────────┐
-│      Ferrous Kernel (Host)       │
-│  • Written in Rust (no_std)      │
-│  • Runs natively on Host CPU     │
-│  • Manages Guest VM State        │
-│  • Implements Syscalls/Traps     │
+│      User Shell & Utilities      │  <-- Compiled to RISC-V (Guest)
+│    (examples/shell, /bin/ls)     │
+└────────────────┬─────────────────┘
+                 │ System Calls (ecall)
+┌────────────────▼─────────────────┐
+│         Ferrous Kernel           │  <-- YOU WILL IMPLEMENT THIS
+│   (Threading, FS, Syscalls...)   │
+└────────────────┬─────────────────┘
+                 │ Traps / Host Calls
+┌────────────────▼─────────────────┐
+│   Ferrous Virtual Machine (VM)   │  <-- Simulates CPU, RAM, Disk
+│       (RV32IMA Interpreter)      │
 └──────────────────────────────────┘
 ```
 
-## ✨ Features
-
-- **RISC-V RV32IMA Simulator**: Complete interpreter with M (multiply) and A (atomic) extensions
-- **Host-Based Kernel**: Kernel runs as native code for easier debugging and iteration
-- **Threading**: Cooperative and preemptive multithreading
-- **Synchronization**: Semaphores, mutexes, condition variables
-- **Virtual Memory**: Sv32 paging with demand paging and copy-on-write
-- **File System**: Unix-like inode-based file system
-- **Networking**: Simplified layered network stack with sockets
-- **Type Safety**: Extensive use of newtypes to prevent programming errors
-
-## 📚 Documentation
-
-- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Complete technical specification
-- **API Documentation** - Generate with `cargo doc --open`
-
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
+*   **Rust Toolchain:** Install Rust via [rustup](https://rustup.rs/).
+*   **RISC-V Target:** You need the cross-compilation target for building user programs:
+    ```bash
+    rustup target add riscv32i-unknown-none-elf
+    ```
+*   **Git:** For version control.
 
-- Rust 1.80.0 or later
-- Cargo
-- RISC-V Target: `rustup target add riscv32i-unknown-none-elf`
+### Building the System
 
-### Installation
+We use a custom build system written in Rust called `xtask`. This abstracts away the complexity of cross-compiling the guest programs and creating disk images.
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/ferrous-os/ferrous.git
+    cd ferrous
+    ```
+
+2.  **Build the Host Tools (VM & Kernel):**
+    ```bash
+    cargo x build-host
+    ```
+
+3.  **Build the Guest Programs (Shell, Hello World):**
+    ```bash
+    cargo x build-user
+    ```
+
+4.  **Run the Smoke Test:**
+    This command compiles a simple "Hello World" program and runs it inside the VM, bypassing the file system. It verifies that your toolchain is correctly set up.
+    ```bash
+    cargo x run-hello
+    ```
+    *Expected Output:* `Hello from Ferrous!`
+
+### Running the Full OS
+
+To run the full operating system with a persistent file system and interactive shell:
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/ferrous.git
-cd ferrous
-
-# Build the host tools (VM, CLI, Kernel)
-cargo build -p ferrous-cli
-
-# Build a user program (Target: riscv32i-unknown-none-elf)
-cd examples/hello-world
-cargo build
-cd ../..
+cargo x run-shell
 ```
 
-### Running a Program
+This command performs the following steps automatically:
+1.  Compiles all user programs (shell, echo, cat, etc.) for RISC-V.
+2.  Creates a disk image (`disk.img`) and formats it with FerrousFS.
+3.  Mounts the disk image.
+4.  Boots the kernel and launches the shell.
 
-Use the CLI to run the compiled user program:
+## 📚 Repository Structure
 
-```bash
-# Build the shell and examples (in release mode for size efficiency)
-cargo build --release --target riscv32i-unknown-none-elf -p shell -p echo -p threads -p sbrk -p hello -p file-read
+The project is organized as a Cargo Workspace with multiple crates:
 
-# Create the disk image with the compiled programs and a test file
-echo "Hello from Ferrous File System!" > hello.txt
-cargo run -p ferrous-mkfs -- --disk disk.img --force --inodes 128 target/riscv32i-unknown-none-elf/release/shell target/riscv32i-unknown-none-elf/release/echo target/riscv32i-unknown-none-elf/release/threads target/riscv32i-unknown-none-elf/release/sbrk target/riscv32i-unknown-none-elf/release/hello target/riscv32i-unknown-none-elf/release/file-read hello.txt
+*   **`crates/ferrous-kernel`**: The core OS kernel. **This is where you will do 90% of your work.**
+    *   `src/thread/`: Scheduler and context switching.
+    *   `src/sync/`: Synchronization primitives.
+    *   `src/fs/`: File system logic.
+    *   `src/process/`: Process lifecycle management.
+*   **`crates/ferrous-vm`**: The RISC-V simulator. You generally do not need to modify this unless you are debugging a hardware issue.
+*   **`crates/ferrous-user`**: The system call library used by user programs (similar to `libc`).
+*   **`crates/xtask`**: The build automation system.
+*   **`examples/`**: Source code for user programs (shell, etc.).
 
-# Run the shell with the disk attached
-cargo run -p ferrous-cli -- run target/riscv32i-unknown-none-elf/release/shell --disk disk.img
-```
+## 📝 Assignment Roadmap
 
-### Your First Program
+The course is divided into 6 assignments. Each assignment builds upon the previous one.
 
-### Your First Program
+| Assignment | Topic | Description |
+| :--- | :--- | :--- |
+| **A1** | **Threads** | Implement `ThreadControlBlock`, context switching, and a Round-Robin scheduler. |
+| **A2** | **Synchronization** | Implement semaphores and mutexes to protect kernel data structures. |
+| **A3** | **Memory** | Implement the `sbrk` system call and manage kernel heap allocations. |
+| **A4** | **Processes** | Implement `fork`, `exec`, and `waitpid` to support process isolation. |
+| **A5** | **File Systems** | Implement inode traversal (`read_inode`) and file data reading (`read_data`). |
+| **A6** | **Networking** | (Advanced) Implement a basic network stack and socket API. |
 
-```rust
-// examples/hello-world/src/main.rs
-#![no_std]
-#![no_main]
+### How to Work on Assignments
 
-use ferrous_user::{print, println, exit};
-
-#[no_mangle]
-pub extern "C" fn _start() -> ! {
-    println!("Hello from Ferrous!");
-    exit(0)
-}
-
-#[panic_handler]
-fn panic(_: &core::panic::PanicInfo) -> ! {
-    loop {}
-}
-```
-
-## 📖 Assignments
-
-Ferrous includes 6 comprehensive assignments covering core OS concepts:
-
-1. **Threads & Scheduling** - Implement thread creation and round-robin scheduling
-2. **Synchronization** - Build semaphores, locks, and condition variables
-3. **Advanced Scheduling** - Priority scheduling and MLFQ
-4. **Virtual Memory** - Page tables, demand paging, and page replacement
-5. **File System** - Inodes, directories, and buffer cache
-6. **Networking** - Protocol layers and socket API
-
-Each assignment includes:
-- Clear specification and learning objectives
-- Starter code with trait definitions
-- Public tests for immediate feedback
-- Hidden grading tests (instructors only)
-
-## 🛠️ Development Status
-
-**Current Status**: Reference Kernel Implementation (Polishing Phase)
-
-### Implementation Roadmap
-
-- [x] **Iteration 1**: Hello World (Completed)
-- [x] **Iteration 2**: Threading Basics (Completed)
-- [x] **Iteration 3**: Preemptive Scheduling (Completed)
-- [x] **Iteration 4**: Synchronization & Drivers (Completed)
-- [x] **Iteration 5**: Virtual Memory (Completed)
-- [x] **Iteration 6**: File System & Pipes (Reference Implemented)
-- [ ] **Iteration 7**: Networking (Planned)
-- [ ] **Iteration 8-11**: Polish, Testing, Documentation (In Progress)
-
-See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed iteration plans.
-
-## 🏛️ Design Principles
-
-### Type Safety First
-Every domain concept has its own type:
-```rust
-pub struct ThreadHandle(NonZeroU32);  // Cannot confuse with other IDs
-pub struct VirtAddr(u32);              // Cannot mix with PhysAddr
-pub struct PhysAddr(u32);              // Compiler enforces correctness
-```
-
-### Error Handling
-No panics in production code - all failures are explicit:
-```rust
-pub fn create_thread(&mut self, entry: VirtAddr) -> Result<ThreadHandle, ThreadError>;
-```
-
-### Clear Boundaries
-Trait-based abstractions between components:
-```rust
-pub trait TrapHandler {
-    fn handle_trap(&mut self, cause: TrapCause, cpu: &mut Cpu) -> Result<VirtAddr, TrapError>;
-}
-```
+1.  Navigate to the relevant file in `crates/ferrous-kernel`.
+2.  Look for `// TODO: Assignment X` markers.
+3.  Read the documentation comments (`///`) carefully to understand the contract of the function you are implementing.
+4.  Implement the logic.
+5.  Run the tests (instructions provided in each assignment handout).
 
 ## 🧪 Testing
 
-Ferrous separates tests into **Host Tests** (Kernel logic, VM simulation) and **Guest Tests** (User programs running inside the VM).
+We separate tests into **Host Tests** (running natively on your machine) and **Guest Tests** (running inside the VM).
 
-### Host Tests (Run on your machine)
+*   **Run Kernel Unit Tests:**
+    ```bash
+    cargo test -p ferrous-kernel
+    ```
 
-These tests check the correctness of the kernel algorithms and VM behavior natively.
+*   **Run Integration Tests:**
+    Specific `cargo x` commands will be provided for each assignment to run relevant integration tests.
 
-```bash
-# Run all host tests (Kernel, VM, Runtime)
-cargo test -p ferrous-vm -p ferrous-kernel -p ferrous-runtime -p ferrous-cli
+## ⚠️ Academic Integrity
 
-# Run unit tests for a specific crate
-cargo test -p ferrous-kernel
+This repository contains the **Reference Implementation**. In a real course setting, the solutions in `ferrous-kernel` would be stripped out and provided as skeleton code.
 
-# Run with logging enabled
-RUST_LOG=debug cargo test -p ferrous-kernel
-```
-
-### Guest Programs (Run inside Ferrous)
-
-To test user programs, you must compile them for the RISC-V target and run them using the CLI.
-
-```bash
-# 1. Build the user program
-cargo build --release --target riscv32i-unknown-none-elf -p hello-world
-
-# 2. Run it inside the VM
-cargo run -p ferrous-cli -- run target/riscv32i-unknown-none-elf/release/hello-world
-```
-
-> **Note:** Do NOT run `cargo test --workspace` indiscriminately, as it will attempt to compile user programs for the host architecture, causing linker errors.
-
-## 🤝 Contributing
-
-This project is currently in the design and initial implementation phase. Contributions will be welcome once the core architecture is established.
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Inspired by the original **Nachos** educational OS (UC Berkeley)
-- RISC-V architecture chosen for its simplicity and modern design
-- Rust community for excellent OS development resources
-
-## 📧 Contact
-
-For questions or feedback, please open an issue on GitHub.
+If you are a student taking this course: **Do not view the history or reference solution branches** if instructed by your professor. The goal is for you to learn by implementing these systems yourself.
 
 ---
-
-**Note**: This project is under active development. The architecture specification is complete and implementation is beginning. Check back for updates or star/watch the repository to follow progress.
-
-## 🔗 Resources
-
-- [RISC-V Specification](https://riscv.org/technical/specifications/)
-- [Rust OS Development](https://os.phil-opp.com/)
-- [Original Nachos](https://homes.cs.washington.edu/~tom/nachos/)
-- [Writing an OS in Rust](https://os.phil-opp.com/)
-
----
-
-**Built with ❤️ and Rust**
+*Maintained by the Ferrous OS Team for educational use.*
