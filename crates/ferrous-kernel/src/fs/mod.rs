@@ -50,7 +50,6 @@ impl FileSystem {
         }
 
         // Calculate block and offset
-        // Inode 0 is at start of inode_table_block
         let inode_size = core::mem::size_of::<Inode>() as u32;
         let inodes_per_block = BLOCK_SIZE as u32 / inode_size;
 
@@ -60,8 +59,12 @@ impl FileSystem {
         let block_id = self.superblock.inode_table_block + block_offset;
 
         let mut buffer = [0u8; BLOCK_SIZE];
-        block::read_sector(memory, block_id, &mut buffer)
-            .map_err(|e| KernelError::InitializationError(format!("Inode Read Error: {}", e)))?;
+        if let Err(e) = block::read_sector(memory, block_id, &mut buffer) {
+            return Err(KernelError::InitializationError(format!(
+                "Inode Read Error: {}",
+                e
+            )));
+        }
 
         let inode = unsafe {
             let ptr = buffer.as_ptr().add((index_in_block * inode_size) as usize) as *const Inode;
@@ -69,5 +72,46 @@ impl FileSystem {
         };
 
         Ok(inode)
+    }
+
+    pub fn find_inode(&self, memory: &mut dyn Memory, name: &str) -> Result<u32, KernelError> {
+        // Read root inode (ID 0)
+        let root_inode = self.read_inode(memory, 0)?;
+
+        // Scan direct pointers
+        for &block_id in root_inode.direct_ptrs.iter() {
+            if block_id == 0 {
+                continue;
+            }
+
+            let mut buffer = [0u8; BLOCK_SIZE];
+            if let Err(e) = block::read_sector(memory, block_id, &mut buffer) {
+                return Err(KernelError::InitializationError(format!(
+                    "Dir Read Error: {}",
+                    e
+                )));
+            }
+
+            // Iterate entries in block
+            let entry_size = core::mem::size_of::<DirEntry>();
+            let num_entries = BLOCK_SIZE / entry_size;
+
+            for i in 0..num_entries {
+                let entry_offset = i * entry_size;
+                let entry_ptr = unsafe { buffer.as_ptr().add(entry_offset) as *const DirEntry };
+                let entry = unsafe { entry_ptr.read_unaligned() };
+
+                // Skip if name is empty (first char is 0)
+                if entry.name[0] == 0 {
+                    continue;
+                }
+
+                if entry.name_as_str() == name {
+                    return Ok(entry.inode_id);
+                }
+            }
+        }
+
+        Err(KernelError::InitializationError("File not found".into()))
     }
 }
