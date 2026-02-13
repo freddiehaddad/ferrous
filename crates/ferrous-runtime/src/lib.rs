@@ -2,7 +2,10 @@ pub mod loader;
 
 use ferrous_kernel::Kernel;
 use ferrous_vm::{
-    devices::uart::{UartDevice, UART_BASE, UART_SIZE},
+    devices::{
+        block::{SimpleBlockDevice, BLOCK_DEVICE_BASE, BLOCK_DEVICE_SIZE},
+        uart::{UartDevice, UART_BASE, UART_SIZE},
+    },
     system_bus::SystemBus,
     ExitReason, VirtualMachine, VmConfig, VmError,
 };
@@ -14,11 +17,22 @@ pub struct Runtime {
 }
 
 impl Runtime {
-    pub fn new(memory_size: usize) -> Result<Self, VmError> {
+    pub fn new(memory_size: usize, disk_image: Option<&Path>) -> Result<Self, VmError> {
         let mut bus = SystemBus::new(memory_size);
 
         // Add UART
         bus.add_device(UART_BASE, UART_SIZE, Box::new(UartDevice::new()));
+
+        // Add Block Device if provided
+        if let Some(disk_path) = disk_image {
+            let block_dev = SimpleBlockDevice::new(disk_path.to_str().unwrap()).map_err(|e| {
+                VmError::Device(ferrous_vm::DeviceError::Io(format!(
+                    "Failed to open disk image: {}",
+                    e
+                )))
+            })?;
+            bus.add_device(BLOCK_DEVICE_BASE, BLOCK_DEVICE_SIZE, Box::new(block_dev));
+        }
 
         // Create Memory (Boxed)
         let mut memory = Box::new(bus);

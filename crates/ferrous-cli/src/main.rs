@@ -20,6 +20,10 @@ enum Commands {
         /// Memory size in bytes
         #[arg(long, default_value_t = 16 * 1024 * 1024)]
         memory: usize,
+
+        /// Path to the disk image
+        #[arg(long)]
+        disk: Option<PathBuf>,
     },
 }
 
@@ -29,11 +33,14 @@ fn main() -> Result<(), Box<dyn Error>> {
     let cli = Cli::parse();
 
     match cli.command {
-        Commands::Run { file, memory } => {
+        Commands::Run { file, memory, disk } => {
             println!("Starting Ferrous VM with {} bytes memory...", memory);
             println!("Loading binary: {:?}", file);
+            if let Some(d) = &disk {
+                println!("Mounting disk image: {:?}", d);
+            }
 
-            let mut runtime = Runtime::new(memory)?;
+            let mut runtime = Runtime::new(memory, disk.as_deref())?;
             runtime.load_program(&file)?;
             runtime.run()?;
 

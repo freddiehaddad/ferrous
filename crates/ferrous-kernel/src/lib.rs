@@ -1,4 +1,5 @@
 pub mod error;
+pub mod fs;
 pub mod memory;
 pub mod sync;
 pub mod syscall;
@@ -238,6 +239,98 @@ impl Kernel {
                     Ok(syscall::SyscallReturn::Value(current_break as i64)),
                     cpu,
                 );
+                Ok(VirtAddr::new(cpu.pc + 4))
+            }
+            syscall::Syscall::BlockRead { sector, buf_ptr } => {
+                // Temporary implementation: Read into stack buffer, then copy to user
+                let mut buffer = [0u8; 512];
+
+                // Read from device
+                match crate::fs::block::read_sector(memory, sector, &mut buffer) {
+                    Ok(_) => {
+                        // Copy to user memory
+                        // Note: This is slow byte-by-byte copy and assumes contiguous physical memory?
+                        // No, we must translate EACH page.
+                        // For now, let's assume the buffer doesn't cross a page boundary or handle it simply.
+
+                        // We need to translate buf_ptr.
+                        // Since we don't have a convenient V-to-P helper exposed here yet,
+                        // and `memory` is purely physical...
+
+                        // Let's get the current root table from the thread
+                        let current_handle = self
+                            .thread_manager
+                            .current_thread
+                            .ok_or(TrapError::HandlerPanic("No current thread".into()))?;
+
+                        let satp = self
+                            .thread_manager
+                            .threads
+                            .get(&current_handle)
+                            .unwrap()
+                            .context
+                            .satp;
+                        let root_ppn = satp & 0x003F_FFFF;
+
+                        for i in 0..512 {
+                            let vaddr = buf_ptr.val() + i as u32;
+                            // Software walk...
+                            // This is getting complicated to duplicate here.
+                            // Ideally we need `memory.write_virtual(satp, vaddr, byte)`
+
+                            // Re-implement simplified walk:
+                            let vpn1 = (vaddr >> 22) & 0x3FF;
+                            let vpn0 = (vaddr >> 12) & 0x3FF;
+                            let offset = vaddr & 0xFFF;
+
+                            // L1
+                            let l1_pte_addr =
+                                ferrous_vm::PhysAddr::new((root_ppn << 12) + (vpn1 * 4));
+                            let l1_pte = memory.read_word(l1_pte_addr).map_err(|e| {
+                                TrapError::HandlerPanic(format!("L1 read error: {:?}", e))
+                            })?;
+
+                            if (l1_pte & memory::PTE_V) == 0 {
+                                return Err(TrapError::HandlerPanic(
+                                    "Page fault during syscall copy".into(),
+                                ));
+                            }
+
+                            let l0_ppn = (l1_pte >> 10) & 0x3F_FFFF;
+
+                            // L0
+                            let l0_pte_addr =
+                                ferrous_vm::PhysAddr::new((l0_ppn << 12) + (vpn0 * 4));
+                            let l0_pte = memory.read_word(l0_pte_addr).map_err(|e| {
+                                TrapError::HandlerPanic(format!("L0 read error: {:?}", e))
+                            })?;
+
+                            if (l0_pte & memory::PTE_V) == 0 {
+                                return Err(TrapError::HandlerPanic(
+                                    "Page fault during syscall copy".into(),
+                                ));
+                            }
+
+                            let ppn = (l0_pte >> 10) & 0x3F_FFFF;
+                            let paddr = (ppn << 12) | offset;
+
+                            memory
+                                .write_byte(ferrous_vm::PhysAddr::new(paddr), buffer[i as usize])
+                                .map_err(|e| {
+                                    TrapError::HandlerPanic(format!("User write error: {:?}", e))
+                                })?;
+                        }
+
+                        syscall::Syscall::encode_result(Ok(syscall::SyscallReturn::Success), cpu);
+                    }
+                    Err(e) => {
+                        // Should return error code
+                        syscall::Syscall::encode_result(
+                            Err(crate::error::SyscallError::InvalidSyscallNumber(0)),
+                            cpu,
+                        ); // Generic fail
+                    }
+                }
                 Ok(VirtAddr::new(cpu.pc + 4))
             }
         }

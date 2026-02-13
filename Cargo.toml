@@ -8,9 +8,11 @@ members = [
     "crates/ferrous-cli",
     "crates/ferrous-test",
     "examples/hello-world",
-    "examples/threads",
     "examples/sbrk",
+    "examples/threads",
+    "examples/disk-read",
 ]
+
 
 [workspace.package]
 version = "0.1.0"

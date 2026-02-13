@@ -115,12 +115,17 @@ pub fn setup_kernel_address_space(memory: &mut dyn Memory) -> Result<u32, String
         PTE_R | PTE_W, // RW (No Execute)
     )?;
 
-    // 3. Identity Map the Allocator Region (so we can continue accessing page tables if needed?)
+    // 3. Identity Map Block Device MMIO (at 0x2000_0000)
+    // Map 1 Page (SimpleBlockDevice uses 0x1000 size)
+    let block_addr = 0x2000_0000;
+    map_page(memory, root_ppn, block_addr, block_addr, PTE_R | PTE_W)?;
+
+    // 4. Identity Map the Allocator Region (so we can continue accessing page tables if needed?)
     // Actually, we should map the whole "Physical Memory" capability for the kernel.
     // Let's map 0x8040_0000 to 0x8800_0000 (128MBish)
     // For now, let's just map a large chunk for heap/page tables
-    for i in 0..2048 {
-        // 8MB more
+    // Increase to 8192 pages (32MB) to cover default 16MB RAM + headroom
+    for i in 0..8192 {
         let addr = 0x8040_0000 + (i * PAGE_SIZE);
         map_page(memory, root_ppn, addr, addr, PTE_R | PTE_W)?;
     }

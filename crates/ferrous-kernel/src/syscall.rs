@@ -34,6 +34,12 @@ pub enum Syscall {
     Sbrk {
         increment: i32,
     },
+
+    // Block Device (Temporary Debug)
+    BlockRead {
+        sector: u32,
+        buf_ptr: VirtAddr,
+    },
 }
 
 #[derive(Debug)]
@@ -66,6 +72,10 @@ impl Syscall {
             110 => Ok(Syscall::MutexCreate),
             111 => Ok(Syscall::MutexAcquire { id: a0 }),
             112 => Ok(Syscall::MutexRelease { id: a0 }),
+            200 => Ok(Syscall::BlockRead {
+                sector: a0,
+                buf_ptr: VirtAddr::new(a1),
+            }),
             214 => Ok(Syscall::Sbrk {
                 increment: a0 as i32,
             }),

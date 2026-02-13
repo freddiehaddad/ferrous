@@ -1,3 +1,4 @@
+pub mod block;
 pub mod uart;
 
 use crate::error::DeviceError;

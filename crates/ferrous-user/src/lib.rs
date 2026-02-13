@@ -127,6 +127,30 @@ pub mod syscall {
         }
         ret
     }
+
+    pub fn block_read(sector: u32, buf: &mut [u8]) -> Result<(), u32> {
+        let ptr = buf.as_mut_ptr();
+        let ret: u32;
+        unsafe {
+            #[cfg(target_arch = "riscv32")]
+            asm!(
+                "ecall",
+                in("a0") sector,
+                in("a1") ptr,
+                in("a7") 200,
+                lateout("a0") ret,
+            );
+            #[cfg(not(target_arch = "riscv32"))]
+            {
+                ret = 0;
+            }
+        }
+        if ret == 0 {
+            Ok(())
+        } else {
+            Err(ret)
+        }
+    }
 }
 
 pub struct Console;
