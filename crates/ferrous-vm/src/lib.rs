@@ -3,6 +3,7 @@ pub mod devices;
 pub mod error;
 pub mod instruction;
 pub mod memory;
+pub mod system_bus;
 pub mod trap;
 
 pub use cpu::*;

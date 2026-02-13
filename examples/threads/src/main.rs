@@ -6,6 +6,7 @@ use ferrous_user::{exit, println, spawn};
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
+    ferrous_user::init();
     println!("Main thread started");
 
     spawn(thread_func);

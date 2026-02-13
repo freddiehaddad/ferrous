@@ -69,9 +69,13 @@ impl ThreadManager {
         if let Some(current) = self.current_thread {
             // Save context
             if let Some(tcb) = self.threads.get_mut(&current) {
-                tcb.state = ThreadState::Ready;
+                // If the thread is Blocked, it was set by block_current_thread and shouldn't be set to Ready.
+                // We only set to Ready if it was Running.
+                if tcb.state == ThreadState::Running {
+                    tcb.state = ThreadState::Ready;
+                    self.scheduler.enqueue(current);
+                }
                 tcb.context.save_from(cpu);
-                self.scheduler.enqueue(current);
             }
         }
 
@@ -96,6 +100,23 @@ impl ThreadManager {
             }
             self.current_thread = None;
             // Schedule next immediately handled by caller or next trap
+        }
+    }
+
+    pub fn block_current_thread(&mut self) {
+        if let Some(current) = self.current_thread {
+            if let Some(tcb) = self.threads.get_mut(&current) {
+                tcb.state = ThreadState::Blocked;
+            }
+        }
+    }
+
+    pub fn wake_thread(&mut self, handle: ThreadHandle) {
+        if let Some(tcb) = self.threads.get_mut(&handle) {
+            if tcb.state == ThreadState::Blocked {
+                tcb.state = ThreadState::Ready;
+                self.scheduler.enqueue(handle);
+            }
         }
     }
 }

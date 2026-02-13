@@ -5,7 +5,7 @@ use ferrous_vm::{Cpu, Register, VirtAddr};
 pub enum ThreadState {
     Ready,
     Running,
-    Blocked, // For later synchronization
+    Blocked,
     Terminated { exit_code: i32 },
 }
 

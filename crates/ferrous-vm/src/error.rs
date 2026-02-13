@@ -25,6 +25,9 @@ pub enum MemoryError {
 
     #[error("access violation: tried to {op} at {addr:#x}")]
     AccessViolation { op: &'static str, addr: u32 },
+
+    #[error("device error: {0}")]
+    Device(#[from] DeviceError),
 }
 
 #[derive(Debug, Error, PartialEq)]

@@ -2,6 +2,8 @@
 
 use core::fmt;
 
+pub mod sync;
+
 pub mod syscall {
     use core::arch::asm;
 
@@ -68,9 +70,71 @@ pub mod syscall {
         }
         ret
     }
+
+    pub fn mutex_create() -> u32 {
+        let ret: u32;
+        unsafe {
+            #[cfg(target_arch = "riscv32")]
+            asm!(
+                "ecall",
+                in("a7") 110,
+                lateout("a0") ret,
+            );
+            #[cfg(not(target_arch = "riscv32"))]
+            {
+                ret = 0;
+            }
+        }
+        ret
+    }
+
+    pub fn mutex_acquire(id: u32) {
+        unsafe {
+            #[cfg(target_arch = "riscv32")]
+            asm!(
+                "ecall",
+                in("a0") id,
+                in("a7") 111,
+            );
+        }
+    }
+
+    pub fn mutex_release(id: u32) {
+        unsafe {
+            #[cfg(target_arch = "riscv32")]
+            asm!(
+                "ecall",
+                in("a0") id,
+                in("a7") 112,
+            );
+        }
+    }
 }
 
 pub struct Console;
+
+// We need a way to initialize this lazily or statically.
+// Since we don't have atomic/lazy_static easily in no_std without support,
+// we'll rely on a dedicated syscall to lock the console, OR
+// we expose a Mutex to the user.
+// But println! is a macro.
+// For now, let's just make console_write atomic in the kernel?
+// No, console_write IS atomic (one buffer).
+// The problem is `write_fmt` calls `write_str` multiple times.
+// We need to lock AROUND write_fmt.
+
+// Hack: Global boolean flag? No, race condition.
+// Real solution: Global Mutex initialized at start.
+// But we can't run code at start easily (pre-main).
+// We can have `ferrous_user_init()` called by `_start`.
+
+static mut CONSOLE_MUTEX_ID: u32 = 0;
+
+pub fn init() {
+    unsafe {
+        CONSOLE_MUTEX_ID = syscall::mutex_create();
+    }
+}
 
 impl fmt::Write for Console {
     fn write_str(&mut self, s: &str) -> fmt::Result {
@@ -81,7 +145,17 @@ impl fmt::Write for Console {
 
 pub fn _print(args: fmt::Arguments) {
     use fmt::Write;
+    unsafe {
+        if CONSOLE_MUTEX_ID != 0 {
+            syscall::mutex_acquire(CONSOLE_MUTEX_ID);
+        }
+    }
     Console.write_fmt(args).unwrap();
+    unsafe {
+        if CONSOLE_MUTEX_ID != 0 {
+            syscall::mutex_release(CONSOLE_MUTEX_ID);
+        }
+    }
 }
 
 #[macro_export]

@@ -118,18 +118,18 @@ Each assignment includes:
 
 ## 🛠️ Development Status
 
-**Current Status**: Architecture & Planning Phase
+**Current Status**: Iteration 4 Complete (Synchronization & Drivers)
 
 ### Implementation Roadmap
 
-- [ ] **Iteration 1**: Hello World (Weeks 1-3)
-- [ ] **Iteration 2**: Threading Basics (Weeks 4-6)
-- [ ] **Iteration 3**: Preemptive Scheduling (Weeks 7-8)
-- [ ] **Iteration 4**: Synchronization (Weeks 9-11)
-- [ ] **Iteration 5**: Virtual Memory (Weeks 12-15)
-- [ ] **Iteration 6**: File System (Weeks 16-19)
-- [ ] **Iteration 7**: Networking (Weeks 20-23)
-- [ ] **Iteration 8-11**: Polish, Testing, Documentation (Weeks 24-34)
+- [x] **Iteration 1**: Hello World (Completed)
+- [x] **Iteration 2**: Threading Basics (Completed)
+- [x] **Iteration 3**: Preemptive Scheduling (Completed)
+- [x] **Iteration 4**: Synchronization & Drivers (Completed)
+- [ ] **Iteration 5**: Virtual Memory (Planned)
+- [ ] **Iteration 6**: File System (Planned)
+- [ ] **Iteration 7**: Networking (Planned)
+- [ ] **Iteration 8-11**: Polish, Testing, Documentation (Planned)
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed iteration plans.
 

@@ -1,7 +1,11 @@
 pub mod loader;
 
 use ferrous_kernel::Kernel;
-use ferrous_vm::{ExitReason, SimpleMemory, VirtualMachine, VmConfig, VmError};
+use ferrous_vm::{
+    devices::uart::{UartDevice, UART_BASE, UART_SIZE},
+    system_bus::SystemBus,
+    ExitReason, VirtualMachine, VmConfig, VmError,
+};
 use std::error::Error;
 use std::path::Path;
 
@@ -11,7 +15,12 @@ pub struct Runtime {
 
 impl Runtime {
     pub fn new(memory_size: usize) -> Result<Self, VmError> {
-        let memory = Box::new(SimpleMemory::new(memory_size));
+        let mut bus = SystemBus::new(memory_size);
+
+        // Add UART
+        bus.add_device(UART_BASE, UART_SIZE, Box::new(UartDevice::new()));
+
+        let memory = Box::new(bus);
         // Kernel::new() returns KernelError, map it?
         let kernel = Kernel::new().map_err(|e| {
             VmError::Device(ferrous_vm::DeviceError::Io(format!(

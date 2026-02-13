@@ -20,6 +20,15 @@ pub enum Syscall {
         stack_top: u32,
     },
     ThreadYield,
+
+    // Synchronization
+    MutexCreate,
+    MutexAcquire {
+        id: u32,
+    },
+    MutexRelease {
+        id: u32,
+    },
 }
 
 #[derive(Debug)]
@@ -49,6 +58,9 @@ impl Syscall {
                 entry_point: VirtAddr::new(a0),
                 stack_top: a1,
             }),
+            110 => Ok(Syscall::MutexCreate),
+            111 => Ok(Syscall::MutexAcquire { id: a0 }),
+            112 => Ok(Syscall::MutexRelease { id: a0 }),
             _ => Err(SyscallError::InvalidSyscallNumber(a7)),
         }
     }

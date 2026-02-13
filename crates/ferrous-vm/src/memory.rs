@@ -93,10 +93,10 @@ pub struct VirtPageNum(pub u32);
 
 /// Memory Access trait
 pub trait Memory {
-    fn read_byte(&self, addr: PhysAddr) -> Result<u8, crate::error::MemoryError>;
+    fn read_byte(&mut self, addr: PhysAddr) -> Result<u8, crate::error::MemoryError>;
     fn write_byte(&mut self, addr: PhysAddr, val: u8) -> Result<(), crate::error::MemoryError>;
 
-    fn read_word(&self, addr: PhysAddr) -> Result<u32, crate::error::MemoryError> {
+    fn read_word(&mut self, addr: PhysAddr) -> Result<u32, crate::error::MemoryError> {
         let b0 = self.read_byte(addr)? as u32;
         let b1 = self.read_byte(addr + 1)? as u32;
         let b2 = self.read_byte(addr + 2)? as u32;
@@ -141,7 +141,7 @@ impl SimpleMemory {
 }
 
 impl Memory for SimpleMemory {
-    fn read_byte(&self, addr: PhysAddr) -> Result<u8, crate::error::MemoryError> {
+    fn read_byte(&mut self, addr: PhysAddr) -> Result<u8, crate::error::MemoryError> {
         if addr.0 >= self.base_addr {
             let offset = (addr.0 - self.base_addr) as usize;
             if offset < self.data.len() {
