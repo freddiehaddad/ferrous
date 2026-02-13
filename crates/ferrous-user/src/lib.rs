@@ -109,6 +109,24 @@ pub mod syscall {
             );
         }
     }
+
+    pub fn sbrk(increment: i32) -> u32 {
+        let ret: u32;
+        unsafe {
+            #[cfg(target_arch = "riscv32")]
+            asm!(
+                "ecall",
+                in("a0") increment,
+                in("a7") 214,
+                lateout("a0") ret,
+            );
+            #[cfg(not(target_arch = "riscv32"))]
+            {
+                ret = 0;
+            }
+        }
+        ret
+    }
 }
 
 pub struct Console;

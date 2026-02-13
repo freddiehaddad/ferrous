@@ -36,6 +36,7 @@ impl ThreadManager {
                 context: tcb::SavedContext::new(VirtAddr::new(cpu.pc), cpu.regs[2], cpu.satp),
                 stack_pointer: cpu.regs[2],
                 kernel_stack: 0,
+                program_break: 0x8040_0000, // Default heap start (4MB mark)
             };
             self.threads.insert(handle, tcb);
             self.current_thread = Some(handle);
@@ -55,14 +56,14 @@ impl ThreadManager {
         // Since we are creating a thread in the SAME process (conceptually for now),
         // we share the address space (SATP).
         // If current_thread is set, use its SATP.
-        let satp = if let Some(current) = self.current_thread {
+        let (satp, program_break) = if let Some(current) = self.current_thread {
             if let Some(parent) = self.threads.get(&current) {
-                parent.context.satp
+                (parent.context.satp, parent.program_break)
             } else {
-                0 // Should not happen
+                (0, 0x8040_0000)
             }
         } else {
-            0 // Kernel/Boot SATP (should be set by now if ensure_current_thread called)
+            (0, 0x8040_0000)
         };
 
         let tcb = ThreadControlBlock {
@@ -71,6 +72,7 @@ impl ThreadManager {
             context: tcb::SavedContext::new(entry_point, stack_top, satp),
             stack_pointer: stack_top,
             kernel_stack: 0, // Assume no kernel stack switch for now (running in user mode usually)
+            program_break,
         };
 
         self.threads.insert(handle, tcb);

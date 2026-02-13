@@ -169,6 +169,77 @@ impl Kernel {
                 }
                 Ok(VirtAddr::new(cpu.pc + 4))
             }
+            syscall::Syscall::Sbrk { increment } => {
+                let current_handle =
+                    self.thread_manager
+                        .current_thread
+                        .ok_or(TrapError::HandlerPanic(
+                            "Sbrk called without current thread".into(),
+                        ))?;
+
+                // Get current program break
+                let mut current_break = 0;
+                let mut root_ppn = 0;
+
+                if let Some(tcb) = self.thread_manager.threads.get(&current_handle) {
+                    current_break = tcb.program_break;
+                    root_ppn = tcb.context.satp & 0x003F_FFFF; // Extract PPN from SATP
+                }
+
+                if increment == 0 {
+                    syscall::Syscall::encode_result(
+                        Ok(syscall::SyscallReturn::Value(current_break as i64)),
+                        cpu,
+                    );
+                    return Ok(VirtAddr::new(cpu.pc + 4));
+                }
+
+                let new_break = (current_break as i32 + increment) as u32;
+
+                // Align to page boundary for mapping check
+                let old_page_end =
+                    (current_break + memory::PAGE_SIZE - 1) & !(memory::PAGE_SIZE - 1);
+                let new_page_end = (new_break + memory::PAGE_SIZE - 1) & !(memory::PAGE_SIZE - 1);
+
+                if increment > 0 {
+                    // Growing
+                    if new_page_end > old_page_end {
+                        // Need to allocate new pages
+                        let start_page = old_page_end;
+                        let end_page = new_page_end;
+                        let mut page_addr = start_page;
+
+                        while page_addr < end_page {
+                            // Alloc frame
+                            let frame = memory::alloc_frame();
+                            // Map
+                            memory::map_page(
+                                memory,
+                                root_ppn,
+                                page_addr,
+                                frame,
+                                memory::PTE_R | memory::PTE_W | memory::PTE_U, // User RW
+                            )
+                            .map_err(|e| TrapError::HandlerPanic(e))?;
+
+                            page_addr += memory::PAGE_SIZE;
+                        }
+                    }
+                } else {
+                    // Shrinking (Not implemented yet for safety/simplicity, just update break)
+                }
+
+                // Update TCB
+                if let Some(tcb) = self.thread_manager.threads.get_mut(&current_handle) {
+                    tcb.program_break = new_break;
+                }
+
+                syscall::Syscall::encode_result(
+                    Ok(syscall::SyscallReturn::Value(current_break as i64)),
+                    cpu,
+                );
+                Ok(VirtAddr::new(cpu.pc + 4))
+            }
         }
     }
 }

@@ -29,6 +29,11 @@ pub enum Syscall {
     MutexRelease {
         id: u32,
     },
+
+    // Memory
+    Sbrk {
+        increment: i32,
+    },
 }
 
 #[derive(Debug)]
@@ -61,6 +66,9 @@ impl Syscall {
             110 => Ok(Syscall::MutexCreate),
             111 => Ok(Syscall::MutexAcquire { id: a0 }),
             112 => Ok(Syscall::MutexRelease { id: a0 }),
+            214 => Ok(Syscall::Sbrk {
+                increment: a0 as i32,
+            }),
             _ => Err(SyscallError::InvalidSyscallNumber(a7)),
         }
     }

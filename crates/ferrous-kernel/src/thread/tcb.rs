@@ -15,6 +15,7 @@ pub struct ThreadControlBlock {
     pub context: SavedContext,
     pub stack_pointer: u32,
     pub kernel_stack: u32, // For kernel stack if needed
+    pub program_break: u32,
 }
 
 #[derive(Debug, Clone, Copy)]
