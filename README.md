@@ -118,7 +118,7 @@ Each assignment includes:
 
 ## 🛠️ Development Status
 
-**Current Status**: Iteration 4 Complete (Synchronization & Drivers)
+**Current Status**: Iteration 5 Complete (Virtual Memory & Dynamic Allocation)
 
 ### Implementation Roadmap
 
@@ -126,7 +126,7 @@ Each assignment includes:
 - [x] **Iteration 2**: Threading Basics (Completed)
 - [x] **Iteration 3**: Preemptive Scheduling (Completed)
 - [x] **Iteration 4**: Synchronization & Drivers (Completed)
-- [ ] **Iteration 5**: Virtual Memory (Planned)
+- [x] **Iteration 5**: Virtual Memory (Completed)
 - [ ] **Iteration 6**: File System (Planned)
 - [ ] **Iteration 7**: Networking (Planned)
 - [ ] **Iteration 8-11**: Polish, Testing, Documentation (Planned)
