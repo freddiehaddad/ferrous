@@ -4,7 +4,7 @@ use ferrous_vm::{Cpu, Register, VirtAddr};
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum Syscall {
     // I/O
-    ConsoleWrite {
+    FileWrite {
         fd: u32,
         buf_ptr: VirtAddr,
         len: usize,
@@ -13,6 +13,9 @@ pub enum Syscall {
         fd: u32,
         buf_ptr: VirtAddr,
         len: usize,
+    },
+    Pipe {
+        pipe_array_ptr: VirtAddr, // Pointer to array of 2 u32s (read_fd, write_fd)
     },
     Exit {
         code: i32,
@@ -86,7 +89,7 @@ impl Syscall {
         let a7 = cpu.read_reg(Register::new(17).unwrap()); // syscall number
 
         match a7 {
-            64 => Ok(Syscall::ConsoleWrite {
+            64 => Ok(Syscall::FileWrite {
                 fd: a0,
                 buf_ptr: VirtAddr::new(a1),
                 len: a2 as usize,
@@ -95,6 +98,9 @@ impl Syscall {
                 fd: a0,
                 buf_ptr: VirtAddr::new(a1),
                 len: a2 as usize,
+            }),
+            22 => Ok(Syscall::Pipe {
+                pipe_array_ptr: VirtAddr::new(a0),
             }),
             56 => Ok(Syscall::FileOpen {
                 path_ptr: VirtAddr::new(a0),

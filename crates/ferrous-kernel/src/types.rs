@@ -1,7 +1,7 @@
-use std::num::NonZeroU32;
+use core::num::NonZeroU32;
 
 /// Thread identifier
-#[derive(Debug, Copy, Clone, Eq, PartialEq, Hash)]
+#[derive(Debug, Copy, Clone, Eq, PartialEq, Hash, Ord, PartialOrd)]
 pub struct ThreadHandle(NonZeroU32);
 
 impl ThreadHandle {

@@ -1,3 +1,9 @@
+#![no_std]
+
+extern crate alloc;
+
+use alloc::boxed::Box;
+
 pub mod cpu;
 pub mod devices;
 pub mod error;

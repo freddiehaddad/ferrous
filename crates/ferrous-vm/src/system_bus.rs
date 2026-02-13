@@ -1,6 +1,7 @@
 use crate::devices::{Device, DeviceManager};
 use crate::error::MemoryError;
 use crate::memory::{Memory, PhysAddr, SimpleMemory};
+use alloc::boxed::Box;
 
 pub struct SystemBus {
     ram: SimpleMemory,

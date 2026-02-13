@@ -1,5 +1,7 @@
+use alloc::vec;
+use alloc::vec::Vec;
 use bytemuck::{Pod, Zeroable};
-use std::ops::{Add, AddAssign, Sub, SubAssign};
+use core::ops::{Add, AddAssign, Sub, SubAssign};
 
 /// Physical memory address (cannot be dereferenced directly)
 #[derive(Debug, Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Pod, Zeroable)]

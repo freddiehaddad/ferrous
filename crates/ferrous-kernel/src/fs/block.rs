@@ -1,3 +1,5 @@
+use alloc::format;
+use alloc::string::{String, ToString};
 use ferrous_vm::{Memory, PhysAddr};
 
 pub const BLOCK_DEVICE_BASE: u32 = 0x2000_0000;

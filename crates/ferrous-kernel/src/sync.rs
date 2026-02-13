@@ -1,5 +1,5 @@
 use crate::types::ThreadHandle;
-use std::collections::VecDeque;
+use alloc::collections::VecDeque;
 
 pub struct Mutex {
     pub id: u32,

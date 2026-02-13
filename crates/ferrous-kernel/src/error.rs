@@ -1,19 +1,36 @@
-use thiserror::Error;
+use alloc::string::String;
+use core::fmt;
 
-#[derive(Debug, Error)]
+#[derive(Debug)]
 pub enum KernelError {
-    #[error("initialization error: {0}")]
     Init(String),
-
-    #[error("memory initialization error: {0}")]
     InitializationError(String),
 }
 
-#[derive(Debug, Error)]
-pub enum SyscallError {
-    #[error("invalid syscall number: {0}")]
-    InvalidSyscallNumber(u32),
+impl fmt::Display for KernelError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            KernelError::Init(s) => write!(f, "initialization error: {}", s),
+            KernelError::InitializationError(s) => write!(f, "memory initialization error: {}", s),
+        }
+    }
+}
 
-    #[error("invalid argument")]
+impl core::error::Error for KernelError {}
+
+#[derive(Debug)]
+pub enum SyscallError {
+    InvalidSyscallNumber(u32),
     InvalidArgument,
 }
+
+impl fmt::Display for SyscallError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        match self {
+            SyscallError::InvalidSyscallNumber(n) => write!(f, "invalid syscall number: {}", n),
+            SyscallError::InvalidArgument => write!(f, "invalid argument"),
+        }
+    }
+}
+
+impl core::error::Error for SyscallError {}

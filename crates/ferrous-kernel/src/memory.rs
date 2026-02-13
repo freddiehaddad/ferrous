@@ -1,3 +1,5 @@
+use alloc::format;
+use alloc::string::String;
 use ferrous_vm::{Memory, PhysAddr};
 use log::debug;
 

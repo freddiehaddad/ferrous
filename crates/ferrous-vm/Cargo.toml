@@ -8,9 +8,12 @@ repository.workspace = true
 description = "RISC-V simulator for Ferrous OS"
 
 [dependencies]
-thiserror = "2.0"
 log = "0.4"
 bytemuck = { version = "1.14", features = ["derive"] }
+
+[features]
+default = ["std"]
+std = []
 
 [dev-dependencies]
 proptest = "1.4"

@@ -1,5 +1,5 @@
 use crate::types::ThreadHandle;
-use std::collections::VecDeque;
+use alloc::collections::VecDeque;
 
 pub trait Scheduler: Send {
     /// Select next thread to run

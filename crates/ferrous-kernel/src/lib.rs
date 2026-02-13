@@ -1,3 +1,7 @@
+#![no_std]
+
+extern crate alloc;
+
 pub mod error;
 pub mod fs;
 pub mod memory;
@@ -9,16 +13,31 @@ pub mod types;
 use crate::error::KernelError;
 use crate::sync::Mutex;
 use crate::thread::tcb::FileDescriptor;
+use alloc::boxed::Box;
+use alloc::collections::BTreeMap;
+use alloc::collections::VecDeque;
+use alloc::format;
+use alloc::string::String;
+use alloc::vec;
+use alloc::vec::Vec;
 use ferrous_vm::{Cpu, Memory, PhysAddr, TrapCause, TrapError, TrapHandler, VirtAddr};
 use goblin::elf;
 use log::{debug, info, warn};
-use std::collections::HashMap;
 use thread::ThreadManager;
+
+pub struct Pipe {
+    pub buffer: VecDeque<u8>,
+    pub read_open: bool,
+    pub write_open: bool,
+    pub wait_queue: VecDeque<crate::types::ThreadHandle>,
+}
 
 pub struct Kernel {
     thread_manager: ThreadManager,
-    mutexes: HashMap<u32, Mutex>,
+    mutexes: BTreeMap<u32, Mutex>,
     next_mutex_id: u32,
+    pipes: BTreeMap<u32, Pipe>,
+    next_pipe_id: u32,
     file_system: Option<fs::FileSystem>,
 }
 
@@ -31,8 +50,10 @@ impl Kernel {
     pub fn new() -> Result<Self, KernelError> {
         Ok(Self {
             thread_manager: ThreadManager::new(),
-            mutexes: HashMap::new(),
+            mutexes: BTreeMap::new(),
             next_mutex_id: 1,
+            pipes: BTreeMap::new(),
+            next_pipe_id: 1,
             file_system: None,
         })
     }
@@ -256,29 +277,116 @@ impl Kernel {
         };
 
         match syscall {
-            syscall::Syscall::ConsoleWrite {
-                fd: _,
-                buf_ptr,
-                len,
-            } => {
-                let mut buf = vec![0u8; len];
-                copy_from_user(memory, satp, buf_ptr, &mut buf)?;
+            syscall::Syscall::Pipe { pipe_array_ptr } => {
+                let current_handle = self
+                    .thread_manager
+                    .current_thread
+                    .ok_or(TrapError::HandlerPanic("Pipe: No current thread".into()))?;
 
-                for byte in buf {
-                    // Driver: Write to UART
-                    memory
-                        .write_word(
-                            ferrous_vm::PhysAddr::new(UART_BASE + UART_THR_OFFSET),
-                            byte as u32,
-                        )
-                        .map_err(|e| {
-                            TrapError::HandlerPanic(format!("UART write error: {:?}", e))
-                        })?;
-                }
+                let pipe_id = self.next_pipe_id;
+                self.next_pipe_id += 1;
+
+                let pipe = Pipe {
+                    buffer: VecDeque::new(),
+                    read_open: true,
+                    write_open: true,
+                    wait_queue: VecDeque::new(),
+                };
+                self.pipes.insert(pipe_id, pipe);
+
+                let tcb = self
+                    .thread_manager
+                    .threads
+                    .get_mut(&current_handle)
+                    .unwrap();
+
+                // Read FD
+                let read_fd = tcb.file_descriptors.len() as u32;
+                tcb.file_descriptors.push(Some(FileDescriptor::Pipe {
+                    pipe_id,
+                    is_write: false,
+                }));
+
+                // Write FD
+                let write_fd = tcb.file_descriptors.len() as u32;
+                tcb.file_descriptors.push(Some(FileDescriptor::Pipe {
+                    pipe_id,
+                    is_write: true,
+                }));
+
+                let satp = tcb.context.satp;
+                let mut fd_array = [0u8; 8];
+                fd_array[0..4].copy_from_slice(&read_fd.to_le_bytes());
+                fd_array[4..8].copy_from_slice(&write_fd.to_le_bytes());
+                copy_to_user(memory, satp, &fd_array, pipe_array_ptr)?;
 
                 syscall::Syscall::encode_result(Ok(syscall::SyscallReturn::Success), cpu);
                 Ok(VirtAddr::new(cpu.pc + 4))
             }
+            syscall::Syscall::FileWrite { fd, buf_ptr, len } => {
+                let current_handle =
+                    self.thread_manager
+                        .current_thread
+                        .ok_or(TrapError::HandlerPanic(
+                            "FileWrite: No current thread".into(),
+                        ))?;
+
+                let tcb = self.thread_manager.threads.get(&current_handle).unwrap();
+                let satp = tcb.context.satp;
+                let descriptor = if (fd as usize) < tcb.file_descriptors.len() {
+                    tcb.file_descriptors[fd as usize].clone()
+                } else {
+                    None
+                };
+
+                let mut buf = vec![0u8; len];
+                copy_from_user(memory, satp, buf_ptr, &mut buf)?;
+
+                let mut result = Ok(syscall::SyscallReturn::Value(len as i64));
+                let mut to_wake = Vec::new();
+
+                // Check for UART (Stdout/Stderr)
+                // If fd is 1 or 2 and not remapped, output to UART
+                if (fd == 1 || fd == 2) && descriptor.is_none() {
+                    for byte in buf {
+                        memory
+                            .write_word(
+                                ferrous_vm::PhysAddr::new(UART_BASE + UART_THR_OFFSET),
+                                byte as u32,
+                            )
+                            .map_err(|e| {
+                                TrapError::HandlerPanic(format!("UART write error: {:?}", e))
+                            })?;
+                    }
+                } else if let Some(FileDescriptor::Pipe { pipe_id, is_write }) = descriptor {
+                    if !is_write {
+                        result = Err(crate::error::SyscallError::InvalidSyscallNumber(0));
+                    } else if let Some(pipe) = self.pipes.get_mut(&pipe_id) {
+                        if !pipe.read_open {
+                            // Broken pipe
+                            result = Err(crate::error::SyscallError::InvalidSyscallNumber(0));
+                        } else {
+                            pipe.buffer.extend(buf.iter());
+                            while let Some(h) = pipe.wait_queue.pop_front() {
+                                to_wake.push(h);
+                            }
+                        }
+                    } else {
+                        result = Err(crate::error::SyscallError::InvalidSyscallNumber(0));
+                    }
+                } else {
+                    // Unknown FD or File (not supported)
+                    result = Err(crate::error::SyscallError::InvalidSyscallNumber(0));
+                }
+
+                for h in to_wake {
+                    self.thread_manager.wake_thread(h);
+                }
+
+                syscall::Syscall::encode_result(result, cpu);
+                Ok(VirtAddr::new(cpu.pc + 4))
+            }
+
             syscall::Syscall::ConsoleRead {
                 fd: _,
                 buf_ptr,
@@ -597,7 +705,7 @@ impl Kernel {
                             .unwrap();
                         // Find free FD
                         let fd_idx = tcb.file_descriptors.len();
-                        tcb.file_descriptors.push(Some(FileDescriptor {
+                        tcb.file_descriptors.push(Some(FileDescriptor::File {
                             inode_id: id,
                             offset: 0,
                             flags: 0,
@@ -655,88 +763,156 @@ impl Kernel {
                             "FileRead: No current thread".into(),
                         ))?;
 
-                let (inode_id, offset, satp) = {
+                let (descriptor, satp) = {
                     let tcb = self.thread_manager.threads.get(&current_handle).unwrap();
-                    if (fd as usize) < tcb.file_descriptors.len() {
-                        if let Some(desc) = &tcb.file_descriptors[fd as usize] {
-                            (desc.inode_id, desc.offset, tcb.context.satp)
-                        } else {
-                            syscall::Syscall::encode_result(
-                                Err(crate::error::SyscallError::InvalidSyscallNumber(0)),
-                                cpu,
-                            );
-                            return Ok(VirtAddr::new(cpu.pc + 4));
-                        }
+                    let desc = if (fd as usize) < tcb.file_descriptors.len() {
+                        tcb.file_descriptors[fd as usize].clone()
                     } else {
+                        None
+                    };
+                    (desc, tcb.context.satp)
+                };
+
+                if let Some(FileDescriptor::Pipe { pipe_id, is_write }) = descriptor {
+                    if is_write {
                         syscall::Syscall::encode_result(
                             Err(crate::error::SyscallError::InvalidSyscallNumber(0)),
                             cpu,
                         );
                         return Ok(VirtAddr::new(cpu.pc + 4));
                     }
-                };
 
-                if let Some(fs) = &self.file_system {
-                    debug!("FileRead: Reading inode {}", inode_id);
-                    let inode = fs
-                        .read_inode(memory, inode_id)
-                        .map_err(|e| TrapError::HandlerPanic(format!("Read Inode: {:?}", e)))?;
-                    debug!("FileRead: Inode size: {}", inode.size);
+                    let mut should_block = false;
+                    let mut result_val = 0;
 
-                    let mut total_read = 0;
-                    let mut temp_buf = [0u8; 512];
-                    let mut current_offset = offset;
-                    let mut remaining = len;
-
-                    while remaining > 0 {
-                        let chunk_size = remaining.min(512);
-                        debug!(
-                            "FileRead: Reading chunk size {} at offset {}",
-                            chunk_size, current_offset
+                    if let Some(pipe) = self.pipes.get_mut(&pipe_id) {
+                        if pipe.buffer.is_empty() {
+                            if !pipe.write_open {
+                                // EOF
+                                result_val = 0;
+                            } else {
+                                // Block
+                                pipe.wait_queue.push_back(current_handle);
+                                should_block = true;
+                            }
+                        } else {
+                            // Read available data
+                            let mut read_bytes = Vec::new();
+                            while read_bytes.len() < len {
+                                if let Some(b) = pipe.buffer.pop_front() {
+                                    read_bytes.push(b);
+                                } else {
+                                    break;
+                                }
+                            }
+                            copy_to_user(memory, satp, &read_bytes, buf_ptr)?;
+                            result_val = read_bytes.len() as i64;
+                        }
+                    } else {
+                        // Invalid Pipe
+                        syscall::Syscall::encode_result(
+                            Err(crate::error::SyscallError::InvalidSyscallNumber(0)),
+                            cpu,
                         );
-                        let bytes = fs
-                            .read_data(memory, &inode, current_offset, &mut temp_buf[..chunk_size])
-                            .map_err(|e| TrapError::HandlerPanic(format!("Read Data: {:?}", e)))?;
+                        return Ok(VirtAddr::new(cpu.pc + 4));
+                    }
 
-                        debug!("FileRead: Read {} bytes", bytes);
-                        if bytes == 0 {
-                            break;
+                    if should_block {
+                        self.thread_manager.block_current_thread();
+                        self.thread_manager.yield_thread(cpu);
+                        // Do not advance PC, retry syscall when woken
+                        return Ok(VirtAddr::new(cpu.pc));
+                    } else {
+                        syscall::Syscall::encode_result(
+                            Ok(syscall::SyscallReturn::Value(result_val)),
+                            cpu,
+                        );
+                        return Ok(VirtAddr::new(cpu.pc + 4));
+                    }
+                } else if let Some(FileDescriptor::File {
+                    inode_id,
+                    offset,
+                    flags: _,
+                }) = descriptor
+                {
+                    // Need mutable offset but I cloned it.
+                    // I will read data then update TCB at the end.
+
+                    if let Some(fs) = &self.file_system {
+                        debug!("FileRead: Reading inode {}", inode_id);
+                        let inode = fs
+                            .read_inode(memory, inode_id)
+                            .map_err(|e| TrapError::HandlerPanic(format!("Read Inode: {:?}", e)))?;
+                        debug!("FileRead: Inode size: {}", inode.size);
+
+                        let mut total_read = 0;
+                        let mut temp_buf = [0u8; 512];
+                        let mut current_offset = offset;
+                        let mut remaining = len;
+
+                        while remaining > 0 {
+                            let chunk_size = remaining.min(512);
+                            debug!(
+                                "FileRead: Reading chunk size {} at offset {}",
+                                chunk_size, current_offset
+                            );
+                            let bytes = fs
+                                .read_data(
+                                    memory,
+                                    &inode,
+                                    current_offset,
+                                    &mut temp_buf[..chunk_size],
+                                )
+                                .map_err(|e| {
+                                    TrapError::HandlerPanic(format!("Read Data: {:?}", e))
+                                })?;
+
+                            if bytes == 0 {
+                                break;
+                            }
+
+                            copy_to_user(
+                                memory,
+                                satp,
+                                &temp_buf[..bytes],
+                                VirtAddr::new(buf_ptr.val() + total_read as u32),
+                            )?;
+
+                            total_read += bytes;
+                            current_offset += bytes as u32;
+                            remaining -= bytes;
                         }
 
-                        debug!("FileRead: Copying to user at {:?}", buf_ptr);
-                        copy_to_user(
-                            memory,
-                            satp,
-                            &temp_buf[..bytes],
-                            VirtAddr::new(buf_ptr.val() + total_read as u32),
-                        )?;
+                        let tcb = self
+                            .thread_manager
+                            .threads
+                            .get_mut(&current_handle)
+                            .unwrap();
+                        if let Some(Some(FileDescriptor::File { offset, .. })) =
+                            tcb.file_descriptors.get_mut(fd as usize)
+                        {
+                            *offset = current_offset;
+                        }
 
-                        total_read += bytes;
-                        current_offset += bytes as u32;
-                        remaining -= bytes;
+                        syscall::Syscall::encode_result(
+                            Ok(syscall::SyscallReturn::Value(total_read as i64)),
+                            cpu,
+                        );
+                    } else {
+                        syscall::Syscall::encode_result(
+                            Err(crate::error::SyscallError::InvalidSyscallNumber(0)),
+                            cpu,
+                        );
                     }
-
-                    debug!("FileRead: Updating offset to {}", current_offset);
-                    let tcb = self
-                        .thread_manager
-                        .threads
-                        .get_mut(&current_handle)
-                        .unwrap();
-                    if let Some(desc) = tcb.file_descriptors[fd as usize].as_mut() {
-                        desc.offset = current_offset;
-                    }
-
-                    syscall::Syscall::encode_result(
-                        Ok(syscall::SyscallReturn::Value(total_read as i64)),
-                        cpu,
-                    );
+                    Ok(VirtAddr::new(cpu.pc + 4))
                 } else {
+                    // Invalid FD
                     syscall::Syscall::encode_result(
                         Err(crate::error::SyscallError::InvalidSyscallNumber(0)),
                         cpu,
                     );
+                    Ok(VirtAddr::new(cpu.pc + 4))
                 }
-                Ok(VirtAddr::new(cpu.pc + 4))
             }
 
             syscall::Syscall::FileClose { fd } => {
@@ -747,19 +923,59 @@ impl Kernel {
                             "FileClose: No current thread".into(),
                         ))?;
 
-                let tcb = self
-                    .thread_manager
-                    .threads
-                    .get_mut(&current_handle)
-                    .unwrap();
-                if (fd as usize) < tcb.file_descriptors.len() {
-                    tcb.file_descriptors[fd as usize] = None;
-                    syscall::Syscall::encode_result(Ok(syscall::SyscallReturn::Success), cpu);
-                } else {
-                    syscall::Syscall::encode_result(
-                        Err(crate::error::SyscallError::InvalidSyscallNumber(0)),
-                        cpu,
-                    );
+                let closed_fd = {
+                    let tcb = self
+                        .thread_manager
+                        .threads
+                        .get_mut(&current_handle)
+                        .unwrap();
+                    if (fd as usize) < tcb.file_descriptors.len() {
+                        tcb.file_descriptors[fd as usize].take()
+                    } else {
+                        None
+                    }
+                };
+
+                match closed_fd {
+                    Some(FileDescriptor::Pipe { pipe_id, is_write }) => {
+                        let mut should_remove = false;
+                        let mut to_wake = Vec::new();
+
+                        if let Some(pipe) = self.pipes.get_mut(&pipe_id) {
+                            if is_write {
+                                pipe.write_open = false;
+                                // Wake readers for EOF
+                                while let Some(h) = pipe.wait_queue.pop_front() {
+                                    to_wake.push(h);
+                                }
+                            } else {
+                                pipe.read_open = false;
+                            }
+
+                            if !pipe.read_open && !pipe.write_open {
+                                should_remove = true;
+                            }
+                        }
+
+                        if should_remove {
+                            self.pipes.remove(&pipe_id);
+                        }
+
+                        for h in to_wake {
+                            self.thread_manager.wake_thread(h);
+                        }
+
+                        syscall::Syscall::encode_result(Ok(syscall::SyscallReturn::Success), cpu);
+                    }
+                    Some(_) => {
+                        syscall::Syscall::encode_result(Ok(syscall::SyscallReturn::Success), cpu);
+                    }
+                    None => {
+                        syscall::Syscall::encode_result(
+                            Err(crate::error::SyscallError::InvalidSyscallNumber(0)),
+                            cpu,
+                        );
+                    }
                 }
                 Ok(VirtAddr::new(cpu.pc + 4))
             }
@@ -1019,7 +1235,7 @@ impl Kernel {
 }
 
 impl TrapHandler for Kernel {
-    fn as_any(&mut self) -> &mut dyn std::any::Any {
+    fn as_any(&mut self) -> &mut dyn core::any::Any {
         self
     }
 

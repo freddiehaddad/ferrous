@@ -1,4 +1,5 @@
 use crate::error::KernelError;
+use alloc::format;
 use ferrous_fs::{DirEntry, Inode, SuperBlock, BLOCK_SIZE, INODE_DIRECT_POINTERS, MAGIC};
 use ferrous_vm::Memory;
 use log::{error, info};
@@ -142,10 +143,37 @@ impl FileSystem {
             let block_id = if (block_index as usize) < INODE_DIRECT_POINTERS {
                 inode.direct_ptrs[block_index as usize]
             } else {
-                // Indirect pointers not implemented yet
-                return Err(KernelError::InitializationError(
-                    "Indirect pointers not supported yet".into(),
-                ));
+                let indirect_index = block_index - INODE_DIRECT_POINTERS as u32;
+                let pointers_per_block = (BLOCK_SIZE / 4) as u32;
+
+                if indirect_index < pointers_per_block {
+                    let indirect_ptr_block = inode.indirect_ptr;
+                    if indirect_ptr_block == 0 {
+                        0
+                    } else {
+                        // Read the indirect block
+                        let mut indirect_buf = [0u8; BLOCK_SIZE];
+                        if let Err(e) =
+                            block::read_sector(memory, indirect_ptr_block, &mut indirect_buf)
+                        {
+                            return Err(KernelError::InitializationError(format!(
+                                "Indirect Block Read Error: {}",
+                                e
+                            )));
+                        }
+
+                        // Read u32 from buffer
+                        unsafe {
+                            let ptr = indirect_buf.as_ptr().add((indirect_index * 4) as usize)
+                                as *const u32;
+                            ptr.read_unaligned()
+                        }
+                    }
+                } else {
+                    return Err(KernelError::InitializationError(
+                        "Double indirect pointers not supported yet".into(),
+                    ));
+                }
             };
 
             if block_id == 0 {

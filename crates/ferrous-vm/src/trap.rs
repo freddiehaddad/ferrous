@@ -31,7 +31,7 @@ pub enum TrapCause {
 
 /// Trait that the kernel implements to handle traps
 pub trait TrapHandler: Send {
-    fn as_any(&mut self) -> &mut dyn std::any::Any;
+    fn as_any(&mut self) -> &mut dyn core::any::Any;
 
     /// Handle a trap. Returns the address to resume execution.
     fn handle_trap(

@@ -1,7 +1,12 @@
+#[cfg(feature = "std")]
 pub mod block;
+#[cfg(feature = "std")]
 pub mod uart;
 
 use crate::error::DeviceError;
+use alloc::boxed::Box;
+use alloc::string::String;
+use alloc::vec::Vec;
 
 pub struct DeviceInterrupt {
     pub device_name: String,

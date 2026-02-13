@@ -2,13 +2,16 @@ pub mod scheduler;
 pub mod tcb;
 
 use crate::types::ThreadHandle;
+use alloc::boxed::Box;
+use alloc::collections::BTreeMap;
+use alloc::string::String;
+use alloc::vec::Vec;
 use ferrous_vm::{Cpu, PrivilegeMode, VirtAddr};
 use scheduler::{RoundRobinScheduler, Scheduler};
-use std::collections::HashMap;
 use tcb::{ThreadControlBlock, ThreadState};
 
 pub struct ThreadManager {
-    pub threads: HashMap<ThreadHandle, ThreadControlBlock>,
+    pub threads: BTreeMap<ThreadHandle, ThreadControlBlock>,
     pub scheduler: Box<dyn Scheduler>,
     pub current_thread: Option<ThreadHandle>,
     pub next_handle: u32,
@@ -23,7 +26,7 @@ impl Default for ThreadManager {
 impl ThreadManager {
     pub fn new() -> Self {
         Self {
-            threads: HashMap::new(),
+            threads: BTreeMap::new(),
             scheduler: Box::new(RoundRobinScheduler::new()),
             current_thread: None,
             next_handle: 1,

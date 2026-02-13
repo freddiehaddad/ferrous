@@ -1,4 +1,5 @@
 use crate::types::ThreadHandle;
+use alloc::vec::Vec;
 use ferrous_vm::{Cpu, PrivilegeMode, VirtAddr};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -10,10 +11,17 @@ pub enum ThreadState {
     Terminated { exit_code: i32 },
 }
 
-pub struct FileDescriptor {
-    pub inode_id: u32,
-    pub offset: u32,
-    pub flags: u32,
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum FileDescriptor {
+    File {
+        inode_id: u32,
+        offset: u32,
+        flags: u32,
+    },
+    Pipe {
+        pipe_id: u32,
+        is_write: bool,
+    },
 }
 
 pub struct ThreadControlBlock {
