@@ -177,21 +177,36 @@ pub trait TrapHandler {
 
 ## 🧪 Testing
 
-Ferrous uses multiple testing strategies:
+Ferrous separates tests into **Host Tests** (Kernel logic, VM simulation) and **Guest Tests** (User programs running inside the VM).
+
+### Host Tests (Run on your machine)
+
+These tests check the correctness of the kernel algorithms and VM behavior natively.
 
 ```bash
-# Unit tests (per module)
-cargo test --lib
+# Run all host tests (Kernel, VM, Runtime)
+cargo test -p ferrous-vm -p ferrous-kernel -p ferrous-runtime -p ferrous-cli
 
-# Integration tests (cross-component)
-cargo test --test '*'
+# Run unit tests for a specific crate
+cargo test -p ferrous-kernel
 
-# Specific assignment tests
-cargo test --package assignment-1-threads
-
-# Run with logging
-RUST_LOG=debug cargo test
+# Run with logging enabled
+RUST_LOG=debug cargo test -p ferrous-kernel
 ```
+
+### Guest Programs (Run inside Ferrous)
+
+To test user programs, you must compile them for the RISC-V target and run them using the CLI.
+
+```bash
+# 1. Build the user program
+cargo build --release --target riscv32i-unknown-none-elf -p hello-world
+
+# 2. Run it inside the VM
+cargo run -p ferrous-cli -- run target/riscv32i-unknown-none-elf/release/hello-world
+```
+
+> **Note:** Do NOT run `cargo test --workspace` indiscriminately, as it will attempt to compile user programs for the host architecture, causing linker errors.
 
 ## 🤝 Contributing
 

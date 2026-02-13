@@ -1,1 +1,6 @@
 /target
+*.img
+*.d
+*.o
+*.a
+

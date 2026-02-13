@@ -1,4 +1,5 @@
 pub mod scheduler;
+pub mod syscalls;
 pub mod tcb;
 
 use crate::types::ThreadHandle;

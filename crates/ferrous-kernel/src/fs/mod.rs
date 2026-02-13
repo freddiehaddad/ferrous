@@ -1,16 +1,30 @@
 use crate::error::KernelError;
+use alloc::collections::VecDeque;
 use alloc::format;
 use ferrous_fs::{DirEntry, Inode, SuperBlock, BLOCK_SIZE, INODE_DIRECT_POINTERS, MAGIC};
 use ferrous_vm::Memory;
 use log::{error, info};
 
 pub mod block;
+pub mod syscalls;
 
+/// The global file system handle.
+///
+/// This struct manages the state of the mounted file system, holding the superblock
+/// and providing methods to traverse the directory structure and read file data.
+///
+/// In Ferrous OS, we use a simplified ext2-like file system (FerrousFS).
 pub struct FileSystem {
+    /// The superblock contains metadata about the file system (size, inode count, etc.).
     pub superblock: SuperBlock,
 }
 
 impl FileSystem {
+    /// Mounts the file system from the disk.
+    ///
+    /// This function reads the first block (sector 0) of the disk, which is expected
+    /// to contain the SuperBlock. It validates the magic number to ensure the
+    /// disk is formatted with FerrousFS.
     pub fn mount(memory: &mut dyn Memory) -> Result<Self, KernelError> {
         let mut buffer = [0u8; BLOCK_SIZE];
 
@@ -39,7 +53,16 @@ impl FileSystem {
         Ok(Self { superblock })
     }
 
+    /// Reads an Inode from the disk by its ID.
+    ///
+    /// Inodes are stored in the Inode Table, which starts at `superblock.inode_table_block`.
+    /// You need to calculate which block the inode is in, read that block, and then
+    /// extract the specific Inode struct from the buffer.
+    ///
+    /// # Assignment 5
+    /// Implement this function to locate and read an Inode from the disk.
     pub fn read_inode(&self, memory: &mut dyn Memory, inode_id: u32) -> Result<Inode, KernelError> {
+        // TODO: Assignment 5 - Implement read_inode
         if inode_id >= self.superblock.total_inodes {
             return Err(KernelError::InitializationError(
                 "Inode ID out of range".into(),
@@ -71,7 +94,15 @@ impl FileSystem {
         Ok(inode)
     }
 
+    /// Finds an Inode ID by name within the root directory.
+    ///
+    /// Currently, FerrousFS only supports a flat directory structure (no subdirectories).
+    /// This function scans the root directory (Inode 0) for a directory entry matching `name`.
+    ///
+    /// # Assignment 5
+    /// Implement this function to scan directory blocks and match filenames.
     pub fn find_inode(&self, memory: &mut dyn Memory, name: &str) -> Result<u32, KernelError> {
+        // TODO: Assignment 5 - Implement find_inode
         // Special case for root directory
         if name == "/" {
             return Ok(0);
@@ -117,6 +148,15 @@ impl FileSystem {
         Err(KernelError::InitializationError("File not found".into()))
     }
 
+    /// Reads data from a file (Inode).
+    ///
+    /// This function handles the logic of mapping a logical file offset to actual disk blocks.
+    /// It must handle:
+    /// 1. Direct pointers (blocks 0-11)
+    /// 2. Indirect pointers (block 12) - optional/bonus for Assignment 5?
+    ///
+    /// # Assignment 5
+    /// Implement the logic to read file data, handling block lookups and offsets.
     pub fn read_data(
         &self,
         memory: &mut dyn Memory,
@@ -124,6 +164,7 @@ impl FileSystem {
         offset: u32,
         buffer: &mut [u8],
     ) -> Result<usize, KernelError> {
+        // TODO: Assignment 5 - Implement read_data
         if offset >= inode.size {
             return Ok(0); // EOF
         }
@@ -202,4 +243,11 @@ impl FileSystem {
 
         Ok(bytes_read)
     }
+}
+
+pub struct Pipe {
+    pub buffer: VecDeque<u8>,
+    pub read_open: bool,
+    pub write_open: bool,
+    pub wait_queue: VecDeque<crate::types::ThreadHandle>,
 }

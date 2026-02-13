@@ -748,25 +748,23 @@ ferrous-kernel/
     │   ├── mod.rs
     │   ├── tcb.rs          # Thread Control Block
     │   ├── scheduler.rs    # Scheduling algorithms
-    │   ├── context.rs      # Context switching
-    │   └── tests.rs
+    │   └── syscalls.rs     # Thread-related syscalls
     │
     ├── sync/
     │   ├── mod.rs
-    │   ├── semaphore.rs
-    │   ├── lock.rs
-    │   ├── condvar.rs
+    │   ├── syscalls.rs     # Synchronization syscalls
     │   └── tests.rs
     │
-    ├── vm/
+    ├── memory.rs           # Memory management & Sbrk syscalls
+    │
+    ├── process/
     │   ├── mod.rs
-    │   ├── address_space.rs  # Per-process address space
-    │   ├── page_table.rs     # Page table management
-    │   ├── frame_allocator.rs # Physical frame allocation
-    │   └── tests.rs
+    │   ├── syscalls.rs     # Process lifecycle (exec, waitpid)
+    │   └── elf.rs          # ELF loading
     │
     ├── fs/
     │   ├── mod.rs
+    │   ├── syscalls.rs     # File system syscalls
     │   ├── inode.rs
     │   ├── directory.rs
     │   ├── file.rs

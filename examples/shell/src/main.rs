@@ -261,8 +261,9 @@ pub extern "C" fn _start() -> ! {
                         println!("  echo <args> - Print arguments");
                         println!("  threads     - Multithreading demo");
                         println!("  sbrk        - Heap allocation demo");
-                        println!("  hello       - Hello World");
+                        println!("  hello-world - Hello World");
                         println!("  file-read   - File reading demo");
+                        println!("  disk-read   - Raw block reading demo");
                     } else if program == "pipe_test" {
                         test_pipe();
                     } else if program == "exit" {

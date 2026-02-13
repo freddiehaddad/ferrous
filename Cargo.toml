@@ -9,6 +9,7 @@ members = [
     "crates/ferrous-test",
     "crates/ferrous-fs",
     "crates/ferrous-mkfs",
+    "crates/xtask",
     "examples/hello-world",
     "examples/sbrk",
     "examples/threads",
