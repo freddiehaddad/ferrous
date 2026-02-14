@@ -1,0 +1,12 @@
+[package]
+name = "shell"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ferrous-user = { path = "../../crates/ferrous-user" }
+ferrous-fs = { path = "../../crates/ferrous-fs" }
+
+[[bin]]
+name = "shell"
+path = "src/main.rs"

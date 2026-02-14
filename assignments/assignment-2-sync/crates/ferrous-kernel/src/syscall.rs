@@ -36,6 +36,23 @@ pub enum Syscall {
     MutexRelease {
         id: u32,
     },
+    SemaphoreCreate {
+        initial_count: u32,
+    },
+    SemaphoreDown {
+        id: u32,
+    },
+    SemaphoreUp {
+        id: u32,
+    },
+    CondVarCreate,
+    CondVarWait {
+        cond_id: u32,
+        mutex_id: u32,
+    },
+    CondVarSignal {
+        cond_id: u32,
+    },
 
     // Memory
     Sbrk {
@@ -128,6 +145,15 @@ impl Syscall {
             110 => Ok(Syscall::MutexCreate),
             111 => Ok(Syscall::MutexAcquire { id: a0 }),
             112 => Ok(Syscall::MutexRelease { id: a0 }),
+            120 => Ok(Syscall::SemaphoreCreate { initial_count: a0 }),
+            121 => Ok(Syscall::SemaphoreDown { id: a0 }),
+            122 => Ok(Syscall::SemaphoreUp { id: a0 }),
+            130 => Ok(Syscall::CondVarCreate),
+            131 => Ok(Syscall::CondVarWait {
+                cond_id: a0,
+                mutex_id: a1,
+            }),
+            132 => Ok(Syscall::CondVarSignal { cond_id: a0 }),
             200 => Ok(Syscall::BlockRead {
                 sector: a0,
                 buf_ptr: VirtAddr::new(a1),

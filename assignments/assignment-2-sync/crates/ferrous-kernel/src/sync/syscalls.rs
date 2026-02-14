@@ -38,6 +38,43 @@ pub fn handle_syscall(
             // 4. If wait queue not empty, pop next thread and wake it.
             todo!("Assignment 2: MutexRelease");
         }
+        Syscall::SemaphoreCreate { initial_count } => {
+            // TODO: Assignment 2 - Implement Semaphore creation
+            // 1. Create new Semaphore with initial_count.
+            // 2. Store in semaphore map.
+            // 3. Return handle.
+            todo!("Assignment 2: SemaphoreCreate");
+        }
+        Syscall::SemaphoreDown { id } => {
+            // TODO: Assignment 2 - Implement Semaphore Down (P)
+            // 1. Check if semaphore exists.
+            // 2. Decrement count if > 0.
+            // 3. If count == 0, block current thread and add to wait queue.
+            todo!("Assignment 2: SemaphoreDown");
+        }
+        Syscall::SemaphoreUp { id } => {
+            // TODO: Assignment 2 - Implement Semaphore Up (V)
+            // 1. Check if semaphore exists.
+            // 2. Increment count.
+            // 3. If threads are waiting, wake one up.
+            todo!("Assignment 2: SemaphoreUp");
+        }
+        Syscall::CondVarCreate => {
+            // TODO: Assignment 2 - Implement CondVar creation
+            todo!("Assignment 2: CondVarCreate");
+        }
+        Syscall::CondVarWait { cond_id, mutex_id } => {
+            // TODO: Assignment 2 - Implement CondVar Wait
+            // 1. Release mutex atomically.
+            // 2. Block thread on condition variable.
+            // 3. Re-acquire mutex when woken.
+            todo!("Assignment 2: CondVarWait");
+        }
+        Syscall::CondVarSignal { cond_id } => {
+            // TODO: Assignment 2 - Implement CondVar Signal
+            // 1. Wake one thread waiting on condition variable.
+            todo!("Assignment 2: CondVarSignal");
+        }
         _ => Err(TrapError::HandlerPanic("Sync: Unhandled syscall".into())),
     }
 }

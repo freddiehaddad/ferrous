@@ -1,0 +1,19 @@
+[package]
+name = "ferrous-vm"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "RISC-V simulator for Ferrous OS"
+
+[dependencies]
+log = "0.4"
+bytemuck = { version = "1.14", features = ["derive"] }
+
+[features]
+default = ["std"]
+std = []
+
+[dev-dependencies]
+proptest = "1.4"

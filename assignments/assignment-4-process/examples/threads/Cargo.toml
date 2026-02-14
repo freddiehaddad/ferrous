@@ -1,0 +1,11 @@
+[package]
+name = "threads"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ferrous-user = { path = "../../crates/ferrous-user" }
+
+[[bin]]
+name = "threads"
+path = "src/main.rs"

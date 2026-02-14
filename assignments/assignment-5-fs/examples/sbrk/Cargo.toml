@@ -1,0 +1,11 @@
+[package]
+name = "sbrk"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ferrous-user = { path = "../../crates/ferrous-user" }
+
+[[bin]]
+name = "sbrk"
+path = "src/main.rs"

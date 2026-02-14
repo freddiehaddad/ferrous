@@ -1,0 +1,11 @@
+[package]
+name = "ferrous-user"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "User library for Ferrous OS"
+
+[dependencies]
+# No dependencies for now, maybe `bitflags` if needed.

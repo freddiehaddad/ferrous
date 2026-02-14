@@ -1,0 +1,11 @@
+[package]
+name = "file-read"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ferrous-user = { path = "../../crates/ferrous-user" }
+
+[[bin]]
+name = "file-read"
+path = "src/main.rs"
