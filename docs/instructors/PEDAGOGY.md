@@ -27,6 +27,69 @@ The course is structured into five cumulative assignments.
 | **A4** | **Processes** | Syscall Interface, User/Kernel Boundary, ELFs | Traps, CSRs (SATP, SEPC), Privilege Modes |
 | **A5** | **File Systems** | Inodes, Directory Entries, Block Caching | Serialization, Buffer Management |
 
+### Assignment Details
+
+#### **Assignment 1: Threads & Scheduling**
+*   **Goal:** Implement a cooperative and preemptive multitasking system.
+*   **Key Files:**
+    *   `crates/ferrous-kernel/src/thread/tcb.rs`: `ThreadControlBlock`
+    *   `crates/ferrous-kernel/src/thread/mod.rs`: `create_thread`, `yield_thread`
+*   **Implementation Steps:**
+    1.  **Context Switching:** Implement `save_context` and `restore_context` (often inline assembly or carefully managed struct fields).
+    2.  **TCB:** Define the `ThreadControlBlock` to store registers (PC, SP, S0-S11, etc.).
+    3.  **Scheduler:** Implement a Round-Robin queue in `scheduler.rs`.
+*   **Testing Strategy:**
+    *   `cargo x run-test threads`: Spawns multiple threads printing different characters. Verify they interleave and don't crash.
+
+#### **Assignment 2: Synchronization**
+*   **Goal:** Prevent data races in your scheduler and kernel data structures.
+*   **Key Files:**
+    *   `crates/ferrous-kernel/src/sync/mod.rs`
+    *   `crates/ferrous-kernel/src/thread/mod.rs` (`block_current_thread`, `wake_thread`)
+*   **Implementation Steps:**
+    1.  **Semaphore:** Implement `down()` (decrement/sleep) and `up()` (increment/wake).
+    2.  **Mutex:** Build on top of semaphores (binary semaphore).
+    3.  **Condition Variables:** Implement `wait()` and `notify()`.
+*   **Testing Strategy:**
+    *   `cargo x run-test sync`: A producer-consumer problem. If implemented incorrectly, the system will deadlock or print garbage.
+
+#### **Assignment 3: Virtual Memory (Heap)**
+*   **Goal:** Allow the kernel and users to dynamically allocate memory (`malloc`).
+*   **Key Files:**
+    *   `crates/ferrous-kernel/src/memory.rs`
+    *   `crates/ferrous-vm` (check `mmu.rs` to understand the page table format, though you likely won't edit it).
+*   **Implementation Steps:**
+    1.  **sbrk Syscall:** Implement the handler for `SYS_SBRK`.
+    2.  **Program Break:** Track the current end of the heap for the current process.
+    3.  **Page Mapping:** When `sbrk` grows, you must ensure new pages are mapped in the page table (software-managed TLB/PT logic).
+*   **Testing Strategy:**
+    *   `cargo x run-test sbrk`: Allocates a large array, writes to it, reads back. Verifies no Page Faults occur.
+
+#### **Assignment 4: Processes**
+*   **Goal:** Implement process isolation and lifecycle management.
+*   **Key Files:**
+    *   `crates/ferrous-kernel/src/process/mod.rs`
+    *   `crates/ferrous-kernel/src/process/syscalls.rs`
+*   **Implementation Steps:**
+    1.  **Fork:** Deep copy the current thread's memory space and TCB. Return `0` to child, `child_pid` to parent.
+    2.  **Exec:** Replace the current memory space with a new binary loaded from disk.
+    3.  **Wait:** Block until a child process enters the `Terminated` state.
+*   **Testing Strategy:**
+    *   `cargo x run-shell`: The shell itself relies on `fork` and `exec` to run commands. If the shell works, you win.
+
+#### **Assignment 5: File Systems**
+*   **Goal:** Read files from the `disk.img` provided by the build system.
+*   **Key Files:**
+    *   `crates/ferrous-kernel/src/fs/mod.rs`
+    *   `crates/ferrous-kernel/src/fs/block.rs`
+*   **Implementation Steps:**
+    1.  **Inode Reading:** Implement `read_inode(inode_idx)` to fetch file metadata from the inode table.
+    2.  **Directory Traversal:** Implement `find_inode(path)` to resolve `/bin/ls` to an inode number.
+    3.  **Data Reading:** Implement `read_data(inode, offset, buffer)` to traverse direct and indirect block pointers.
+*   **Testing Strategy:**
+    *   `cargo x fs`: Creates a `hello.txt`.
+    *   `cat hello.txt` inside the shell. If you see the text, your FS driver is working.
+
 ## 4. Academic Integrity & Anti-Plagiarism
 Because Ferrous is a novel course platform, solutions are not yet widely available online. However, the modular nature of the assignments allows for targeted modification:
 *   **Variable Parameters:** Instructors can easily modify `TIME_SLICE` durations, stack sizes, or scheduling policies to render previous solutions obsolete.
