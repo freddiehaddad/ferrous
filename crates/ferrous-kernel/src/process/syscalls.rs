@@ -34,7 +34,9 @@ pub fn handle_syscall(
                     // Blocked. Return placeholder (will be overwritten by waker)
                     Syscall::encode_result(Ok(SyscallReturn::Success), cpu);
                     cpu.pc += 4;
-                    thread_manager.yield_thread(cpu);
+                    if !thread_manager.yield_thread(cpu) {
+                        return Err(TrapError::Halt);
+                    }
                     Ok(VirtAddr::new(cpu.pc))
                 }
                 Err(e) => {

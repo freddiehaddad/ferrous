@@ -93,6 +93,9 @@ pub fn handle_syscall(
             // Check for UART (Stdout/Stderr)
             // If fd is 1 or 2 and not remapped, output to UART
             if (fd == 1 || fd == 2) && descriptor.is_none() {
+                // No locking implemented yet, direct write is thread-safe enough for now
+                // as MMIO is atomic per word write? No, characters might interleave.
+                // But it shouldn't hang.
                 for byte in buf {
                     memory
                         .write_word(PhysAddr::new(UART_BASE + UART_THR_OFFSET), byte as u32)
@@ -324,7 +327,9 @@ pub fn handle_syscall(
 
                 if should_block {
                     thread_manager.block_current_thread();
-                    thread_manager.yield_thread(cpu);
+                    if !thread_manager.yield_thread(cpu) {
+                        return Err(TrapError::Halt);
+                    }
                     // Do not advance PC, retry syscall when woken
                     Ok(VirtAddr::new(cpu.pc))
                 } else {

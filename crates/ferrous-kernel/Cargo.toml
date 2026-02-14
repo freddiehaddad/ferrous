@@ -12,7 +12,7 @@ ferrous-vm = { path = "../ferrous-vm", default-features = false }
 ferrous-fs = { path = "../ferrous-fs" }
 log = { workspace = true }
 goblin = { version = "0.8", default-features = false, features = ["elf32", "elf64", "endian_fd", "alloc"] } 
-
+zerocopy = { version = "0.7", features = ["derive"] }
 
 [dev-dependencies]
 env_logger = { workspace = true }

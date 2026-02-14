@@ -9,6 +9,7 @@ use alloc::string::String;
 use alloc::vec;
 use alloc::vec::Vec;
 use ferrous_vm::{Cpu, PrivilegeMode, VirtAddr};
+use log::info;
 use scheduler::{RoundRobinScheduler, Scheduler};
 use tcb::{ThreadControlBlock, ThreadState};
 
@@ -87,6 +88,17 @@ impl ThreadManager {
         // (If created by kernel internal logic, might be different, but for now Syscall::ThreadCreate implies User)
         let mode = PrivilegeMode::User;
 
+        // Inherit File Descriptors from parent thread
+        let file_descriptors = if let Some(current) = self.current_thread {
+            if let Some(parent) = self.threads.get(&current) {
+                parent.file_descriptors.clone()
+            } else {
+                vec![None, None, None]
+            }
+        } else {
+            vec![None, None, None]
+        };
+
         let tcb = ThreadControlBlock {
             handle,
             state: ThreadState::Ready,
@@ -94,7 +106,7 @@ impl ThreadManager {
             stack_pointer: stack_top,
             kernel_stack: 0, // Assume no kernel stack switch for now (running in user mode usually)
             program_break,
-            file_descriptors: vec![None, None, None], // Reserve stdin, stdout, stderr
+            file_descriptors,
         };
 
         self.threads.insert(handle, tcb);
@@ -103,7 +115,7 @@ impl ThreadManager {
         Ok(handle)
     }
 
-    pub fn yield_thread(&mut self, cpu: &mut Cpu) {
+    pub fn yield_thread(&mut self, cpu: &mut Cpu) -> bool {
         if let Some(current) = self.current_thread {
             // Save context
             if let Some(tcb) = self.threads.get_mut(&current) {
@@ -119,19 +131,44 @@ impl ThreadManager {
 
         // Pick next thread
         if let Some(next) = self.scheduler.schedule() {
+            info!("Scheduler: Switched to thread {:?}", next);
             self.current_thread = Some(next);
             if let Some(tcb) = self.threads.get_mut(&next) {
                 tcb.state = ThreadState::Running;
                 tcb.context.restore_to(cpu);
             }
+            true
         } else {
-            // No threads ready? Should verify if main thread exits.
-            // If idle, maybe panic or halt?
-            // Assuming at least one thread (main) exists initially.
+            info!(
+                "Scheduler: No ready threads found. Current thread is {:?}",
+                self.current_thread
+            );
+
+            // If current thread is None (Exited), we have no thread to run -> return false.
+            if self.current_thread.is_none() {
+                return false;
+            }
+
+            // If current thread exists but is Blocked, we CANNOT run it -> return false.
+            if let Some(current) = self.current_thread {
+                if let Some(tcb) = self.threads.get(&current) {
+                    if tcb.state != ThreadState::Running {
+                        info!(
+                            "Scheduler: Current thread {:?} is {:?}, cannot resume.",
+                            current, tcb.state
+                        );
+                        return false;
+                    }
+                }
+            }
+
+            // If current thread is Running (and was the only one), we continue running it -> return true.
+            true
         }
     }
 
     pub fn exit_current_thread(&mut self, code: i32) {
+        info!("ThreadManager: Exiting thread {:?}", self.current_thread);
         if let Some(current) = self.current_thread {
             // Find anyone waiting on 'current'
             let mut to_wake = Vec::new();

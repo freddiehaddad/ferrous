@@ -171,9 +171,24 @@ pub extern "C" fn _start() -> ! {
                 }
 
                 // Filter empty parts
-                let parts: Vec<&str> = parts.into_iter().filter(|s| !s.is_empty()).collect();
+                let mut parts: Vec<&str> = parts.into_iter().filter(|s| !s.is_empty()).collect();
 
                 if !parts.is_empty() {
+                    let mut background = false;
+                    if let Some(last) = parts.last() {
+                        if *last == "&" {
+                            background = true;
+                        }
+                    }
+
+                    if background {
+                        parts.pop();
+                    }
+
+                    if parts.is_empty() {
+                        continue;
+                    }
+
                     let program = parts[0];
                     // Copy args to stack array to avoid passing heap pointer to syscall (workaround for kernel/user heap issue)
                     let mut args_buf = [""; 32];
@@ -254,6 +269,7 @@ pub extern "C" fn _start() -> ! {
                         println!("  ls          - List files");
                         println!("  cat <file>  - Display file contents");
                         println!("  pipe_test   - Run pipe test");
+                        println!("  run-net     - Run network test");
                         println!("  exit        - Quit shell");
                         println!("  help        - Show this message");
                         println!("");
@@ -264,17 +280,33 @@ pub extern "C" fn _start() -> ! {
                         println!("  hello-world - Hello World");
                         println!("  file-read   - File reading demo");
                         println!("  disk-read   - Raw block reading demo");
+                        println!("  net_test    - Network test (UDP echo)");
                     } else if program == "pipe_test" {
                         test_pipe();
+                    } else if program == "run-net" {
+                        match syscall::exec("net_test", args) {
+                            Ok(handle) => {
+                                if !background {
+                                    let _code = syscall::waitpid(handle);
+                                } else {
+                                    println!("Process {} running in background", handle);
+                                }
+                            }
+                            Err(_) => {
+                                println!("Failed to execute net_test");
+                            }
+                        }
                     } else if program == "exit" {
                         println!("Goodbye!");
                         break;
                     } else {
                         match syscall::exec(program, args) {
                             Ok(handle) => {
-                                // println!("Spawned process {}", handle);
-                                let _code = syscall::waitpid(handle);
-                                // println!("Process {} exited with code {}", handle, code);
+                                if !background {
+                                    let _code = syscall::waitpid(handle);
+                                } else {
+                                    println!("Process {} running in background", handle);
+                                }
                             }
                             Err(_) => {
                                 println!("Unknown command or executable not found: {}", program);

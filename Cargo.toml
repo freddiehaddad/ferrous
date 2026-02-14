@@ -18,6 +18,8 @@ members = [
     "examples/echo",
     "examples/shell",
     "examples/hello",
+    "examples/net_test",
+    "tools/udp-echo",
 ]
 
 

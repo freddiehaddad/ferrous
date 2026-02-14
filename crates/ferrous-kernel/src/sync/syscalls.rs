@@ -39,7 +39,9 @@ pub fn handle_syscall(
                     thread_manager.block_current_thread();
                     Syscall::encode_result(Ok(SyscallReturn::Success), cpu);
                     cpu.pc += 4;
-                    thread_manager.yield_thread(cpu);
+                    if !thread_manager.yield_thread(cpu) {
+                        return Err(TrapError::Halt);
+                    }
                     Ok(VirtAddr::new(cpu.pc))
                 }
             } else {

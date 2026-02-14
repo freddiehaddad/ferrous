@@ -1,0 +1,20 @@
+[package]
+name = "ferrous-kernel"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Operating System Kernel for Ferrous"
+
+[dependencies]
+ferrous-vm = { path = "../ferrous-vm", default-features = false }
+ferrous-fs = { path = "../ferrous-fs" }
+zerocopy = { version = "0.7", features = ["derive"] }
+log = { workspace = true }
+goblin = { version = "0.8", default-features = false, features = ["elf32", "elf64", "endian_fd", "alloc"] } 
+
+
+[dev-dependencies]
+env_logger = { workspace = true }
+proptest = { workspace = true }

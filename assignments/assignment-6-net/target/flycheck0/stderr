@@ -1,0 +1,97 @@
+   0.240888400s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint: stale: changed "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-kernel\\src\\net\\mod.rs"
+   0.240917300s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint:           (vs) "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\target\\debug\\.fingerprint\\ferrous-kernel-3bc4e4498ba903ca\\dep-lib-ferrous_kernel"
+   0.240922600s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 13415506570, nanos: 311667300 } < FileTime { seconds: 13415507708, nanos: 524543100 }
+   0.242516500s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint: fingerprint dirty for ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli)/Check { test: true }/TargetInner { name: "ferrous-cli", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-cli\\src\\main.rs", Edition2021) }
+   0.242571900s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleDepFingerprint { name: "ferrous_runtime" })
+   0.255067800s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint: fingerprint dirty for ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-runtime)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_runtime", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-runtime\\src\\lib.rs", Edition2021) }
+   0.255101100s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleDepFingerprint { name: "ferrous_kernel" })
+   0.256487500s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint: fingerprint dirty for ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_kernel", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-kernel\\src\\lib.rs", Edition2021) }
+   0.256522000s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\target\\debug\\.fingerprint\\ferrous-kernel-3bc4e4498ba903ca\\dep-lib-ferrous_kernel", reference_mtime: FileTime { seconds: 13415506570, nanos: 311667300 }, stale: "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-kernel\\src\\net\\mod.rs", stale_mtime: FileTime { seconds: 13415507708, nanos: 524543100 } }))
+   0.278097400s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint: stale: changed "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-kernel\\src\\net\\syscalls.rs"
+   0.278125900s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint:           (vs) "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\target\\debug\\.fingerprint\\ferrous-kernel-62f9ff4ad33381e5\\dep-lib-ferrous_kernel"
+   0.278134200s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 13415506569, nanos: 762256900 } < FileTime { seconds: 13415507855, nanos: 907207300 }
+   0.279891100s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint: fingerprint dirty for ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli)/Check { test: false }/TargetInner { name: "ferrous-cli", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-cli\\src\\main.rs", Edition2021) }
+   0.279915500s  INFO prepare_target{force=false package_id=ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli) target="ferrous-cli"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleDepFingerprint { name: "ferrous_runtime" })
+   0.288625900s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint: fingerprint dirty for ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-runtime)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_runtime", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-runtime\\src\\lib.rs", Edition2021) }
+   0.288651900s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleDepFingerprint { name: "ferrous_kernel" })
+   0.290122700s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint: fingerprint dirty for ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel)/Check { test: false }/TargetInner { name_inferred: true, ..: lib_target("ferrous_kernel", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-kernel\\src\\lib.rs", Edition2021) }
+   0.290152800s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\target\\debug\\.fingerprint\\ferrous-kernel-62f9ff4ad33381e5\\dep-lib-ferrous_kernel", reference_mtime: FileTime { seconds: 13415506569, nanos: 762256900 }, stale: "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-kernel\\src\\net\\syscalls.rs", stale_mtime: FileTime { seconds: 13415507855, nanos: 907207300 } }))
+   0.303822700s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint: stale: changed "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-kernel\\src\\net\\driver.rs"
+   0.303843600s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint:           (vs) "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\target\\debug\\.fingerprint\\ferrous-kernel-0cccda585146df98\\dep-test-lib-ferrous_kernel"
+   0.303848100s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 13415506570, nanos: 311667300 } < FileTime { seconds: 13415510818, nanos: 166340800 }
+   0.304561400s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint: fingerprint dirty for ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("ferrous_kernel", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-kernel\\src\\lib.rs", Edition2021) }
+   0.304588800s  INFO prepare_target{force=false package_id=ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel) target="ferrous_kernel"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\target\\debug\\.fingerprint\\ferrous-kernel-0cccda585146df98\\dep-test-lib-ferrous_kernel", reference_mtime: FileTime { seconds: 13415506570, nanos: 311667300 }, stale: "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-kernel\\src\\net\\driver.rs", stale_mtime: FileTime { seconds: 13415510818, nanos: 166340800 } }))
+   0.318319800s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint: fingerprint dirty for ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-runtime)/Check { test: true }/TargetInner { name_inferred: true, ..: lib_target("ferrous_runtime", ["lib"], "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\ferrous-runtime\\src\\lib.rs", Edition2021) }
+   0.318349200s  INFO prepare_target{force=false package_id=ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-runtime) target="ferrous_runtime"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleDepFingerprint { name: "ferrous_kernel" })
+   0.327854500s  INFO prepare_target{force=false package_id=net-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\examples\net-test) target="net-test"}: cargo::core::compiler::fingerprint: fingerprint error for net-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\examples\net-test)/Check { test: true }/TargetInner { name: "net-test", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\examples\\net-test\\src\\main.rs", Edition2021) }
+   0.327888300s  INFO prepare_target{force=false package_id=net-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\examples\net-test) target="net-test"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-6-net\target\debug\.fingerprint\net-test-bc021db47fbdbe46\test-bin-net-test`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   0.336078600s  INFO prepare_target{force=false package_id=net-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\examples\net-test) target="net-test"}: cargo::core::compiler::fingerprint: fingerprint error for net-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\examples\net-test)/Check { test: false }/TargetInner { name: "net-test", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\examples\\net-test\\src\\main.rs", Edition2021) }
+   0.336114300s  INFO prepare_target{force=false package_id=net-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\examples\net-test) target="net-test"}: cargo::core::compiler::fingerprint:     err: failed to read `S:\projects\git\ferrous\assignments\assignment-6-net\target\debug\.fingerprint\net-test-6e181aa5b938e243\bin-net-test`
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Stack backtrace:
+   0: git_midx_writer_dump
+   1: git_midx_writer_dump
+   2: git_midx_writer_dump
+   3: git_midx_writer_dump
+   4: git_filter_source_repo
+   5: git_filter_source_repo
+   6: git_filter_source_repo
+   7: git_filter_source_repo
+   8: git_filter_source_repo
+   9: git_filter_source_repo
+  10: git_filter_source_repo
+  11: git_libgit2_prerelease
+  12: <unknown>
+  13: <unknown>
+  14: <unknown>
+  15: <unknown>
+  16: git_midx_writer_dump
+  17: git_filter_source_repo
+  18: git_midx_writer_dump
+  19: BaseThreadInitThunk
+  20: RtlUserThreadStart
+   0.344709300s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint: stale: changed "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\xtask\\src\\main.rs"
+   0.344736200s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint:           (vs) "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\target\\debug\\.fingerprint\\xtask-de0a9fd62697a072\\dep-test-bin-xtask"
+   0.344744400s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 13415504049, nanos: 65423600 } < FileTime { seconds: 13415507003, nanos: 827123900 }
+   0.345642700s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint: fingerprint dirty for xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask)/Check { test: true }/TargetInner { name: "xtask", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\xtask\\src\\main.rs", Edition2021) }
+   0.345663200s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\target\\debug\\.fingerprint\\xtask-de0a9fd62697a072\\dep-test-bin-xtask", reference_mtime: FileTime { seconds: 13415504049, nanos: 65423600 }, stale: "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\xtask\\src\\main.rs", stale_mtime: FileTime { seconds: 13415507003, nanos: 827123900 } }))
+   0.348900000s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint: stale: changed "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\xtask\\src\\main.rs"
+   0.348913800s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint:           (vs) "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\target\\debug\\.fingerprint\\xtask-fd73e5120895c805\\dep-bin-xtask"
+   0.348917700s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint:                FileTime { seconds: 13415504049, nanos: 82453100 } < FileTime { seconds: 13415507003, nanos: 827123900 }
+   0.349864900s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint: fingerprint dirty for xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask)/Check { test: false }/TargetInner { name: "xtask", doc: true, ..: with_path("S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\xtask\\src\\main.rs", Edition2021) }
+   0.349884900s  INFO prepare_target{force=false package_id=xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask) target="xtask"}: cargo::core::compiler::fingerprint:     dirty: FsStatusOutdated(StaleItem(ChangedFile { reference: "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\target\\debug\\.fingerprint\\xtask-fd73e5120895c805\\dep-bin-xtask", reference_mtime: FileTime { seconds: 13415504049, nanos: 82453100 }, stale: "S:\\projects\\git\\ferrous\\assignments\\assignment-6-net\\crates\\xtask\\src\\main.rs", stale_mtime: FileTime { seconds: 13415507003, nanos: 827123900 } }))
+    Checking net-test v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\examples\net-test)
+    Checking xtask v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\xtask)
+    Checking ferrous-kernel v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-kernel)
+    Checking ferrous-runtime v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-runtime)
+    Checking ferrous-cli v0.1.0 (S:\projects\git\ferrous\assignments\assignment-6-net\crates\ferrous-cli)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.85s

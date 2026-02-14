@@ -5,6 +5,7 @@ extern crate alloc;
 pub mod error;
 pub mod fs;
 pub mod memory;
+pub mod net;
 pub mod process;
 pub mod sync;
 pub mod syscall;
@@ -124,6 +125,54 @@ impl Kernel {
                     cpu,
                 )
             }
+            syscall::Syscall::Socket => {
+                let ret = net::syscalls::sys_socket(&mut self.thread_manager)?;
+                syscall::Syscall::encode_result(Ok(ret), cpu);
+                Ok(VirtAddr::new(cpu.pc + 4))
+            }
+            syscall::Syscall::Bind { fd, ptr, len } => {
+                let ret = net::syscalls::sys_bind(&mut self.thread_manager, memory, fd, ptr, len)?;
+                syscall::Syscall::encode_result(Ok(ret), cpu);
+                Ok(VirtAddr::new(cpu.pc + 4))
+            }
+            syscall::Syscall::SendTo {
+                fd,
+                buf_ptr,
+                len,
+                dest_ptr,
+                dest_len,
+            } => {
+                let ret = net::syscalls::sys_sendto(
+                    &mut self.thread_manager,
+                    memory,
+                    fd,
+                    buf_ptr,
+                    len,
+                    dest_ptr,
+                    dest_len,
+                )?;
+                syscall::Syscall::encode_result(Ok(ret), cpu);
+                Ok(VirtAddr::new(cpu.pc + 4))
+            }
+            syscall::Syscall::RecvFrom {
+                fd,
+                buf_ptr,
+                len,
+                src_ptr,
+                src_len_ptr,
+            } => {
+                let ret = net::syscalls::sys_recvfrom(
+                    &mut self.thread_manager,
+                    memory,
+                    fd,
+                    buf_ptr,
+                    len,
+                    src_ptr,
+                    src_len_ptr,
+                )?;
+                syscall::Syscall::encode_result(Ok(ret), cpu);
+                Ok(VirtAddr::new(cpu.pc + 4))
+            }
         }
     }
 }
@@ -148,7 +197,11 @@ impl TrapHandler for Kernel {
             }
             TrapCause::TimerInterrupt => {
                 // Preemption: Yield current thread
-                self.thread_manager.yield_thread(cpu);
+                if !self.thread_manager.yield_thread(cpu) {
+                    // If no thread was scheduled, we should Halt or Idle.
+                    // For now, if there are no runnable threads, Halt is the safest bet to avoid infinite loops in exited context.
+                    return Err(TrapError::Halt);
+                }
                 Ok(VirtAddr::new(cpu.pc))
             }
             _ => Err(TrapError::Unhandled(cause)),

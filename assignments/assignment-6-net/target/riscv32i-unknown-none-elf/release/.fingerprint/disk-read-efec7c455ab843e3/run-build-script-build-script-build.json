@@ -1,0 +1,1 @@
+{"rustc":6817557220965521185,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[9877772496339313955,"build_script_build",false,683771493806293602]],"local":[{"RerunIfChanged":{"output":"riscv32i-unknown-none-elf\\release\\build\\disk-read-efec7c455ab843e3\\output","paths":["memory.x"]}}],"rustflags":[],"config":0,"compile_kind":0}

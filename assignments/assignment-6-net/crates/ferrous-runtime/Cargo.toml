@@ -1,0 +1,18 @@
+[package]
+name = "ferrous-runtime"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Runtime for Ferrous OS"
+
+[dependencies]
+ferrous-vm = { path = "../ferrous-vm" }
+ferrous-kernel = { path = "../ferrous-kernel" }
+log = { workspace = true }
+thiserror = { workspace = true }
+goblin = { workspace = true }
+
+[dev-dependencies]
+env_logger = { workspace = true }

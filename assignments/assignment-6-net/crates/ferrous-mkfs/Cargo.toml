@@ -1,0 +1,13 @@
+[package]
+name = "ferrous-mkfs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ferrous-fs = { path = "../ferrous-fs" }
+clap = { version = "4.0", features = ["derive"] }
+bincode = { version = "2.0.0-rc.3", default-features = false, features = ["serde", "alloc"] }
+
+[[bin]]
+name = "mkfs"
+path = "src/main.rs"

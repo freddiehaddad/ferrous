@@ -1,0 +1,1 @@
+{"rustc":6817557220965521185,"features":"","declared_features":"","target":0,"profile":0,"path":0,"deps":[[16515606521726551570,"build_script_build",false,17793216807137977261]],"local":[{"RerunIfChanged":{"output":"riscv32i-unknown-none-elf\\release\\build\\sbrk-b4572a1822c05dd1\\output","paths":["memory.x"]}}],"rustflags":[],"config":0,"compile_kind":0}

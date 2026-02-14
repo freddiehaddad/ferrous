@@ -37,9 +37,9 @@ pub fn handle_syscall(
         Syscall::Exit { code } => {
             info!("Thread/Process Exit: {}", code);
             thread_manager.exit_current_thread(code);
-            thread_manager.yield_thread(cpu);
+            let scheduled = thread_manager.yield_thread(cpu);
 
-            if thread_manager.current_thread.is_none() {
+            if !scheduled {
                 return Err(TrapError::Halt);
             }
             Ok(VirtAddr::new(cpu.pc))

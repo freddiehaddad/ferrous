@@ -2,6 +2,7 @@
 
 use core::fmt;
 
+pub mod net;
 pub mod sync;
 
 pub mod syscall {
@@ -330,6 +331,94 @@ pub mod syscall {
         #[cfg(not(target_arch = "riscv32"))]
         {
             ret = 0;
+        }
+        ret
+    }
+
+    pub fn socket() -> Result<i32, i32> {
+        let ret: i32;
+        #[cfg(target_arch = "riscv32")]
+        unsafe {
+            asm!(
+                "ecall",
+                in("a7") 300,
+                lateout("a0") ret,
+            );
+        }
+        #[cfg(not(target_arch = "riscv32"))]
+        {
+            ret = -1;
+        }
+        if ret >= 0 {
+            Ok(ret)
+        } else {
+            Err(ret)
+        }
+    }
+
+    pub fn bind(fd: u32, addr: *const u8, len: u32) -> i32 {
+        let ret: i32;
+        #[cfg(target_arch = "riscv32")]
+        unsafe {
+            asm!(
+                "ecall",
+                in("a0") fd,
+                in("a1") addr,
+                in("a2") len,
+                in("a7") 301,
+                lateout("a0") ret,
+            );
+        }
+        #[cfg(not(target_arch = "riscv32"))]
+        {
+            let _ = (fd, addr, len);
+            ret = -1;
+        }
+        ret
+    }
+
+    pub fn sendto(fd: u32, buf: *const u8, len: u32, addr: *const u8, addr_len: u32) -> i32 {
+        let ret: i32;
+        #[cfg(target_arch = "riscv32")]
+        unsafe {
+            asm!(
+                "ecall",
+                in("a0") fd,
+                in("a1") buf,
+                in("a2") len,
+                in("a3") addr,
+                in("a4") addr_len,
+                in("a7") 302,
+                lateout("a0") ret,
+            );
+        }
+        #[cfg(not(target_arch = "riscv32"))]
+        {
+            let _ = (fd, buf, len, addr, addr_len);
+            ret = -1;
+        }
+        ret
+    }
+
+    pub fn recvfrom(fd: u32, buf: *mut u8, len: u32, addr: *mut u8, addr_len: *mut u32) -> i32 {
+        let ret: i32;
+        #[cfg(target_arch = "riscv32")]
+        unsafe {
+            asm!(
+                "ecall",
+                in("a0") fd,
+                in("a1") buf,
+                in("a2") len,
+                in("a3") addr,
+                in("a4") addr_len,
+                in("a7") 303,
+                lateout("a0") ret,
+            );
+        }
+        #[cfg(not(target_arch = "riscv32"))]
+        {
+            let _ = (fd, buf, len, addr, addr_len);
+            ret = -1;
         }
         ret
     }

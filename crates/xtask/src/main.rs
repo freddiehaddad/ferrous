@@ -22,7 +22,13 @@ enum Commands {
     /// Create disk image (disk.img) with shell and examples
     Fs,
     /// Run the interactive shell (requires disk image)
-    RunShell,
+    RunShell {
+        /// Start the UDP echo server in the background
+        #[arg(long)]
+        with_net: bool,
+    },
+    /// Run network test (launches UDP echo server + VM)
+    RunNet,
     /// Clean build artifacts
     Clean,
 }
@@ -58,6 +64,7 @@ fn main() -> Result<()> {
                 "sbrk",
                 "file-read",
                 "disk-read",
+                "net_test",
             ];
 
             // Construct the cargo build command
@@ -94,6 +101,7 @@ fn main() -> Result<()> {
                 "hello-world",
                 "file-read",
                 "disk-read",
+                "net_test",
             ];
 
             let mut paths = Vec::new();
@@ -113,9 +121,34 @@ fn main() -> Result<()> {
 
             sh.remove_path("hello.txt")?;
         }
-        Commands::RunShell => {
+        Commands::RunShell { with_net } => {
             // Create FS first (which builds user programs)
             run_xtask(&sh, &["fs"])?;
+
+            // Start UDP Echo Server if requested
+            let mut server = None;
+            if with_net {
+                use std::process::{Command, Stdio};
+
+                // Build the tool first
+                println!("Building UDP Echo Server...");
+                cmd!(sh, "cargo build -p udp-echo --release").run()?;
+
+                let tool_path = if cfg!(windows) {
+                    "target/release/udp-echo.exe"
+                } else {
+                    "target/release/udp-echo"
+                };
+
+                println!("Starting UDP Echo Server...");
+                let s = Command::new(tool_path)
+                    .stdout(Stdio::inherit())
+                    .stderr(Stdio::inherit())
+                    .spawn()?;
+                server = Some(s);
+                // Give it a moment to start
+                std::thread::sleep(std::time::Duration::from_millis(500));
+            }
 
             let shell_bin = out_path.join("shell");
 
@@ -132,8 +165,57 @@ fn main() -> Result<()> {
                 .stderr(std::process::Stdio::inherit())
                 .status()?;
 
+            // Kill server if running
+            if let Some(mut s) = server {
+                let _ = s.kill();
+            }
+
             if !status.success() {
                 return Err(anyhow::anyhow!("VM execution failed"));
+            }
+        }
+        Commands::RunNet => {
+            // Build user programs first
+            run_xtask(&sh, &["build-user"])?;
+
+            // Start UDP Echo Server in background
+            use std::process::{Command, Stdio};
+
+            // Build the tool first
+            println!("Building UDP Echo Server...");
+            cmd!(sh, "cargo build -p udp-echo --release").run()?;
+
+            let tool_path = if cfg!(windows) {
+                "target/release/udp-echo.exe"
+            } else {
+                "target/release/udp-echo"
+            };
+
+            println!("Starting UDP Echo Server...");
+            let mut server = Command::new(tool_path)
+                .stdout(Stdio::inherit())
+                .stderr(Stdio::inherit())
+                .spawn()?;
+
+            // Give it a moment to start
+            std::thread::sleep(std::time::Duration::from_millis(500));
+
+            // Run VM with net_test
+            let binary = out_path.join("net_test");
+            println!("Running VM with net_test...");
+            let status = Command::new("cargo")
+                .args(["run", "-p", "ferrous-cli", "--", "run"])
+                .arg(binary)
+                // Add network flag if ferrous-cli supports it, or it might be default?
+                // Assuming default or transparent
+                .status();
+
+            // Kill server
+            let _ = server.kill();
+
+            match status {
+                Ok(s) if s.success() => println!("VM finished successfully"),
+                _ => return Err(anyhow::anyhow!("VM execution failed")),
             }
         }
         Commands::Clean => {

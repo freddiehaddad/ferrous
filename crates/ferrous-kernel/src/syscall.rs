@@ -42,6 +42,28 @@ pub enum Syscall {
         increment: i32,
     },
 
+    // Network
+    Socket,
+    Bind {
+        fd: usize,
+        ptr: VirtAddr,
+        len: usize,
+    },
+    SendTo {
+        fd: usize,
+        buf_ptr: VirtAddr,
+        len: usize,
+        dest_ptr: VirtAddr,
+        dest_len: usize,
+    },
+    RecvFrom {
+        fd: usize,
+        buf_ptr: VirtAddr,
+        len: usize,
+        src_ptr: VirtAddr,
+        src_len_ptr: VirtAddr,
+    },
+
     // Block Device (Temporary Debug)
     BlockRead {
         sector: u32,
@@ -86,6 +108,7 @@ impl Syscall {
         let a1 = cpu.read_reg(Register::new(11).unwrap());
         let a2 = cpu.read_reg(Register::new(12).unwrap());
         let a3 = cpu.read_reg(Register::new(13).unwrap());
+        let a4 = cpu.read_reg(Register::new(14).unwrap());
         let a7 = cpu.read_reg(Register::new(17).unwrap()); // syscall number
 
         match a7 {
@@ -134,6 +157,26 @@ impl Syscall {
             }),
             214 => Ok(Syscall::Sbrk {
                 increment: a0 as i32,
+            }),
+            300 => Ok(Syscall::Socket),
+            301 => Ok(Syscall::Bind {
+                fd: a0 as usize,
+                ptr: VirtAddr::new(a1),
+                len: a2 as usize,
+            }),
+            302 => Ok(Syscall::SendTo {
+                fd: a0 as usize,
+                buf_ptr: VirtAddr::new(a1),
+                len: a2 as usize,
+                dest_ptr: VirtAddr::new(a3),
+                dest_len: a4 as usize,
+            }),
+            303 => Ok(Syscall::RecvFrom {
+                fd: a0 as usize,
+                buf_ptr: VirtAddr::new(a1),
+                len: a2 as usize,
+                src_ptr: VirtAddr::new(a3),
+                src_len_ptr: VirtAddr::new(a4),
             }),
             _ => Err(SyscallError::InvalidSyscallNumber(a7)),
         }

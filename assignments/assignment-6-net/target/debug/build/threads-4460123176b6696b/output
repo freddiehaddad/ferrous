@@ -1,0 +1,3 @@
+cargo:rustc-link-search=S:\projects\git\ferrous\assignments\assignment-6-net\target\debug\build\threads-4460123176b6696b\out
+cargo:rustc-link-arg=-Tmemory.x
+cargo:rerun-if-changed=memory.x

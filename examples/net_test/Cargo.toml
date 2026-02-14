@@ -1,0 +1,11 @@
+[package]
+name = "net_test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ferrous-user = { path = "../../crates/ferrous-user" }
+
+[[bin]]
+name = "net_test"
+path = "src/main.rs"
